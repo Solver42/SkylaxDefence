@@ -2,7 +2,7 @@ Set up working environment
 
 1 Drop box		*
 
-2 SmartSVN
+2 Git			*
 
 3 Eclipse
 

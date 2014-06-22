@@ -33,7 +33,7 @@ Unlocks:
 	-Start game
 1 Choose Map, level
 2 Choose game mode: Campain, Training, (Sandbox)
-3 Choose difficoulty [Lazy,  (...)]
+3 Choose difficoulty [Lazy,  (...) Crazy]
 
 
 *** Settings
