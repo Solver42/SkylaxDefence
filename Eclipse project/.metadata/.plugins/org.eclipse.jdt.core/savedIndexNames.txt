@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+Z:\Projects\Hack\Java\MPT\.metadata\.plugins\org.eclipse.jdt.core
