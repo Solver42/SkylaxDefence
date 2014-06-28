@@ -1,0 +1,14 @@
+package se.SkyLax.MPT.GameObjects;
+
+public class Tower {
+	protected float angle;
+	
+	protected int rangeInPix;
+	
+	public Tower (Shot shot, int rotationSpeed)
+	{
+		
+	}
+	
+	
+}

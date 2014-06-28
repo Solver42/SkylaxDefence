@@ -1,0 +1,12 @@
+package se.SkyLax.MPT.Logics;
+
+public class Trigonometry {
+
+	private float angle;
+	
+	public Trigonometry(float angle)
+	{
+		this.angle = angle;
+	}
+	
+}

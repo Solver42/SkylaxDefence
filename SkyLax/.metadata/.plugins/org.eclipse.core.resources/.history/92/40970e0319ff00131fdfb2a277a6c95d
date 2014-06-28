@@ -1,0 +1,5 @@
+package se.SkyLax.MPT.GameObjects;
+
+public interface ShotActions {
+
+}

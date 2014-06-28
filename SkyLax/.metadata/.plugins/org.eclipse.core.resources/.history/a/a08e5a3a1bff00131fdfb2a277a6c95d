@@ -1,0 +1,14 @@
+package se.SkyLax.MPT.GameObjects;
+
+public class Rocket extends Shot implements ShotActions{
+	
+	public Rocket(float angle)
+	{
+		super(angle);
+	}
+	private void run(float angle)
+	{
+		
+	}
+	
+}

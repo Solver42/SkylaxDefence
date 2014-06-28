@@ -1,0 +1,15 @@
+package se.SkyLax.MPT.GameObjects;
+
+public class Shot {
+	
+	protected String style;
+	protected int speed;
+
+	public Shot(String style, int speed, float angle)
+	{
+		this.style = style;
+		this.speed = speed;
+		this.angle = angel;
+	}
+	
+}

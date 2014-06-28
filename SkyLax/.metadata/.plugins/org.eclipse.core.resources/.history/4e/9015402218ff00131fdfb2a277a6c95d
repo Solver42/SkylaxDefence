@@ -1,0 +1,10 @@
+package se.SkyLax.MPT.GameObjects;
+
+public class Shot {
+
+	public Shot(String style, int speed)
+	{
+		
+	}
+	
+}

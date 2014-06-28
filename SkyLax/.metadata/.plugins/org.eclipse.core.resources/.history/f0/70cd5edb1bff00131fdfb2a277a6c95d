@@ -1,0 +1,13 @@
+package se.SkyLax.MPT.GameObjects;
+
+public class Shot {
+	
+	protected int speed;
+	protected float angle;
+
+	public Shot(float angle)
+	{
+		this.angle = angle;
+	}
+	
+}

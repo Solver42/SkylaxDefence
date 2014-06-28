@@ -1,0 +1,10 @@
+
+public class Rocket extends Shot{
+	
+	public Rocket(String style, int speed)
+	{
+		super(style, speed);
+	}
+	public
+	
+}
