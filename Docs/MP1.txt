@@ -1,3 +1,5 @@
+Edited by Joe at 2014-06-28.
+
 Minimalistic Perfection Technology
 
 Make a tower defence game as runnable jar file
