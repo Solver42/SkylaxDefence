@@ -1,0 +1,23 @@
+package se.akerlund.start;
+
+import java.util.ArrayList;
+
+public class word {
+
+	ArrayList<WordInfo> wordInfo;
+	
+	public word(ArrayList<WordInfo> WI)
+	{
+		wordInfo = WI;
+	}
+	
+	public void add(int line, int atWordIndex)
+	{
+		wordInfo.add(new WordInfo(line, atWordIndex));
+	}
+	@Override
+	public String toString()
+	{
+		return "HEj";
+	}
+}

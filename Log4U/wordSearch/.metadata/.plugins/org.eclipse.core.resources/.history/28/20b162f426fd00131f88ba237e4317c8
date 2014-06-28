@@ -1,0 +1,34 @@
+package se.akerlund.start;
+
+public class ThreadObject implements Runnable{
+
+	Word word = null;
+
+	public ThreadObject(String w)
+	{
+		word = new Word(w);
+	}
+
+	private void getLine()
+	{
+		for(int i = 0; i < FileHandler.getRows().length; i++)
+		{
+			int index = word.getString().indexOf(FileHandler.getRows()[i];
+			if(index != -1)
+			{
+				word.add(i, 0);
+			}
+			word.add(i+1, 3);
+			
+
+		}
+		System.out.println(word);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		getLine();
+	}
+
+}

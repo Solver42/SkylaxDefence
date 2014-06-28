@@ -1,0 +1,22 @@
+package se.akerlund.start;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		FileHandlerPrepared fileHandler = new FileHandlerPrepared("test.txt");
+		
+		ThreadObject to = new ThreadObject("hej");
+		Thread t = new Thread(to);
+		t.start();
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(to.getWord());
+	}
+
+}

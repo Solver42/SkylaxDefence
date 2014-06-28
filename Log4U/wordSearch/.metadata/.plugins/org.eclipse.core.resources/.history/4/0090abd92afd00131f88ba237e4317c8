@@ -1,0 +1,27 @@
+package se.akerlund.start;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileHandler {
+	
+	private String path;
+	private static String[] textData;
+	
+	public FileHandler(String filePath)
+	{
+		path = filePath;
+		try {
+			textData = super.buffIn();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public synchronized static String [] getRows()
+	{
+		return textData;
+	}
+}

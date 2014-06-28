@@ -1,0 +1,12 @@
+package se.akerlund.start;
+
+public class wordInfo {
+	
+	int line;
+	int index;
+	public void wordInfo(int l, int i)
+	{
+		this.line = l;
+		this.index = i;
+	}
+}

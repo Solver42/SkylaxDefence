@@ -1,0 +1,16 @@
+package se.akerlund.start;
+
+public class FileHandler {
+	
+	private String path;
+	
+	public FileHandler(String filePath)
+	{
+		path = filePath;
+	}
+	
+	public static String[] buffIn throws IOException()
+	{
+		
+	}
+}

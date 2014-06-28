@@ -1,0 +1,16 @@
+package se.akerlund.start;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		FileHandler fileHandler = new FileHandler("test.txt");
+		
+		ThreadObject to = new ThreadObject("hej");
+		Thread t = new Thread(to);
+		t.start();
+		System.out.println(to.getWord());
+	}
+
+}

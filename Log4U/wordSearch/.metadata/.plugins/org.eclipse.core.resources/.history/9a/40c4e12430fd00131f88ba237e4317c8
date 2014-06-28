@@ -1,0 +1,37 @@
+package se.akerlund.start;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FileHandlerUser extends FileHandlerSuper{
+	
+	private String[] userFile = new String[5];
+	private static String[] textData;
+	private List<String> stringSplit;
+	private List<String> stringSplit2;
+	
+	public FileHandlerUser(String filePath)
+	{
+		stringSplit = new ArrayList<String>();
+		try {
+			textData = buffIn(filePath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void getAllWords()
+	{
+		for(int i = 0; i<textData.length; i++)
+		{
+			String temp = textData[i];
+			stringSplit = Arrays.asList(temp.split("."));
+			stringSplit2.addAll(stringSplit);
+		}
+		System.out.println("Hej");
+	}
+}

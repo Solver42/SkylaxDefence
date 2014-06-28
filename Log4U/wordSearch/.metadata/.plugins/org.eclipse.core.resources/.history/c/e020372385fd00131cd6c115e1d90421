@@ -1,0 +1,31 @@
+package se.akerlund.start;
+
+public class UI {
+	public UI()
+	{
+		new FileHandlerPrepared("prep.txt");
+		FileHandlerUser fh = new FileHandlerUser("user.txt");
+		fh.getAllWords();
+		ThreadObject[] threadObject = new ThreadObject[fh.getAllWords().length];
+		Thread[] thread = new Thread[fh.getAllWords().length];
+		
+		System.out.println("preparing...");
+		
+		for(int i = 0; i<fh.getAllWords().length; i++)
+		{
+			threadObject[i] = new ThreadObject(fh.getAllWords()[i]);
+			thread[i] = new Thread(threadObject[i]);
+			thread[i].start();
+		}
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(ThreadObject t: threadObject)
+		{
+			t.getWord().printThis();
+		}
+	}
+}

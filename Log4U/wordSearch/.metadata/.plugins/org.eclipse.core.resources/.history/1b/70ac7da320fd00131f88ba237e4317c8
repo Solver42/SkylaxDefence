@@ -1,0 +1,16 @@
+package se.akerlund.start;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		while (in.readLine() != null)
+		{
+			threadObject.giveNextLine(in);
+		}
+		
+		
+	}
+
+}

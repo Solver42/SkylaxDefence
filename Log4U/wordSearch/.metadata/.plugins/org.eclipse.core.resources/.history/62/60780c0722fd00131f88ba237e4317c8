@@ -1,0 +1,10 @@
+package se.akerlund.start;
+
+public class FileHandler {
+	
+	
+	public static String line()
+	{
+		return "hej";
+	}
+}
