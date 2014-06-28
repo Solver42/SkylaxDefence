@@ -1,0 +1,83 @@
+package Graphics;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+
+import Logic.Level;
+import Logic.LevelsModifier;
+
+public class GameFrame extends JFrame implements LevelsModifier, KeyListener{
+	private Level level = new Level();
+	private Squares squares = new Squares();
+	public GameFrame() {
+
+		super("Game Frame");
+
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public void update()
+	{
+		level.getSprite().updateWornArray();
+		level.update();
+		getContentPane().add(squares);
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 20; j++) {
+				switch (level.getIntArray()[j][i])
+				{
+				case 1:
+					squares.addSquare(i * 20, j * 20, 20, 20);
+					break;
+				case 2:
+					squares.addSquare(i * 20, j * 20, 20, 20);
+					break;
+				case 3:
+					squares.addSquare(i * 20, j * 20, 20, 20);
+					break;
+				}	
+			}
+		}
+
+		
+		pack();
+		setVisible(true);
+		repaint();
+		
+	}
+	
+	public Level getLevel()
+	{
+		return level;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_KP_LEFT)
+		{
+			level.getSprite().setCharacter('a');
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
