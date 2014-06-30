@@ -27,5 +27,9 @@ public class UI {
 			}
 			threadObject[i].getWord().printThis();
 		}
+		//for(ThreadObject t: threadObject)
+		//{
+		//	t.getWord().printThis();
+		//}
 	}
 }

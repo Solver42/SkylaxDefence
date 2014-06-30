@@ -17,15 +17,15 @@ public class UI {
 			thread[i] = new Thread(threadObject[i]);
 			thread[i].start();
 		}
-		for (int i = 0; i<thread.length; i++)
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(ThreadObject t: threadObject)
 		{
-			try {
-				thread[i].join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			threadObject[i].getWord().printThis();
+			t.getWord().printThis();
 		}
 	}
 }
