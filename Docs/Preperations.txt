@@ -1,0 +1,16 @@
+Set up working environment
+
+1 Drop box		*
+
+2 Git			*
+
+3 Eclipse
+
+
+MP1
+
+1.1 Logic package
+
+1.2 Gui package
+	Swing 
+	openGL

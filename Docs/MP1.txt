@@ -1,0 +1,79 @@
+Edited by Joe at 2014-06-28.
+
+Minimalistic Perfection Technology
+
+Make a tower defence game as runnable jar file
+
+GUI 
+	- Intro
+	- Music
+
+	- Start game
+	- Settings
+	- Highscore
+	- Upgrades
+	- Achievements
+	- Exit
+
+	- account (app)
+
+Description:
+You are the top leader of the artificial planet Skylax. The alien invasion is excellerating and the time for rest has passed.
+
+Unlocks:
+
+1 Towers
+2 Achievements
+3 Levels
+4 Maps
+
+5 Game modes
+5.1 Sandbox
+5.2 Difficulty
+
+
+	-Start game
+1 Choose Map, level
+2 Choose game mode: Campain, Training, (Sandbox)
+3 Choose difficoulty [Lazy,  (...) Crazy]
+
+
+*** Settings
+
+Change sound
+Change grafics
+Change top of dick
+
+*** Highscore
+
+	- Rank
+	- Killed enemies
+	- Levels cleared
+	- Stuff unlocked
+	- Levels lost
+
+*** Upgrades
+
+	- Tower streingh
+	- Tower Range
+	- Tower Fire rate
+
+*** Achievements
+
+	- Complete a level whitout loosing a life on Disorder
+	- Complete a level whitout loosing a life on Contagious
+	- Complete a level whitout loosing a life on Syndrome
+	- Only attack the weak
+
+	- Kill 1337 enemies
+	- Complete a level with only 1 type of tower
+	- Earn §10 000 coins
+	- Earn §100 000 coins
+	- Earn §1 000 000 coins
+
+*** Exit
+	- Are you sure?
+
+Starts with 3 towers. Unlock by complete levels. 
+Can upgrade towers. 	(Range, Fire rate, Damage)
+Set towers to attack:	(First, Last, Strong, Weak)
