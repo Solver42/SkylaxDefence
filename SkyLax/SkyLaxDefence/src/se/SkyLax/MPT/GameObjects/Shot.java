@@ -18,4 +18,5 @@ public class Shot {
 		trig = new Trigonometry(angle);
 	}
 	
+	
 }

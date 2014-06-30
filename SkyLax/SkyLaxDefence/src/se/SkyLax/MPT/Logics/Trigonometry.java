@@ -2,25 +2,30 @@ package se.SkyLax.MPT.Logics;
 
 public class Trigonometry {
 
-	private float angle;
-	private float simpleX;
-	private float simpleY;
+	private final double angle;
 	
-	public Trigonometry(float angle)
+	public Trigonometry(double angle)
 	{
 		this.angle = angle;
 		
 	}
 	//TODO
-	public int rocketX()
-	{
-		return 0;
+	
+	/*
+	 * this public method will return
+	 * something between 0 and 1
+	 * depending on the class variable
+	 * angle.
+	 */
+	
+	public double getSimpleXY(String XorY){
+		if(XorY.equals("X"))
+		{
+			return Math.cos(angle);
+		}else if (XorY.equals("Y"))
+		{
+			return Math.sin(angle);
+		}
+		return -1;
 	}
-	public int rocketY()
-	{
-		return 0;
-	}
-	//private float getSimpleX(){
-	//	return 
-	//}
 }

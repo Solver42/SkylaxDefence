@@ -12,8 +12,8 @@ public class Rocket extends Shot implements ShotActions{
 	
 	public void run(float angle)
 	{
-		this.X += (trig.rocketX())*speed;
-		this.Y += (trig.rocketY())*speed;
+		this.X += (trig.getSimpleXY("X"))*speed;
+		this.Y += (trig.getSimpleXY("Y"))*speed;
 	}
 	
 }
