@@ -4,7 +4,7 @@ import se.SkyLax.MPT.Logics.*;
 public class Shot {
 	
 	protected int speed;
-	protected float angle;
+	protected double angle;
 	
 	protected int X;
 	protected int Y;
@@ -12,12 +12,13 @@ public class Shot {
 	protected Trigonometry trig = null;
 	
 
-	public Shot(float angle, int X, int Y)
+	public Shot(Tower t)
 	{
-		this.angle = angle;
+		this.angle = t.getAngle();
+		this.X = t.getX();
+		this.Y = t.getY();
 		trig = new Trigonometry(angle);
 	}
-	
 	public int getX()
 	{
 		return this.X;
@@ -27,6 +28,4 @@ public class Shot {
 	{
 		return this.Y;
 	}
-	
-	
 }

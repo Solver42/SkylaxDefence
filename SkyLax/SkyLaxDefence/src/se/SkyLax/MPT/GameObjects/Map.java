@@ -7,8 +7,10 @@ public class Map {
 	{
 		for(Rocket r : fire.getRocketList())
 		{
+			
 			r.getX();
 			r.getY();
+			System.out.println(r.getX());
 		}
 		
 	}
