@@ -10,18 +10,15 @@ public class Tower {
 	protected int X;
 	protected int Y;
 	
-	public Tower (Shot shot, int rotationSpeed, int X, int Y)
+	public Tower (int rotationSpeed, int X, int Y)
 	{
-		this.shot = shot;
 		this.rotationSpeed = rotationSpeed;
 		this.X = X;
 		this.Y = Y;
 	}
 	
-	public void shot(Shot shot)
+	public Shot getNewShot()
 	{
-		shot = new Shot(this.angle, this.X, this.Y);
+		return new Shot(angle, X, X);
 	}
-	
-	
 }

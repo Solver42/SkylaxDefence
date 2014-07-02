@@ -8,26 +8,12 @@ public class Rocket extends Shot implements ShootActions{
 	{
 		super(angle, X, Y);
 		speed = 10;
-		run();
 	}
 
-	public void run()
+	public synchronized void run()
 	{
-		synchronized(this)
-		{
-			this.X += (trig.getSimpleXY("X"))*speed;
-			this.Y += (trig.getSimpleXY("Y"))*speed;
-		}
-	}
-	
-	public int getX()
-	{
-		return this.X;
-	}
-	
-	public int getY()
-	{
-		return this.Y;
+		this.X += (trig.getSimpleXY("X"))*speed;
+		this.Y += (trig.getSimpleXY("Y"))*speed;
 	}
 
 }

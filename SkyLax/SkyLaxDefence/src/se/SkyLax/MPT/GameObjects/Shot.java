@@ -18,5 +18,15 @@ public class Shot {
 		trig = new Trigonometry(angle);
 	}
 	
+	public int getX()
+	{
+		return this.X;
+	}
+	
+	public int getY()
+	{
+		return this.Y;
+	}
+	
 	
 }
