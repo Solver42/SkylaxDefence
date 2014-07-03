@@ -5,11 +5,8 @@ public class Map {
 	
 	public static void notifyMap(FireController fire)
 	{
-		for(Rocket r : fire.getRocketList())
+		for(ShootActions r : fire.getRocketList())
 		{
-			
-			r.getX();
-			r.getY();
 			System.out.println(r.getX());
 		}
 		

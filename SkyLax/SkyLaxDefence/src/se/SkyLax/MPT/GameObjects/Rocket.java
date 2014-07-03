@@ -19,5 +19,14 @@ public class Rocket extends Shot implements ShootActions{
 		this.X += (trig.getSimpleXY("X"))*speed;
 		this.Y += (trig.getSimpleXY("Y"))*speed;
 	}
+	public int getX()
+	{
+		return super.getX();
+	}
+	
+	public int getY()
+	{
+		return super.getY();
+	}
 
 }

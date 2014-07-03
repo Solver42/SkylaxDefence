@@ -5,18 +5,17 @@ import java.util.ArrayList;
 public class FireController implements Runnable {
 
 
-	ArrayList<Rocket> rockets;
+	ArrayList<ShootActions> rockets;
 	Tower t;
 	Tower t2;
 	Tower t3;
-	ShootActions actions;
 
 	public FireController()
 	{
-		rockets = new ArrayList<Rocket>();
+		rockets = new ArrayList<ShootActions>();
 		t = new SimpleTower(1, 59, 33);
-		//t2 = new SimpleTower(45, 3, 4);
-		//t3 = new SimpleTower(4, 122, 3);
+		t2 = new SimpleTower(45, 3, 4);
+		t3 = new SimpleTower(4, 122, 3);
 		shoot();
 
 
@@ -24,12 +23,12 @@ public class FireController implements Runnable {
 	}
 	public void shoot()
 	{
-		rockets.add(new Rocket(t));
-		//rockets.add(new Rocket(t2));
-		//rockets.add(new Rocket(t3));
+		rockets.add(t.getNewShot("Rocket"));
+		rockets.add(t2.getNewShot("Rocket"));
+		rockets.add(t3.getNewShot("Rocket"));
 	}
 
-	public ArrayList<Rocket> getRocketList()
+	public ArrayList<ShootActions> getRocketList()
 	{
 		return this.rockets;
 	}
@@ -37,10 +36,9 @@ public class FireController implements Runnable {
 	public void run() {
 		while(true)
 		{
-			for(Rocket rocket: rockets)
+			for(ShootActions rocket: rockets)
 			{
-				actions = rocket;
-				actions.run();
+				rocket.run();
 			}
 
 			Map.notifyMap(this);

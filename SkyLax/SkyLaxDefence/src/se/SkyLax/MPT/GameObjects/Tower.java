@@ -18,9 +18,13 @@ public class Tower {
 		this.Y = Y;
 	}
 	
-	public Shot getNewShot()
+	public ShootActions getNewShot(String shotType)
 	{
-		return new Shot(this);
+		if(shotType.equals("Rocket"))
+		{
+			return new Rocket(this);
+		}
+		return new Rocket(this);
 	}
 	
 	public double getAngle()

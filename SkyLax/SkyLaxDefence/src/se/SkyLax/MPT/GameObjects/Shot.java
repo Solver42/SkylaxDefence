@@ -19,12 +19,12 @@ public class Shot {
 		this.Y = t.getY();
 		trig = new Trigonometry(angle);
 	}
-	public int getX()
+	protected int getX()
 	{
 		return this.X;
 	}
 	
-	public int getY()
+	protected int getY()
 	{
 		return this.Y;
 	}
