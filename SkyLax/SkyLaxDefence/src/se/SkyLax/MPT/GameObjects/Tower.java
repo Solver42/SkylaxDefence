@@ -1,5 +1,7 @@
 package se.SkyLax.MPT.GameObjects;
 
+import se.SkyLax.MPT.Utility.TowerInformation;
+
 public class Tower {
 	
 	protected double angle;
@@ -9,16 +11,17 @@ public class Tower {
 	
 	protected int X;
 	protected int Y;
+	protected TowerInformation towIn = null;
 	
-	public Tower (int rotationSpeed, int X, int Y)
+	public Tower (String kind, int X, int Y)
 	{
+		towIn = new TowerInformation(kind);
 		this.angle = 0.7;
-		this.rotationSpeed = rotationSpeed;
 		this.X = X;
 		this.Y = Y;
 	}
 	
-	public ShootActions getNewShot(String shotType)
+	public ConcreteShot getNewShot(String shotType)
 	{
 		if(shotType.equals("Rocket"))
 		{
@@ -39,4 +42,9 @@ public class Tower {
 	{
 		return this.Y;
 	}
+	public TowerInformation getTowerInfo()
+	{
+		return this.towIn;
+	}
+
 }

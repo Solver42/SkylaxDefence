@@ -9,7 +9,6 @@ public class Trigonometry {
 		this.angle = angle;
 		
 	}
-	//TODO
 	
 	/*
 	 * this public method will return
