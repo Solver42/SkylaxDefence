@@ -14,7 +14,18 @@ public class Updater implements Runnable{
 	}
 
 
+	private void updateShots()
+	{
+		for(ConcreteShot rocket: objGen.getGameObjectContainer().getRocketList())
+		{
+			rocket.travel();
+		}
 
+		for(ConcreteShot r : objGen.getGameObjectContainer().getRocketList())
+		{
+			System.out.println(((Shot) r).getX());
+		}
+	}
 
 	public void run() {
 		int i = 0;
@@ -26,18 +37,15 @@ public class Updater implements Runnable{
 				objGen.fillPlan();
 				System.out.println("Filled Game With Objects!");
 
+			} else if (i == 5)
+			{
+				objGen.fillPlan();
+				System.out.println("Filled it up again");
 			}
-			if(i == 5) objGen.getGameObjectContainer().addShot(3, "Rocket");
 			System.out.println("Lap... ");
-			for(ConcreteShot rocket: objGen.getGameObjectContainer().getRocketList())
-			{
-				rocket.travel();
-			}
+			
+			updateShots();
 
-			for(ConcreteShot r : objGen.getGameObjectContainer().getRocketList())
-			{
-				System.out.println(((Shot) r).getX());
-			}
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

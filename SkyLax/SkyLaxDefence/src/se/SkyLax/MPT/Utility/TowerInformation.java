@@ -4,6 +4,7 @@ public class TowerInformation {
 	private int rotationSpeed;
 	private int repeat;
 	private String kind = "";
+	private int range;
 
 	
 	/*
@@ -33,11 +34,16 @@ public class TowerInformation {
 		case "SimpleTower":
 			this.rotationSpeed = 1;
 			this.repeat = 1000;
+			this.range = 48;
 		}
 	}
 	public int getRotationSpeed()
 	{
 		return this.rotationSpeed;
+	}
+	public int getRange()
+	{
+		return this.range;
 	}
 	public String getKindOfTower()
 	{
