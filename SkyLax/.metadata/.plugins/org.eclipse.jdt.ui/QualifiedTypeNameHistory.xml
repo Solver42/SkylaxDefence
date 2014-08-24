@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="se.SkyLax.MPT.GameObjects.ShootActions"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="se.SkyLax.MPT.GameObjects.FireController"/>
+<fullyQualifiedTypeName name="se.SkyLax.MPT.Controller.PlanFillerInterface"/>
+<fullyQualifiedTypeName name="se.SkyLax.MTP.Utility.TowerInformation"/>
+<fullyQualifiedTypeName name="se.SkyLax.MPT.GameObjects.Tower"/>
+</qualifiedTypeNameHistroy>
