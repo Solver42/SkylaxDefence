@@ -1,0 +1,13 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+public class PoliceSearch {
+
+	public static void main(String[] snopp) {
+		// TODO Auto-generated method stub
+
+
+		new SuperUI(snopp[0], snopp[1]);
+			
+	}
+
+}

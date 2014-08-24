@@ -1,0 +1,31 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class UI {
+
+	private ArrayList<String> folderList = new ArrayList();
+	private ArrayList<String> fileList = new ArrayList();
+
+
+	FileOfDirFetcher dirFetcher = null;
+	FolderGenerater folderGenerater = null;
+
+
+	//FolderGenerater folderGenerater = new FolderGenerater(snopp[0], folderList);
+	public UI (String superPath)
+	{
+
+
+		folderGenerater = new FolderGenerater(superPath, folderList);
+		dirFetcher = new FileOfDirFetcher(fileList);
+
+
+
+		for (String list : folderList)
+		{
+			dirFetcher.addMachingDocuments(folderList.get);
+		}
+	}
+}

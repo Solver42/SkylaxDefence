@@ -1,0 +1,41 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class FileOfDirFetcher {
+
+	
+	private ArrayList<String> files;
+	
+	public FileOfDirFetcher(ArrayList<String> files)
+	{
+		this.files = files;
+	}
+	
+	
+	WordSearcher wordSearcher = new WordSearcher("hej");
+
+	
+	public void getFileThatContains(String path) {
+
+	    for (final File fileEntry : folder.listFiles()) {
+	        if (fileEntry.isDirectory()) {
+	        	getFileThatContains(fileEntry);
+	        } else {
+	        	
+	        	if(wordSearcher.chechIfContains(fileEntry.getAbsolutePath()))
+	        	{
+	        		files.add(fileEntry.getAbsolutePath());
+	        	}
+	        		
+	        		
+	        	
+	            System.out.println(fileEntry.getName());
+	        }
+	    }
+	}
+	
+	
+	
+}
