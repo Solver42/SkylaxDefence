@@ -1,0 +1,68 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class SuperUI {
+
+	private ArrayList<String> foldersToLookThough = new ArrayList<String>();
+	private FolderGenerater folderGenerater = null;
+	
+	public SuperUI (String superPath, String[] searchWords)
+	{
+		folderGenerater = new FolderGenerater(superPath, foldersToLookThough);
+		
+		ExecutorService ex = Executors.newFixedThreadPool(4);
+		
+		List<Future<ArrayList<String>>> list = new ArrayList<Future<ArrayList<String>>>();
+		
+		Callable<ArrayList<String>> callable = new UI(searchWords[0], foldersToLookThough);
+		
+		
+		for(int i = 0; i<100; i++)
+		{
+			Future<ArrayList<String>> future = ex.submit(callable);
+			list.add(future);
+		}
+		
+		
+		for(Future<ArrayList<String>> fut : list)
+		{
+			try {
+				for (String str : fut.get())
+				{
+					
+					System.out.println(str);
+					
+				}
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
+		
+//		for (String word : searchWords)
+//		{
+//			
+//			UI ui = new UI(word, foldersToLookThough);
+//			
+//			Future<String> future = ex.submit(ui);
+//			
+//			
+//		}
+//		
+//		System.out.println(future);
+//		
+//		
+	}
+	
+}
