@@ -6,6 +6,15 @@ import java.io.IOException;
 
 public class WordSearcher {
 	String word = "";
+	/**
+	 * This is a very simple class
+	 * that looks trough a file
+	 * and sees whether it contains a
+	 * certain word or not.
+	 * the word is defined as soon as
+	 * an object of this class is being
+	 * initialized.
+	 */
 	public WordSearcher(String word)
 	{
 		this.word = word;

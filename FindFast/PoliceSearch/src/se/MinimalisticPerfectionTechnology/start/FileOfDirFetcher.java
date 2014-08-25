@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileOfDirFetcher {
+	/**
+	 * "matchingFiles" will have the
+	 * ArrayList in "MatchingWordGenerator"-
+	 * class passed as value used to fill
+	 * with applicable file paths in a
+	 * certain folder.
+	 */
 	private ArrayList<String> matchingFiles;
 	private WordSearcher wordSearcher = null;
 	public FileOfDirFetcher(ArrayList<String> files, String word)
@@ -14,6 +21,16 @@ public class FileOfDirFetcher {
 		this.matchingFiles = files;
 		wordSearcher = new  WordSearcher(word);
 	}
+	/**
+	 * "myFiles" will be filled with
+	 * all the text files of the particular
+	 * folder defined in the "path"-argument.
+	 * The loop at the end adds the file-path
+	 * to the "matchingFiles" list mentioned
+	 * above if it contains the word passes
+	 * as an argument to the "WordSearcher"-
+	 * objects constructor.
+	 */
 	public void addMachingDocuments(String path) {
 		File directory = new File(path);
 		File[] myFiles = directory.listFiles(new FileFilter() {
