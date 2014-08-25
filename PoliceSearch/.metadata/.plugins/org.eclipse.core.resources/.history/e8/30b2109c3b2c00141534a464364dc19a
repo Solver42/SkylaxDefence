@@ -1,0 +1,34 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+
+public class FileOfDirFetcher {
+	private ArrayList<String> matchingFiles;
+	private WordSearcher wordSearcher = null;
+	public FileOfDirFetcher(ArrayList<String> files, String word)
+	{
+		this.matchingFiles = files;
+		wordSearcher = new  WordSearcher(word);
+	}
+	public void addMachingDocuments(String path) {
+		File directory = new File(path);
+		File[] myFiles = rootDir.listFiles(new FileFilter() {
+		    private final FileNameExtensionFilter filter =
+		        new FileNameExtensionFilter("Compressed files",
+		            "zip", "jar", "z", "gz", "tar", "bz2", "bz");
+		    public boolean accept(File file) {
+		        return filter.accept(file);
+		    }
+		});
+
+		for(File file : myFiles)
+		{
+			if(file.isFile() && wordSearcher.hasPreDefinedSearchWord(file.getAbsolutePath()))
+			{
+				matchingFiles.add(file.getAbsolutePath());
+			}
+		}
+	}
+}

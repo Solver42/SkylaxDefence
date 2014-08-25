@@ -1,0 +1,14 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+public class PoliceSearch {
+
+	public static void main(String[] snopp) {
+		// TODO Auto-generated method stub
+
+
+		if(snopp.length==2) new UI(snopp[0], snopp[1]);
+		else System.out.println("Your dick is too small! (Or too big, but that's not very likely...)");
+			
+	}
+
+}

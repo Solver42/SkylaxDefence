@@ -1,0 +1,57 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `filestorage` DEFAULT CHARACTER SET utf8 ;
+USE `filestorage` ;
+
+-- -----------------------------------------------------
+-- Table `filestorage`.`fileholder`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `filestorage`.`fileholder` (
+  `content` BLOB NULL DEFAULT NULL,
+  `fileName` VARCHAR(45) NULL DEFAULT NULL,
+  `updatedAt` VARCHAR(45) NOT NULL DEFAULT '',
+  `editedBy` VARCHAR(45) NULL DEFAULT NULL,
+  `userComment` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`updatedAt`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `filestorage`.`inetadresses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `filestorage`.`inetadresses` (
+  `validAdress` VARCHAR(45) NOT NULL DEFAULT '',
+  `userName` VARCHAR(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userName`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `filestorage`.`listoffiles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `filestorage`.`listoffiles` (
+  `fileName` VARCHAR(45) NOT NULL DEFAULT '',
+  `createdBy` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`fileName`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `filestorage`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `filestorage`.`users` (
+  `userName` VARCHAR(45) NOT NULL DEFAULT '',
+  `userPassword` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`userName`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

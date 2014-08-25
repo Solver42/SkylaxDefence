@@ -1,0 +1,49 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
+
+public class UI implements Callable{
+
+	
+	private ArrayList<String> machingDocuments = new ArrayList<String>();
+
+
+	FileOfDirFetcher dirFetcher = null;
+	
+
+
+	//FolderGenerater folderGenerater = new FolderGenerater(snopp[0], folderList);
+	public UI (String searchWord, ArrayList<String> foldersToLookThough)
+	{
+
+
+		
+		dirFetcher = new FileOfDirFetcher(machingDocuments, searchWord);
+
+
+
+		for (String folderToSerach : foldersToLookThough)
+		{
+			dirFetcher.addMachingDocuments(folderToSerach);
+		}
+
+		
+		for(String result : machingDocuments)
+		{
+			System.out.println(result);
+		}
+		
+		
+	}
+
+
+	@Override
+	public Object call() throws Exception {
+		// TODO Auto-generated method stub
+		return machingDocuments;
+	}
+	
+	
+	
+}

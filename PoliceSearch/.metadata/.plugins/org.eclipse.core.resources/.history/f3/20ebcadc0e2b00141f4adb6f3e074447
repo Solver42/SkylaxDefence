@@ -1,0 +1,25 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class PoliceSearch {
+
+	public static void main(String[] snopp) {
+		// TODO Auto-generated method stub
+
+		ArrayList<String> list = new ArrayList();
+
+		
+		FileOfDirFetcher dirFetcher = new FileOfDirFetcher(list);
+		
+		dirFetcher.getFileThatContains("Users\Johan\Documents\dator\dev\code\Java\9\PoliceSearch");
+		
+		
+		System.out.println(list.get(0).toString());
+	}
+
+}

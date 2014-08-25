@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/PoliceSearch/src/se/MinimalisticPerfectionTechnology/start/PoliceSearch.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="se.MinimalisticPerfectionTechnology.start.PoliceSearch"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="C:\Users\Johan\Documents\dator\dev\code\Java\9\PoliceSearch\sub one two"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="PoliceSearch"/>
+</launchConfiguration>

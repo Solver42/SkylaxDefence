@@ -1,0 +1,54 @@
+package se.MinimalisticPerfectionTechnology.start;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class FolderGenerater {
+	private ArrayList<String> folderList = null;
+
+
+	private ArrayList<String> peers = new ArrayList<String>();
+
+	public FolderGenerater(String topFolder, ArrayList<String> folderList) {
+
+		peers.add(topFolder);	
+
+		this.folderList = folderList;
+		getSubFolders(peers);
+	}
+
+
+
+	private void getSubFolders(ArrayList<String> currentDirs)
+	{
+
+		ArrayList<String> newPath = new ArrayList<String>();
+
+		for(String path : currentDirs)
+		{
+			folderList.add(path);
+			File dir = new File(path);
+			File[] files = dir.listFiles();
+
+			for (File file : files)
+			{
+				if(file.isDirectory())
+				{
+					newPath.add(file.getAbsolutePath());
+				}
+			}
+
+		}
+
+
+		if(!newPath.isEmpty())
+		{
+			getSubFolders(newPath);
+		}
+
+
+
+
+	}
+
+}
