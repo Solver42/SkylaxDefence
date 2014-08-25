@@ -1,8 +1,10 @@
 package se.MinimalisticPerfectionTechnology.start;
 
 import java.io.File;
-import java.io.FilenameFilter;
+import java.io.FileFilter;
 import java.util.ArrayList;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileOfDirFetcher {
 	private ArrayList<String> matchingFiles;
@@ -14,10 +16,14 @@ public class FileOfDirFetcher {
 	}
 	public void addMachingDocuments(String path) {
 		File directory = new File(path);
-		File[] myFiles = directory.listFiles(new FilenameFilter(){
-			public boolean accept(File directory, String fileName){
-				return fileName.endsWith(".txt");
-			}
+		File[] myFiles = directory.listFiles(new FileFilter() {
+		    private final FileNameExtensionFilter filter =
+		        new FileNameExtensionFilter("Text files",
+		        		"doc", "docx", "log", "msg", "odt" +
+		        		"pages", "rtf", "tex", "txt", "wpd", "wps");
+		    public boolean accept(File file) {
+		        return filter.accept(file);
+		    }
 		});
 
 		for(File file : myFiles)

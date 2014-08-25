@@ -2,8 +2,8 @@ package se.MinimalisticPerfectionTechnology.start;
 
 public class PoliceSearch {
 
-	public static void main(String[] snopp) {
+	public static void main(String[] yeah) {
 		System.out.println("Processing...");
-		new SuperUI(snopp[0], snopp);
+		new SuperUI(yeah[0], yeah);
 	}
 }
