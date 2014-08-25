@@ -1,8 +1,0 @@
-package se.MinimalisticPerfectionTechnology.start;
-
-public class FolderGenerater {
-	public FolderGenerater(String, ArrayList) {
-		
-
-	}
-}
