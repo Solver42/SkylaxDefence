@@ -14,8 +14,17 @@ public class FolderGenerater {
 	 * starting off with only the super-folder.
 	 */
 	private ArrayList<String> folderList = null;
-	private ArrayList<String> peers = new ArrayList<String>();
-	public FolderGenerater(String topFolder, ArrayList<String> folderList) {
+	private ArrayList<String> peers = null;
+	public FolderGenerater()
+	{
+		peers = new ArrayList<String>();
+	}
+	public void getFolders(String topFolder, ArrayList<String> folderList)
+	{
+		if(!peers.isEmpty())
+		{
+			peers.clear();
+		}
 		peers.add(topFolder);	
 		this.folderList = folderList;
 		getSubFolders(peers);
