@@ -17,17 +17,22 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JTextArea;
 
+import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.Color;
 
 import javax.swing.DropMode;
+import javax.swing.JSplitPane;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.BorderLayout;
 
 public class GUI {
 
 	private JFrame frame;
 	private JList list;
 	private PathPrinter pathPrinter = null;
-	private JTextArea txtEnterPathOf;
 	private JTextArea txtEnterSearchWordwords;
 	private JList resultList;
 
@@ -37,6 +42,7 @@ public class GUI {
 
 	private final Action action = new SwingAction();
 	String[] hej = new String[]{"one", "two"};
+	private JTextField txtEnterPathOf;
 
 	/**
 	 * Launch the application.
@@ -67,36 +73,47 @@ public class GUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 660, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
-
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel);
-		panel.setLayout(new GridLayout(3, 0, 0, 0));
-
-		txtEnterSearchWordwords = new JTextArea();
-		txtEnterSearchWordwords.setText("Enter search word/words separated by comma...");
-		txtEnterSearchWordwords.setRows(3);
-		panel.add(txtEnterSearchWordwords);
-
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1);
-		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
-
-		txtEnterPathOf = new JTextArea();
-		txtEnterPathOf.setBackground(Color.WHITE);
-		txtEnterPathOf.setText("Enter path...");
-		txtEnterPathOf.setRows(1);
-		panel_1.add(txtEnterPathOf);
-
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setAction(action);
-		panel_1.add(btnSearch);
-
-		JList resultList = new JList(model);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportView(resultList);
-		resultList.setBackground(Color.WHITE);
-		panel.add(scrollPane);
+		frame.setTitle("SearchFurther");
+		frame.setMinimumSize(new Dimension(560, 180));
+		frame.getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
+				
+				JPanel panel_1 = new JPanel();
+				frame.getContentPane().add(panel_1);
+						panel_1.setLayout(new GridLayout(2, 1, 0, 0));
+				
+						txtEnterSearchWordwords = new JTextArea();
+						txtEnterSearchWordwords.setForeground(Color.DARK_GRAY);
+						panel_1.add(txtEnterSearchWordwords);
+						txtEnterSearchWordwords.setBackground(SystemColor.activeCaption);
+						txtEnterSearchWordwords.setText("Enter search word/words separated by comma...");
+						txtEnterSearchWordwords.setRows(3);
+						
+						JPanel panel_4 = new JPanel();
+						panel_1.add(panel_4);
+						panel_4.setBackground(SystemColor.activeCaption);
+						panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+						
+						txtEnterPathOf = new JTextField();
+						txtEnterPathOf.setText("Enter the path that you'd like to search trough...");
+						txtEnterPathOf.setForeground(Color.GREEN);
+						txtEnterPathOf.setBackground(Color.BLACK);
+						panel_4.add(txtEnterPathOf);
+						txtEnterPathOf.setColumns(40);
+						
+								JButton btnSearch = new JButton("Search");
+								panel_4.add(btnSearch);
+								btnSearch.setAction(action);
+												
+												JPanel panel_2 = new JPanel();
+												frame.getContentPane().add(panel_2);
+														panel_2.setLayout(new GridLayout(0, 1, 0, 0));
+												
+														JList resultList_1 = new JList(model);
+														resultList_1.setForeground(Color.DARK_GRAY);
+														JScrollPane scrollPane = new JScrollPane();
+														panel_2.add(scrollPane);
+														scrollPane.setViewportView(resultList_1);
+														resultList_1.setBackground(Color.WHITE);
 		
 	}
 
