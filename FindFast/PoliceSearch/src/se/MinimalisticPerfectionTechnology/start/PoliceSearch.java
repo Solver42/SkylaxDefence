@@ -1,9 +1,6 @@
 package se.MinimalisticPerfectionTechnology.start;
 
 
-import java.awt.EventQueue;
-
-
 public class PoliceSearch {
 
 	//	public static void main(String[] yeah) {
@@ -17,7 +14,7 @@ public class PoliceSearch {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
-					GUI window = new GUI();
+					new GUI();
 //				} catch (Exception e) {
 //					e.printStackTrace();
 //				}

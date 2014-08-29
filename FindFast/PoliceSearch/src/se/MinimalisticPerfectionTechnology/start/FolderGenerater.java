@@ -52,8 +52,9 @@ public class FolderGenerater {
 		ArrayList<String> newPath = new ArrayList<String>();
 		for(String path : currentDirs)
 		{
-			folderList.add(path);
 			File dir = new File(path);
+			if(!dir.canExecute()) break;
+			folderList.add(path);
 			File[] files = dir.listFiles();
 			for (File file : files)
 			{

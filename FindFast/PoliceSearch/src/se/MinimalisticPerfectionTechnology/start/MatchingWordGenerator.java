@@ -25,9 +25,9 @@ public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 	public MatchingWordGenerator (String searchWord, ArrayList<String> foldersToLookThough)
 	{
 		ArrayList<FileOfDirFetcher> runnables = new ArrayList<FileOfDirFetcher>();
-		ArrayList<Thread> threads = new ArrayList<Thread>();
+		//ArrayList<Thread> threads = new ArrayList<Thread>();
 
-		ExecutorService executor = Executors.newFixedThreadPool(20);
+		ExecutorService executor = Executors.newFixedThreadPool(1);
 		
 		for (String folderToSerach : foldersToLookThough)
 		{

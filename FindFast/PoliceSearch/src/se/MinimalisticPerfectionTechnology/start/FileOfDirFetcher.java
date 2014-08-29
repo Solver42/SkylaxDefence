@@ -48,7 +48,7 @@ public class FileOfDirFetcher implements Runnable{
 				return filter.accept(file);
 			}
 		});
-		ExecutorService executor = Executors.newFixedThreadPool(20);
+		ExecutorService executor = Executors.newFixedThreadPool(1);
 
 		for(File file : myFiles)
 		{

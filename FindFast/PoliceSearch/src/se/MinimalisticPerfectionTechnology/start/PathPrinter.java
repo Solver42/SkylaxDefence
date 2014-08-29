@@ -8,13 +8,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 public class PathPrinter {
 	private ArrayList<String> foldersToLookThough = new ArrayList<String>();
 	private FolderGenerater folderGenerater = null;
 	private List<Future<ArrayList<String>>> futureList = null;
-	private JList resultGUIList = null;
+	
+	
+	private DefaultListModel<String> model;
 	/**
 	 * This class submits several (10) different
 	 * Callable-object to different threads.
@@ -24,21 +27,22 @@ public class PathPrinter {
 	 * out.
 	 */
 	
-	public PathPrinter(JList result)
+	public PathPrinter(DefaultListModel model)
 	{
-		this.resultGUIList = result;
+		this.model = model;
 		futureList = new ArrayList<Future<ArrayList<String>>>();
 		folderGenerater = new FolderGenerater();
 	}
 	
 	public void printPaths (String superPath, String[] searchWords)
 	{
+		
 		if(!foldersToLookThough.isEmpty())
 		{
 			foldersToLookThough.clear();
 		}
 		folderGenerater.getFolders(superPath, foldersToLookThough);
-		ExecutorService executor = Executors.newFixedThreadPool(10);
+		ExecutorService executor = Executors.newFixedThreadPool(1);
 		if(!futureList.isEmpty())
 		{
 			futureList.clear();
@@ -52,13 +56,13 @@ public class PathPrinter {
 		int i = 0;
 		for(Future<ArrayList<String>> fut : futureList)
 		{
-			System.out.println(">>\"" + searchWords[i] + "\":");
+//			System.out.println(">>\"" + searchWords[i] + "\":");
 			try {
 				for (String str : fut.get()/*fut.get() really is the list, neither more nor less*/)
 				{
 					/*add this line to the GUI-component*/
-
-					System.out.println(str);
+//					System.out.println(str);
+					model.addElement(str);
 				}
 			} catch (InterruptedException | ExecutionException e) {
 				// TODO Auto-generated catch block
