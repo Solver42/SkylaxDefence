@@ -38,8 +38,10 @@ public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 		while(!executor.isTerminated())
 		{	
 		}
+		machingDocuments.add(searchWord);
 		for(FileOfDirFetcher runnable : runnables)
 		{
+			
 			runnable.add();
 		}
 	}

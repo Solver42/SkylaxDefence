@@ -42,7 +42,7 @@ public class PathPrinter {
 			foldersToLookThough.clear();
 		}
 		folderGenerater.getFolders(superPath, foldersToLookThough);
-		ExecutorService executor = Executors.newFixedThreadPool(1);
+		ExecutorService executor = Executors.newFixedThreadPool(10);
 		if(!futureList.isEmpty())
 		{
 			futureList.clear();

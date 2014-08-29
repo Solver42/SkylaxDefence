@@ -22,6 +22,10 @@ public class WordSearcher implements Runnable{
 		this.word = word;
 		this.path = path;
 	}
+	public String getWord()
+	{
+		return this.word;
+	}
 	private void hasPreDefinedSearchWord()
 	{
 		try
