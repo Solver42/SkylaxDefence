@@ -42,13 +42,13 @@ public class FileOfDirFetcher implements Runnable{
 		File[] myFiles = directory.listFiles(new FileFilter() {
 			private final FileNameExtensionFilter filter =
 					new FileNameExtensionFilter("Text files",
-							"doc", "docx", "log", "msg", "odt" +
-									"pages", "rtf", "tex", "txt", "wpd", "wps");
+					"doc", "docx", "log", "msg", "odt" +
+					"pages", "rtf", "tex", "txt", "wpd", "wps");
 			public boolean accept(File file) {
 				return filter.accept(file);
 			}
 		});
-		ExecutorService executor = Executors.newFixedThreadPool(1);
+		ExecutorService executor = Executors.newFixedThreadPool(5);
 
 		for(File file : myFiles)
 		{
