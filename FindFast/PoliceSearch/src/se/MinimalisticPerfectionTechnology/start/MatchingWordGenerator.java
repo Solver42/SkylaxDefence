@@ -2,6 +2,8 @@ package se.MinimalisticPerfectionTechnology.start;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 	private ArrayList<String> machingDocuments = new ArrayList<String>();
@@ -22,11 +24,33 @@ public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 	 */
 	public MatchingWordGenerator (String searchWord, ArrayList<String> foldersToLookThough)
 	{
-		dirFetcher = new FileOfDirFetcher(machingDocuments, searchWord);
+		//dirFetcher = new FileOfDirFetcher(machingDocuments, searchWord);
+		
+		ArrayList<FileOfDirFetcher> runnables = new ArrayList<FileOfDirFetcher>();
+		ArrayList<Thread> threads = new ArrayList<Thread>();
+
 		for (String folderToSerach : foldersToLookThough)
 		{
-			dirFetcher.addMachingDocuments(folderToSerach);
+			runnables.add(new FileOfDirFetcher(machingDocuments, searchWord, folderToSerach));
+			threads.add(new Thread(runnables.get(runnables.size()-1)));
+			threads.get(threads.size()-1).start();
 		}
+		
+		for(Thread thread : threads)
+		{
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		for(FileOfDirFetcher runnable : runnables)
+		{
+			runnable.add();
+		}
+		
+		
 	}
 	@Override
 	public ArrayList<String> call() throws Exception {

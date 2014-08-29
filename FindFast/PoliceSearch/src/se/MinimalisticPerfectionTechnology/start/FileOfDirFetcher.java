@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class FileOfDirFetcher {
+public class FileOfDirFetcher implements Runnable{
 	/**
 	 * "matchingFiles" will have the
 	 * ArrayList in "MatchingWordGenerator"-
@@ -15,11 +15,14 @@ public class FileOfDirFetcher {
 	 * certain folder.
 	 */
 	private ArrayList<String> matchingFiles;
-	private WordSearcher wordSearcher = null;
-	public FileOfDirFetcher(ArrayList<String> files, String word)
+	private String word;
+	private ArrayList<WordSearcher> runnables = new ArrayList<WordSearcher>();
+	private String path;
+	public FileOfDirFetcher(ArrayList<String> files, String word, String path)
 	{
+		this.path = path;
+		this.word = word;
 		this.matchingFiles = files;
-		wordSearcher = new  WordSearcher(word);
 	}
 	/**
 	 * "myFiles" will be filled with
@@ -30,25 +33,56 @@ public class FileOfDirFetcher {
 	 * above if it contains the word passes
 	 * as an argument to the "WordSearcher"-
 	 * objects constructor.
+	 * @throws InterruptedException 
 	 */
-	public void addMachingDocuments(String path) {
+	private void addMachingDocuments() throws InterruptedException {
 		File directory = new File(path);
 		File[] myFiles = directory.listFiles(new FileFilter() {
-		    private final FileNameExtensionFilter filter =
-		        new FileNameExtensionFilter("Text files",
-		        		"doc", "docx", "log", "msg", "odt" +
-		        		"pages", "rtf", "tex", "txt", "wpd", "wps");
-		    public boolean accept(File file) {
-		        return filter.accept(file);
-		    }
+			private final FileNameExtensionFilter filter =
+					new FileNameExtensionFilter("Text files",
+							"doc", "docx", "log", "msg", "odt" +
+									"pages", "rtf", "tex", "txt", "wpd", "wps");
+			public boolean accept(File file) {
+				return filter.accept(file);
+			}
 		});
+
+
+		ArrayList<Thread> threads = new ArrayList<Thread>();
 
 		for(File file : myFiles)
 		{
-			if(file.isFile() && wordSearcher.hasPreDefinedSearchWord(file.getAbsolutePath()))
+			if(file.isFile())
 			{
-				matchingFiles.add(file.getAbsolutePath());
+				runnables.add(new WordSearcher(word, file.getAbsolutePath()));
+				threads.add(new Thread(runnables.get(runnables.size()-1)));
+				threads.get(threads.size()-1).start();
+			}
+		}
+		for(Thread thread : threads)
+		{
+			thread.join();
+		}
+	}
+	public void add()
+	{
+		for(WordSearcher runnable : runnables)
+		{
+			if(runnable.hasWord())
+			{
+				matchingFiles.add(runnable.getPath());
 			}
 		}
 	}
+	@Override
+	public void run() {
+		try {
+			addMachingDocuments();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
+

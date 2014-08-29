@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class WordSearcher {
-	String word = "";
+public class WordSearcher implements Runnable{
+	private String word = "";
+	private String path;
+	private boolean hasWord = false;
 	/**
 	 * This is a very simple class
 	 * that looks trough a file
@@ -15,11 +17,12 @@ public class WordSearcher {
 	 * an object of this class is being
 	 * initialized.
 	 */
-	public WordSearcher(String word)
+	public WordSearcher(String word, String path)
 	{
 		this.word = word;
+		this.path = path;
 	}
-	public boolean hasPreDefinedSearchWord(String path)
+	private void hasPreDefinedSearchWord()
 	{
 		try
 		{
@@ -30,13 +33,30 @@ public class WordSearcher {
 
 				if(line.contains(word))
 				{
-					return true;
+					hasWord = true;
+				}
+				else
+				{
+					hasWord = false;
 				}
 			}
 		} catch (IOException ex)
 		{
 			System.err.print(ex.getMessage());
 		}
-		return false;
+	}
+	
+	public boolean hasWord()
+	{
+		return hasWord;
+	}
+	public String getPath()
+	{
+		return this.path;
+	}
+	
+	@Override
+	public void run() {
+		hasPreDefinedSearchWord();
 	}
 }

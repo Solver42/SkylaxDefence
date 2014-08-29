@@ -27,6 +27,8 @@ public class PathPrinter {
 	public PathPrinter(JList result)
 	{
 		this.resultGUIList = result;
+		futureList = new ArrayList<Future<ArrayList<String>>>();
+		folderGenerater = new FolderGenerater();
 	}
 	
 	public void printPaths (String superPath, String[] searchWords)
@@ -35,16 +37,8 @@ public class PathPrinter {
 		{
 			foldersToLookThough.clear();
 		}
-		if(folderGenerater == null)
-		{
-			folderGenerater = new FolderGenerater();
-		}
 		folderGenerater.getFolders(superPath, foldersToLookThough);
 		ExecutorService executor = Executors.newFixedThreadPool(10);
-		if(futureList == null)
-		{
-			futureList = new ArrayList<Future<ArrayList<String>>>();
-		}
 		if(!futureList.isEmpty())
 		{
 			futureList.clear();
