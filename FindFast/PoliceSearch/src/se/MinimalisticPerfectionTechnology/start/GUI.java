@@ -11,15 +11,17 @@ import javax.swing.JList;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import javax.swing.JTextArea;
 
 public class GUI {
 
 	private JFrame frame;
-	private JTextField txtEnterPathOf;
 	private JList list;
 	private PathPrinter pathPrinter = null;
+	private JTextArea txtEnterPathOf;
+	private JTextArea txtEnterSearchWordwords;
+	
 	private final Action action = new SwingAction();
-	private JTextField txtEnterSearchWordwords;
 	String[] hej = new String[]{"one", "two"};
 
 	/**
@@ -31,7 +33,7 @@ public class GUI {
 		initialize();
 		this.frame.setVisible(true);
 
-
+		
 
 
 		System.out.println("Processing...");
@@ -51,21 +53,18 @@ public class GUI {
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 0, 0, 0));
-
-		txtEnterSearchWordwords = new JTextField();
-		txtEnterSearchWordwords.setText("Enter search word/words...");
+		
+		txtEnterSearchWordwords = new JTextArea();
+		txtEnterSearchWordwords.setRows(3);
 		panel.add(txtEnterSearchWordwords);
-		txtEnterSearchWordwords.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
-
-		txtEnterPathOf = new JTextField();
-		txtEnterPathOf.setText("Enter path of super folder to search in...");
-		txtEnterPathOf.setToolTipText("");
+		
+		txtEnterPathOf = new JTextArea();
+		txtEnterPathOf.setRows(1);
 		panel_1.add(txtEnterPathOf);
-		txtEnterPathOf.setColumns(10);
 
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setAction(action);

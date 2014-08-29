@@ -3,6 +3,8 @@ package se.MinimalisticPerfectionTechnology.start;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -46,22 +48,19 @@ public class FileOfDirFetcher implements Runnable{
 				return filter.accept(file);
 			}
 		});
-
-
-		ArrayList<Thread> threads = new ArrayList<Thread>();
+		ExecutorService executor = Executors.newFixedThreadPool(20);
 
 		for(File file : myFiles)
 		{
 			if(file.isFile())
 			{
 				runnables.add(new WordSearcher(word, file.getAbsolutePath()));
-				threads.add(new Thread(runnables.get(runnables.size()-1)));
-				threads.get(threads.size()-1).start();
+				executor.execute(runnables.get(runnables.size()-1));
 			}
 		}
-		for(Thread thread : threads)
-		{
-			thread.join();
+		executor.shutdown();
+		while(!executor.isTerminated())
+		{	
 		}
 	}
 	public void add()
