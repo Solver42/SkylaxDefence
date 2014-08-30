@@ -1,5 +1,7 @@
 package se.SkyLax.MPT.GameObjects;
 
+import se.SkyLax.MPT.Logics.Trigonometry;
+
 public class Rocket extends Shot implements ConcreteShot{
 	
 	
@@ -38,6 +40,10 @@ public class Rocket extends Shot implements ConcreteShot{
 	public int getY()
 	{
 		return super.Y;
+	}
+	public double getAngle()
+	{
+		return super.trig.getAngle();
 	}
 
 }

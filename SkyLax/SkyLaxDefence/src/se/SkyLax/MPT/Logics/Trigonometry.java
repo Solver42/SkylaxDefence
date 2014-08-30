@@ -61,4 +61,8 @@ public class Trigonometry {
 		}
 		return -1;
 	}
+	public double getAngle()
+	{
+		return this.angle;
+	}
 }

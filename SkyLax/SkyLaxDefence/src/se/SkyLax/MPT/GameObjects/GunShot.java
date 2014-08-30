@@ -39,5 +39,9 @@ public class GunShot extends Shot implements ConcreteShot{
 	{
 		return super.Y;
 	}
+	public double getAngle()
+	{
+		return super.trig.getAngle();
+	}
 
 }

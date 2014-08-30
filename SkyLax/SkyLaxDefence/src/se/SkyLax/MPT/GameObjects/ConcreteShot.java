@@ -10,4 +10,5 @@ public interface ConcreteShot {
 	public void travel();
 	public int getX();
 	public int getY();
+	public double getAngle();
 }

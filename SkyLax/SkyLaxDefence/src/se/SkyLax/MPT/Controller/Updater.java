@@ -48,24 +48,12 @@ public class Updater implements Runnable{
 		while(true)
 		{
 
-			//Just shit code, to get something on the screen
-			i = gen.nextInt(15);
+			i = gen.nextInt(10);
 			if(( mod%5==0 ) && ( i < 5))
-			{
-				setRandomTowerAngle();
-				objGen.fillPlanWithGunShot();
-			}
-			else if(( mod%5==0 ) && ( i > 10))
 			{
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
 			}
-			else if(mod<=10)
-			{
-				setRandomTowerAngle();
-				objGen.fillPlanWithGunShot();
-			}
-			//Stops here
 
 			updateShots();
 
@@ -80,6 +68,7 @@ public class Updater implements Runnable{
 				e.printStackTrace();
 			}
 			mod++;
+			if(mod>100) mod = 0;
 
 		}
 	}

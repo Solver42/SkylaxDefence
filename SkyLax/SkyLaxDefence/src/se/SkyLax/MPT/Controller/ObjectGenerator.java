@@ -3,7 +3,9 @@ package se.SkyLax.MPT.Controller;
 import java.util.Random;
 
 import se.SkyLax.MPT.GameObjects.GameObjectList;
-import se.SkyLax.MPT.GameObjects.SimpleTower;
+import se.SkyLax.MPT.GameObjects.MissileTower;
+import se.SkyLax.MPT.GameObjects.Rocket;
+import se.SkyLax.MPT.GameObjects.SniperCastle;
 
 public class ObjectGenerator{
 
@@ -21,10 +23,10 @@ public class ObjectGenerator{
 	{
 
 		gameObjectList = new GameObjectList();
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 150, 450, 0.4));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 450, 100, 0.1));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 170, 200, 0.9));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 410, 490, 0.4));
+		gameObjectList.addTower(new SniperCastle("SniperCastle", 150, 450, 0.4));
+		gameObjectList.addTower(new SniperCastle("SniperCastle", 450, 100, 0.1));
+		gameObjectList.addTower(new MissileTower("SniperCastle", 170, 200, 0.9));
+		gameObjectList.addTower(new MissileTower("SniperCastle", 410, 490, 0.4));
 
 
 	}
@@ -45,7 +47,10 @@ public class ObjectGenerator{
 		
 		int i = gen.nextInt(gameObjectList.getTowerList().size());
 		
-		gameObjectList.addShot(i, "Rocket");
+		if(gameObjectList.getTowerList().get(i) instanceof SniperCastle)
+		gameObjectList.addShot(i, "GunShot");
+		else if(gameObjectList.getTowerList().get(i) instanceof MissileTower)
+		gameObjectList.addShot(i, "Rocket");	
 	}
 	
 	
