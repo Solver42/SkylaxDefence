@@ -18,28 +18,28 @@ public class Updater implements Runnable{
 	}
 	private void updateShots()
 	{
-		for(ConcreteShot rocket: objGen.getGameObjectContainer().getRocketList())
+		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-				rocket.travel();
+			rocket.travel();
 		}
 	}
 	private void removeNAShot()
 	{
-		for(ConcreteShot rocket: objGen.getGameObjectContainer().getRocketList())
+		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-			if(rocket.getX() > 620 || rocket.getX() < 20 || rocket.getY() > 460 || rocket.getY() < 20)
+			if(rocket.getX() > 600 || rocket.getX() < 0 || rocket.getY() > 600 || rocket.getY() < 0)
 			{
 				shotsToRemove.add(rocket);
 			}
 		}
-		objGen.getGameObjectContainer().getRocketList().removeAll(shotsToRemove);
+		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
 		shotsToRemove.clear();
 	}
 	public void setRandomTowerAngle()
 	{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
 		{
-			tower.setAngle(gen.nextDouble()*3);
+			tower.setAngle(gen.nextDouble()*(Math.PI*2));
 		}
 	}
 	public void run() {
@@ -47,24 +47,30 @@ public class Updater implements Runnable{
 		int i;
 		while(true)
 		{
-			
+
 			//Just shit code, to get something on the screen
-			i = gen.nextInt(10);
-			if(( mod%5==0 ) && ( i > 4))
+			i = gen.nextInt(15);
+			if(( mod%5==0 ) && ( i < 5))
 			{
 				setRandomTowerAngle();
-				objGen.fillPlan();
+				objGen.fillPlanWithGunShot();
+			}
+			else if(( mod%5==0 ) && ( i > 10))
+			{
+				setRandomTowerAngle();
+				objGen.fillPlanWithRocketShot();
 			}
 			else if(mod<=10)
-			{setRandomTowerAngle();
-			objGen.fillPlan();
+			{
+				setRandomTowerAngle();
+				objGen.fillPlanWithGunShot();
 			}
 			//Stops here
 
 			updateShots();
 
 			removeNAShot();
-			
+
 			screen.update(objGen.getGameObjectContainer());
 
 			try {

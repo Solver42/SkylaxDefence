@@ -23,11 +23,15 @@ public class Tower {
 	
 	public ConcreteShot getNewShot(String shotType)
 	{
-		if(shotType.equals("Rocket"))
+		if(shotType.equals("GunShot"))
+		{
+			return new GunShot(this);
+		}
+		else if(shotType.equals("Rocket"))
 		{
 			return new Rocket(this);
 		}
-		return new Rocket(this);
+		return new GunShot(this);
 	}
 	
 	public double getAngle()

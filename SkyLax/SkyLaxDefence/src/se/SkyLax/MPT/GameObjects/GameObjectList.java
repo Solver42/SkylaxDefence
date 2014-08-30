@@ -31,8 +31,9 @@ public class GameObjectList{
 	{
 		rockets.add(towers.get(index).getNewShot(kindOfShot));
 	}
+	
 
-	public ArrayList<ConcreteShot> getRocketList()
+	public ArrayList<ConcreteShot> getListOfAllShots()
 	{
 		return this.rockets;
 	}
