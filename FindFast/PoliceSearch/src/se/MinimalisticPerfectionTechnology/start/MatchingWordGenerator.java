@@ -24,6 +24,9 @@ public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 	 */
 	public MatchingWordGenerator (String searchWord, ArrayList<String> foldersToLookThough)
 	{
+		
+		machingDocuments.add(searchWord);
+		
 		ArrayList<FileOfDirFetcher> runnables = new ArrayList<FileOfDirFetcher>();
 		//ArrayList<Thread> threads = new ArrayList<Thread>();
 
@@ -34,16 +37,17 @@ public class MatchingWordGenerator implements Callable<ArrayList<String>>{
 			runnables.add(new FileOfDirFetcher(machingDocuments, searchWord, folderToSerach));
 			executor.execute(runnables.get(runnables.size()-1));
 		}
+		
 		executor.shutdown();
 		while(!executor.isTerminated())
 		{	
 		}
-		machingDocuments.add(searchWord);
-		for(FileOfDirFetcher runnable : runnables)
-		{
-			
-			runnable.add();
-		}
+		
+//		for(FileOfDirFetcher runnable : runnables)
+//		{
+//			
+//			runnable.add();
+//		}
 	}
 	@Override
 	public ArrayList<String> call() throws Exception {

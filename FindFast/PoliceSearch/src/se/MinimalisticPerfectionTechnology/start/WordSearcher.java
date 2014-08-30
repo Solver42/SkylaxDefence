@@ -3,11 +3,13 @@ package se.MinimalisticPerfectionTechnology.start;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class WordSearcher implements Runnable{
 	private String word = "";
 	private String path;
 	private boolean hasWord = false;
+	private ArrayList<String> test = new ArrayList<String>();
 	/**
 	 * This is a very simple class
 	 * that looks trough a file
@@ -17,8 +19,9 @@ public class WordSearcher implements Runnable{
 	 * an object of this class is being
 	 * initialized.
 	 */
-	public WordSearcher(String word, String path)
+	public WordSearcher(String word, String path, ArrayList<String> test)
 	{
+		this.test = test;
 		this.word = word;
 		this.path = path;
 	}
@@ -37,13 +40,16 @@ public class WordSearcher implements Runnable{
 
 				if(line.contains(word))
 				{
-					hasWord = true;
+					test.add(path);
+					return;
+//					hasWord = true;
 				}
 				else
 				{
 					hasWord = false;
 				}
 			}
+
 		} catch (IOException ex)
 		{
 			System.err.print(ex.getMessage());
