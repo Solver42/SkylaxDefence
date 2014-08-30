@@ -7,9 +7,7 @@ import se.SkyLax.MPT.GameObjects.GameObjectList;
 
 public class TheFrame extends JFrame {
 
-	
-	
-	private GameObjectList objList = new GameObjectList();
+	private static final long serialVersionUID = 1L;
 	private SwingTemplateJPanel myPanel = new SwingTemplateJPanel();
 	public TheFrame()
 	{

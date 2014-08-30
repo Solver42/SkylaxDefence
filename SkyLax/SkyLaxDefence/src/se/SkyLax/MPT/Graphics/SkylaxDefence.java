@@ -1,6 +1,5 @@
 package se.SkyLax.MPT.Graphics;
 import se.SkyLax.MPT.Controller.Updater;
-import se.SkyLax.MPT.GameObjects.*;
 
 public class SkylaxDefence {
 	
@@ -10,7 +9,7 @@ public class SkylaxDefence {
 	
 	   public static void main(String[] args) {
 		   
-		   new TheFrame();
+		   //new TheFrame();
 		      
 		      
 				Updater map = new Updater();

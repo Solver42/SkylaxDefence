@@ -2,8 +2,6 @@ package se.SkyLax.MPT.GameObjects;
 
 import java.util.ArrayList;
 
-import se.SkyLax.MPT.Controller.ObjectGenerator;
-import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class GameObjectList{
 

@@ -1,10 +1,8 @@
 package se.SkyLax.MPT.Controller;
 
 import se.SkyLax.MPT.GameObjects.GameObjectList;
-import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.SimpleTower;
 import se.SkyLax.MPT.GameObjects.Tower;
-import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class ObjectGenerator{
 

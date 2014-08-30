@@ -1,6 +1,5 @@
 package se.SkyLax.MPT.GameObjects;
 
-import se.SkyLax.MPT.Utility.TowerInformation;
 
 /*
  * creates a simple tower,
