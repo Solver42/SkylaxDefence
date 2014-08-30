@@ -34,7 +34,7 @@ public class SwingTemplateJPanel extends JPanel {
 			for(int i = 0; i <gameObj.getRocketList().size(); i++)
 			{
 			
-				g2d.fillOval(gameObj.getRocketList().get(i).getX(), gameObj.getRocketList().get(i).getY(), 30, 30);
+				g2d.fillOval(gameObj.getRocketList().get(i).getX(), gameObj.getRocketList().get(i).getY(), 19, 19);
 			}
 		}
 

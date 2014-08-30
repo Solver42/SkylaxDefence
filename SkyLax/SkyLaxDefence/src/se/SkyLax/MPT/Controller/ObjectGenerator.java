@@ -1,7 +1,6 @@
 package se.SkyLax.MPT.Controller;
 
 import se.SkyLax.MPT.GameObjects.GameObjectList;
-import se.SkyLax.MPT.GameObjects.Updater;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.SimpleTower;
 import se.SkyLax.MPT.GameObjects.Tower;
@@ -22,15 +21,16 @@ public class ObjectGenerator{
 	{
 
 		gameObjectList = new GameObjectList();
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 320, 33, 0.4));
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 301, 279, 0.1));
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 122, 50, 0.9));
 
 	}
 
 
 	public void fillPlan()
 	{
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 59, 33, 0.4));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 3, 4, 0.1));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 122, 3, 0.9));
+
 		
 		int i = 0;
 		
