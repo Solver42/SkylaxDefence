@@ -9,7 +9,6 @@ public class WordSearcher implements Runnable{
 	private String word = "";
 	private String path;
 	private boolean hasWord = false;
-	private ArrayList<String> test = new ArrayList<String>();
 	/**
 	 * This is a very simple class
 	 * that looks trough a file
@@ -19,9 +18,8 @@ public class WordSearcher implements Runnable{
 	 * an object of this class is being
 	 * initialized.
 	 */
-	public WordSearcher(String word, String path, ArrayList<String> test)
+	public WordSearcher(String word, String path)
 	{
-		this.test = test;
 		this.word = word;
 		this.path = path;
 	}
@@ -40,14 +38,15 @@ public class WordSearcher implements Runnable{
 
 				if(line.contains(word))
 				{
-					test.add(path);
+					hasWord = true;
+//					test.add(path);
 					return;
-//					hasWord = true;
+
 				}
-				else
-				{
-					hasWord = false;
-				}
+//				else
+//				{
+//					hasWord = false;
+//				}
 			}
 
 		} catch (IOException ex)

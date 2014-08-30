@@ -54,7 +54,7 @@ public class FileOfDirFetcher implements Runnable{
 		{
 			if(file.isFile())
 			{
-				runnables.add(new WordSearcher(word, file.getAbsolutePath(), matchingFiles));
+				runnables.add(new WordSearcher(word, file.getAbsolutePath()));
 				executor.execute(runnables.get(runnables.size()-1));
 			}
 		}
@@ -63,16 +63,16 @@ public class FileOfDirFetcher implements Runnable{
 		{	
 		}
 	}
-//	public void add()
-//	{
-//		for(WordSearcher runnable : runnables)
-//		{
-//			if(runnable.hasWord())
-//			{
-//				matchingFiles.add(runnable.getPath());
-//			}
-//		}
-//	}
+	public void add()
+	{
+		for(WordSearcher runnable : runnables)
+		{
+			if(runnable.hasWord())
+			{
+				matchingFiles.add(runnable.getPath());
+			}
+		}
+	}
 	@Override
 	public void run() {
 		try {
