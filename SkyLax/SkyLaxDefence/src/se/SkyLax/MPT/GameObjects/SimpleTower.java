@@ -12,8 +12,8 @@ import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class SimpleTower extends Tower{
 
-	public SimpleTower(String kind, int X, int Y) {
-		super("SimpleTower" , X, Y);
+	public SimpleTower(String kind, int X, int Y, double angle) {
+		super("SimpleTower" , X, Y, angle);
 	}
 
 

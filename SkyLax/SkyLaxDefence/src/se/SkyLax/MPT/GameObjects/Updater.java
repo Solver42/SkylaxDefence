@@ -1,16 +1,20 @@
 package se.SkyLax.MPT.GameObjects;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.Graphics.TheFrame;
 
 public class Updater implements Runnable{
 
 	ObjectGenerator objGen = null;
-	GameObjectList container = null;
+	//GameObjectList container = null;
+	
+	TheFrame screen = new TheFrame();
+	
 
 	public Updater()
 	{
 		objGen = new ObjectGenerator();
-		container = objGen.getGameObjectContainer();
+		//container = objGen.getGameObjectContainer();
 	}
 
 
@@ -21,10 +25,6 @@ public class Updater implements Runnable{
 			rocket.travel();
 		}
 
-		for(ConcreteShot r : objGen.getGameObjectContainer().getRocketList())
-		{
-			System.out.println(((Shot) r).getX());
-		}
 	}
 
 	public void run() {
@@ -32,22 +32,23 @@ public class Updater implements Runnable{
 		while(true)
 		{
 
-			if(i == 3) 
+			if(i == 0) 
 			{
 				objGen.fillPlan();
 				System.out.println("Filled Game With Objects!");
 
-			} else if (i == 5)
+			} else if (i == 15)
 			{
 				objGen.fillPlan();
 				System.out.println("Filled it up again");
 			}
-			System.out.println("Lap... ");
+//			System.out.println("Lap... ");
 			
 			updateShots();
+			screen.update(objGen.getGameObjectContainer());
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 
 				e.printStackTrace();

@@ -30,5 +30,14 @@ public class Rocket extends Shot implements ConcreteShot{
 		this.X += (trig.getSimpleXY("X"))*speed;
 		this.Y += (trig.getSimpleXY("Y"))*speed;
 	}
+	
+	public int getX()
+	{
+		return super.X;
+	}
+	public int getY()
+	{
+		return super.Y;
+	}
 
 }

@@ -13,10 +13,10 @@ public class Tower {
 	protected int Y;
 	protected TowerInformation towIn = null;
 	
-	public Tower (String kind, int X, int Y)
+	public Tower (String kind, int X, int Y, double angle)
 	{
 		towIn = new TowerInformation(kind);
-		this.angle = 0.7;
+		this.angle = angle;
 		this.X = X;
 		this.Y = Y;
 	}

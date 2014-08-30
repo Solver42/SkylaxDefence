@@ -8,4 +8,6 @@ public interface ConcreteShot {
 	 * that makes the shot travel.
 	 */
 	public void travel();
+	public int getX();
+	public int getY();
 }

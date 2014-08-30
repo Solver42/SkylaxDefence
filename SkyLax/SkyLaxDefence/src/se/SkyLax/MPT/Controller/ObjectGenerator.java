@@ -28,9 +28,9 @@ public class ObjectGenerator{
 
 	public void fillPlan()
 	{
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 59, 33));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 3, 4));
-		gameObjectList.addTower(new SimpleTower("SimpleTower", 122, 3));
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 59, 33, 0.4));
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 3, 4, 0.1));
+		gameObjectList.addTower(new SimpleTower("SimpleTower", 122, 3, 0.9));
 		
 		int i = 0;
 		
