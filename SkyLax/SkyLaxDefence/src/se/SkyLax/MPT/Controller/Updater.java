@@ -15,6 +15,7 @@ public class Updater implements Runnable{
 	public Updater()
 	{
 		objGen = new ObjectGenerator();
+		screen.setObjectContainerOfJPanel(objGen);
 	}
 	private void updateShots()
 	{
@@ -59,7 +60,7 @@ public class Updater implements Runnable{
 
 			removeNAShot();
 
-			screen.update(objGen.getGameObjectContainer());
+			screen.update();
 
 			try {
 				Thread.sleep(50);

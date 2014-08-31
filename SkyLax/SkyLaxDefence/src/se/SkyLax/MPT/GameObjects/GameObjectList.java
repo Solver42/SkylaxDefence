@@ -2,12 +2,15 @@ package se.SkyLax.MPT.GameObjects;
 
 import java.util.ArrayList;
 
+import se.SkyLax.MPT.Levels.Levels;
+
 
 public class GameObjectList{
 
 
 	ArrayList<ConcreteShot> rockets;
 	ArrayList<Tower> towers;
+	Levels level = null;
 	
 	/*
 	 * this class contains the list
@@ -21,6 +24,7 @@ public class GameObjectList{
 	{
 		rockets = new ArrayList<ConcreteShot>();
 		towers = new ArrayList<Tower>();
+		level = new Levels();
 
 	}
 	public void addTower(Tower t)
@@ -32,6 +36,11 @@ public class GameObjectList{
 		rockets.add(towers.get(index).getNewShot(kindOfShot));
 	}
 	
+	public void addShotGeneric(Tower tower, String kindOfShot)
+	{
+		rockets.add(tower.getNewShot(kindOfShot));
+	}
+	
 
 	public ArrayList<ConcreteShot> getListOfAllShots()
 	{
@@ -41,5 +50,9 @@ public class GameObjectList{
 	public ArrayList<Tower> getTowerList()
 	{
 		return this.towers;
+	}
+	public Levels getLevel()
+	{
+		return this.level;
 	}
 }

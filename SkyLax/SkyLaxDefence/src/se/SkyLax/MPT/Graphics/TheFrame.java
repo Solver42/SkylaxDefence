@@ -2,7 +2,7 @@ package se.SkyLax.MPT.Graphics;
 
 import javax.swing.JFrame;
 
-import se.SkyLax.MPT.GameObjects.GameObjectList;
+import se.SkyLax.MPT.Controller.ObjectGenerator;
 
 
 public class TheFrame extends JFrame {
@@ -24,11 +24,15 @@ public class TheFrame extends JFrame {
 		
 	}
 
-	public void update(GameObjectList things)
+	public void update()
 	{
-		myPanel.setGameObj(things);
 		validate();
 		repaint();
 		
+	}
+	
+	public void setObjectContainerOfJPanel(ObjectGenerator obj)
+	{
+		myPanel.setObjectContainer(obj);
 	}
 }

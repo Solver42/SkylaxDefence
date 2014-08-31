@@ -1,7 +1,5 @@
 package se.SkyLax.MPT.GameObjects;
 
-import se.SkyLax.MPT.Logics.Trigonometry;
-
 public class Rocket extends Shot implements ConcreteShot{
 	
 	
