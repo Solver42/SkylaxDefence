@@ -51,7 +51,8 @@ public class Updater implements Runnable{
 		int i;
 		while(true)
 		{
-
+			//TODO
+//JAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA det är därför som skotten bara kommmer ibland: (fillPlanithRocketShots körs ju bara ibland)
 			i = gen.nextInt(10);
 			if(( mod%5==0 ) && ( i < 5))
 			{
@@ -66,7 +67,7 @@ public class Updater implements Runnable{
 			screen.update();
 
 			try {
-				Thread.sleep(20);
+				Thread.sleep(30);
 			} catch (InterruptedException e) {
 
 				e.printStackTrace();

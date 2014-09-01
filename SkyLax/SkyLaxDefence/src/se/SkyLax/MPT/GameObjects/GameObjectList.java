@@ -2,6 +2,7 @@ package se.SkyLax.MPT.GameObjects;
 
 import java.util.ArrayList;
 
+import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Levels.Levels;
 
 
@@ -30,6 +31,8 @@ public class GameObjectList{
 	public void addTower(Tower t)
 	{
 		towers.add(t);
+		//TODO
+		//level.getMap()[(SwingTemplateJPanel.CANVAS_HEIGHT-t.getY())/Levels.UNIT_HEIGHT][(SwingTemplateJPanel.CANVAS_WIDTH-t.getX())/Levels.UNIT_WIDTH] = 2;
 	}
 	public void addShot(int index, String kindOfShot)
 	{

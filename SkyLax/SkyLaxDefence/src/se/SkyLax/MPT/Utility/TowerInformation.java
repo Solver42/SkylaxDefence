@@ -31,10 +31,16 @@ public class TowerInformation {
 		 */
 		switch (kind)
 		{
-		case "SimpleTower":
+		case "SniperCastle":
 			this.rotationSpeed = 1;
-			this.repeat = 1000;
+			this.repeat = 20;
 			this.range = 48;
+			break;
+		case "RocketTower":
+			this.rotationSpeed = 1;
+			this.repeat = 5;
+			this.range = 1000;
+			break;
 		}
 	}
 	public int getRotationSpeed()
@@ -48,6 +54,10 @@ public class TowerInformation {
 	public String getKindOfTower()
 	{
 		return this.kind;
+	}
+	public int getRepeat()
+	{
+		return this.repeat;
 	}
 	
 

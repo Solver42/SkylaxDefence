@@ -29,7 +29,7 @@ public class GUIHelper{
 	{
 		this.objGen = objGen;
 		screen = new TheFrame();
-		screen.setObjectContainerOfJPanel(objGen);
+//		screen.setObjectContainerOfJPanel(objGen);
 		try {
 			rocketImg = ImageIO.read(new File("img/Rocket.png"));
 		} catch (IOException e) {

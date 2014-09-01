@@ -19,6 +19,7 @@ import se.SkyLax.MPT.GameObjects.Rocket;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MTP.Events.MouseClass;
 
 
 @SuppressWarnings("serial")
@@ -33,12 +34,10 @@ public class SwingTemplateJPanel extends JPanel {
 	public static final String TITLE = "...Title...";
 
 	public SwingTemplateJPanel() {
-
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
 		try {
 			rocketImg = ImageIO.read(new File("img/Rocket.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -113,6 +112,7 @@ public class SwingTemplateJPanel extends JPanel {
 	public void setObjectContainer(ObjectGenerator obj)
 	{
 		this.objGen = obj;
+		new MouseClass(this, obj);
 	}
 
 }
