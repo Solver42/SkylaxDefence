@@ -27,7 +27,7 @@ public class ObjectGenerator{
 		gameObjectList = new GameObjectList();
 		gameObjectList.addTower(new SniperCastle("SniperCastle", 150, 510, 0.4));
 		gameObjectList.addTower(new SniperCastle("SniperCastle", 450, 30, 0.1));
-		gameObjectList.addTower(new MissileTower("SniperCastle", 170, 100, 0.9));
+		gameObjectList.addTower(new MissileTower("SniperCastle", 450, 100, 0.9));
 		gameObjectList.addTower(new MissileTower("SniperCastle", 410, 450, 0.4));
 
 

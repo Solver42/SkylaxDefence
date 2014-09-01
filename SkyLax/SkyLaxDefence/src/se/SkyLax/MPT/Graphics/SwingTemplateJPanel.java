@@ -18,6 +18,7 @@ import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.Rocket;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
+import se.SkyLax.MPT.Levels.Levels;
 
 
 @SuppressWarnings("serial")
@@ -27,8 +28,8 @@ public class SwingTemplateJPanel extends JPanel {
 
 	private ObjectGenerator objGen = null;
 
-	public static final int CANVAS_WIDTH = 600;
-	public static final int CANVAS_HEIGHT = 600;
+	public static final int CANVAS_WIDTH = 960;
+	public static final int CANVAS_HEIGHT = 540;
 	public static final String TITLE = "...Title...";
 
 	public SwingTemplateJPanel() {
@@ -56,12 +57,12 @@ public class SwingTemplateJPanel extends JPanel {
 	{
 		for (int i = 0; i<objGen.getGameObjectContainer().getLevel().getMap().length; i++)
 		{
-			for (int j = 0; j<objGen.getGameObjectContainer().getLevel().getMap().length; j++)
+			for (int j = 0; j<objGen.getGameObjectContainer().getLevel().getMap()[1].length; j++)
 			{
 				if(objGen.getGameObjectContainer().getLevel().getMap()[i][j]==0)
 				{
 					g2d.setColor(Color.DARK_GRAY);
-					g2d.fillRect(j*60, i*60, 60, 60);
+					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 		}
@@ -71,12 +72,12 @@ public class SwingTemplateJPanel extends JPanel {
 				if(objGen.ifJustShoot(tower))
 				{
 					g2d.setColor(Color.GREEN);
-					g2d.fillRect(tower.getX()-24, tower.getY()-24, 48, 48);
+					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 				else
 				{
 					g2d.setColor(Color.RED);
-					g2d.fillRect(tower.getX()-24, tower.getY()-24, 48, 48);
+					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 			else if(tower instanceof MissileTower)
@@ -89,7 +90,7 @@ public class SwingTemplateJPanel extends JPanel {
 				else
 				{
 					g2d.setColor(Color.CYAN);
-					g2d.fillRect(tower.getX()-24, tower.getY()-24, 48, 48);
+					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package se.SkyLax.MPT.GameObjects;
 
+import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class Tower {
@@ -17,8 +18,8 @@ public class Tower {
 	{
 		towIn = new TowerInformation(kind);
 		this.angle = angle;
-		this.X = X;
-		this.Y = Y;
+		this.X = X-(SwingTemplateJPanel.CANVAS_WIDTH%X+15);
+		this.Y = Y-(SwingTemplateJPanel.CANVAS_HEIGHT%Y+15);
 	}
 	
 	public ConcreteShot getNewShot(String shotType)
