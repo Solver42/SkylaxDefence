@@ -3,8 +3,11 @@ package se.SkyLax.MPT.Controller;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.SwingConstants;
+
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
+import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
 
 public class Updater implements Runnable{
@@ -28,7 +31,7 @@ public class Updater implements Runnable{
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-			if(rocket.getX() > 600 || rocket.getX() < 0 || rocket.getY() > 600 || rocket.getY() < 0)
+			if(rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0)
 			{
 				shotsToRemove.add(rocket);
 			}
@@ -63,7 +66,7 @@ public class Updater implements Runnable{
 			screen.update();
 
 			try {
-				Thread.sleep(50);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 
 				e.printStackTrace();

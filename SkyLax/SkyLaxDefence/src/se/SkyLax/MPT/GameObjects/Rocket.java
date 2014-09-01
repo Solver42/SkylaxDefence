@@ -17,7 +17,7 @@ public class Rocket extends Shot implements ConcreteShot{
 	
 	public Rocket(Tower t) {
 		super(t);
-		speed = 9;
+		speed = 3;
 	}
 	
 	public synchronized void travel()

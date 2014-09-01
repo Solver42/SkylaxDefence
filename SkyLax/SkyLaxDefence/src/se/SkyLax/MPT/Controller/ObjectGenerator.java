@@ -35,12 +35,12 @@ public class ObjectGenerator{
 
 	private ArrayList<Tower> towersThatJustShoot = new ArrayList<Tower>() ;
 
-	private void setJustShoot(Tower t)
+	private synchronized void setJustShoot(Tower t)
 	{
 		towersThatJustShoot.add(t);
 	}
 
-	public boolean ifJustShoot(Tower t)
+	public synchronized boolean ifJustShoot(Tower t)
 	{
 		if(towersThatJustShoot.contains(t))
 		{
@@ -49,13 +49,13 @@ public class ObjectGenerator{
 		return false;
 
 	}
-	public void clearFireArray()
+	public synchronized void clearFireArray()
 	{
 		towersThatJustShoot.clear();
 	}
 	
 
-	public void fillPlanWithRocketShot()
+	public synchronized void fillPlanWithRocketShot()
 	{
 
 		//for gunshots:
@@ -86,7 +86,7 @@ public class ObjectGenerator{
 		//		gameObjectList.addShot(i, "Rocket");	
 	}
 
-	public GameObjectList getGameObjectContainer()
+	public synchronized GameObjectList getGameObjectContainer()
 	{
 		return this.gameObjectList;
 	}

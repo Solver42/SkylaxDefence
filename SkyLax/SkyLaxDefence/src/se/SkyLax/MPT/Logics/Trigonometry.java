@@ -30,20 +30,20 @@ public class Trigonometry {
 
 	boolean bool = true;
 
-	int i = 5;
+	int i = 0;
 	private void modifyAngle()
 	{
-		if(i>=10) bool = false;
+		if(i>=24) bool = false;
 		else if(i<=0) bool = true;
 
 		if(bool)
 		{
-			angle+=0.1;
+			angle+=0.04;
 			i++;
 		}
 		else
 		{
-			angle-=0.1;
+			angle-=0.04;
 			i--;
 		}
 	}
