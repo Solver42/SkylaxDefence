@@ -76,7 +76,7 @@ public class ObjectGenerator{
 		
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			if(tower instanceof SniperCastle && (i%4==0))
+			if(tower instanceof SniperCastle && (i%tower.getTowerInfo().getRepeat()==0))
 			{
 				gameObjectList.addShotGeneric(tower, "GunShot");
 			}
@@ -84,7 +84,7 @@ public class ObjectGenerator{
 			{
 				gameObjectList.addShotGeneric(tower, "Rocket");
 			}
-			else if(tower instanceof TowerOfDoom && (i%2==0))
+			else if(tower instanceof TowerOfDoom && (i%tower.getTowerInfo().getRepeat()==0))
 			{
 				gameObjectList.addShotGeneric(tower, "Laser");
 			}	

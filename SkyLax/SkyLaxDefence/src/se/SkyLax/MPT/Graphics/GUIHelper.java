@@ -2,7 +2,6 @@ package se.SkyLax.MPT.Graphics;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Label;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +38,8 @@ public class GUIHelper{
 
 	private Color gray = new Color(204, 204, 204, 128);
 	private Color red = new Color(204, 51, 51, 128);
+	
+	private int range;
 
 
 	public GUIHelper()
@@ -57,6 +58,7 @@ public class GUIHelper{
 	{
 		return mayBuild;
 	}
+	
 
 	//	public void setKindOfTown(int kind)
 	//	{
@@ -68,6 +70,11 @@ public class GUIHelper{
 	{
 		this.mouseX = x;
 		this.mouseY = y;
+	}
+	
+	public void setRange(int rang)
+	{
+		this.range = rang;
 	}
 
 	public void setAllowedToBuild(boolean is)
@@ -173,11 +180,11 @@ public class GUIHelper{
 		if(mayBuild)
 		{
 			g2d.setColor(gray);
-			g2d.fillOval(mouseX-150, mouseY-150, 300, 300);
+			g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
 		}else
 		{
 			g2d.setColor(red);
-			g2d.fillOval(mouseX-150, mouseY-150, 300, 300);
+			g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
 		}
 
 	}

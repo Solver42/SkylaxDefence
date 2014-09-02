@@ -6,7 +6,6 @@ import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 import se.SkyLax.MPT.Graphics.GUIHelper;
 import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class MouseMotionHandler {
 
@@ -51,15 +50,18 @@ public class MouseMotionHandler {
 		if(clickedOnATowerFactory() == 3)
 		{
 			this.kindOfTower = 3;
+			gui.setRange(210);
 			//			gui.setKindOfTown(3);
 		} else if(clickedOnATowerFactory() == 4)
 		{
 			this.kindOfTower = 4;
+			gui.setRange(300);
 			//			gui.setKindOfTown(3);
 		}
 		else if(clickedOnATowerFactory() == 5)
 		{
 			this.kindOfTower = 5;
+			gui.setRange(500);
 			//			gui.setKindOfTown(3);x
 		}
 
@@ -82,15 +84,4 @@ public class MouseMotionHandler {
 	}
 
 
-
-	public void mabyCreateTower(String kind)
-	{
-		if(creationOfTowerIsApproved())
-		{
-			if(kind.equals("SniperCastle"))
-				objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", this.mouseX, this.mouseY, 1));
-			else if(kind.equals("MissileTower"))
-				objGen.getGameObjectContainer().addTower(new MissileTower("RocketTower", this.mouseX, this.mouseY, 1));
-		}
-	}
 }

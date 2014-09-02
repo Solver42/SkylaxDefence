@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
-import se.SkyLax.MPT.GameObjects.Laser;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
