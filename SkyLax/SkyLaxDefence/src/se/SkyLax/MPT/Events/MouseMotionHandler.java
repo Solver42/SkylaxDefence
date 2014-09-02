@@ -1,6 +1,7 @@
 package se.SkyLax.MPT.Events;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.Levels.Levels;
 
@@ -34,11 +35,14 @@ public class MouseMotionHandler {
 		return true;
 		return false;
 	}
-	public void mabyCreateTower()
+	public void mabyCreateTower(String kind)
 	{
 		if(creationOfTowerIsApproved())
 		{
-		objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", this.mouseX, this.mouseY, 1));
+			if(kind.equals("SniperCastle"))
+				objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", this.mouseX, this.mouseY, 1));
+			else if(kind.equals("MissileTower"))
+				objGen.getGameObjectContainer().addTower(new MissileTower("RocketTower", this.mouseX, this.mouseY, 1));
 		}
 	}
 }

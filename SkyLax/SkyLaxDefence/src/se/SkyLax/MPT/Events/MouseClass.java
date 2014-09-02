@@ -29,7 +29,14 @@ public class MouseClass{
 	{
 		swing.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				properties.mabyCreateTower();
+				if(e.getButton() == MouseEvent.BUTTON1)
+				{
+				properties.mabyCreateTower("SniperCastle");
+				}
+				else if (e.getButton() == MouseEvent.BUTTON3)
+				{
+				properties.mabyCreateTower("MissileTower");
+				}
 			}
 		});
 	}

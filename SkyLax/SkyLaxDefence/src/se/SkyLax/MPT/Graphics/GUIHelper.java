@@ -59,7 +59,7 @@ public class GUIHelper{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
 			if(tower instanceof SniperCastle)
 			{
-				if(objGen.getJustShootList().contains("MissileTower"))
+				if(objGen.getJustShootList().contains("SniperCastle"))
 				{
 					g2d.setColor(Color.GREEN);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);

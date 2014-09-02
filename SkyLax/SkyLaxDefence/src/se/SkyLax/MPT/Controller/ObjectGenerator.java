@@ -27,8 +27,8 @@ public class ObjectGenerator{
 	{
 
 		gameObjectList = new GameObjectList();
-		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
-		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
+//		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
+//		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
 
 
 	}
@@ -59,14 +59,14 @@ public class ObjectGenerator{
 	
 
 	int i;
-	public synchronized void fillPlanWithRocketShot()
+	public  void fillPlanWithRocketShot()
 	{
 		i++;
 
-//		if(i%3==0)
-//		{
-//			justShootString.add("SiperCastle");
-//		}
+		if(i%3==0)
+		{
+			justShootString.add("SniperCastle");
+		}
 		if((i%10==0))
 		{
 			justShootString.add("MissileTower");
@@ -85,7 +85,9 @@ public class ObjectGenerator{
 				//towersThatJustShoot.add(tower);
 			}	
 		}
+		
 		if(i>=100) i = 0;
+		
 	}
 //	public void hej()
 //	{
