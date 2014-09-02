@@ -22,18 +22,24 @@ import se.SkyLax.MPT.Levels.Levels;
 public class GUIHelper{
 
 	private BufferedImage rocketImg;
-//	private TheFrame screen = null;
+	//	private TheFrame screen = null;
 	private ObjectGenerator objGen = null;
-	
+
 	private int GUN_WIDTH = 10;
 	private int ROCKET_WIDTH = 70;
 	private int ROCKET_EXP = 200;
+	private int mouseX;
+	private int mouseY;
+	private boolean mayBuild = false;
+
+	private Color gray = new Color(204, 204, 204, 128);
+	private Color red = new Color(204, 51, 51, 128);
 	
 
 	public GUIHelper()
 	{
-//		screen = new TheFrame();
-//		screen.setObjectContainerOfJPanel(objGen);
+		//		screen = new TheFrame();
+		//		screen.setObjectContainerOfJPanel(objGen);
 		try {
 			rocketImg = ImageIO.read(new File("img/Rocket.png"));
 		} catch (IOException e) {
@@ -41,7 +47,18 @@ public class GUIHelper{
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void setGUI_XY(int x, int y)
+	{
+		this.mouseX = x;
+		this.mouseY = y;
+	}
+
+	public void setAllowedToBuild(boolean is)
+	{
+		mayBuild = is;
+	}
+
 
 	public void drawThis(Graphics2D g2d, ObjectGenerator objGen)
 	{
@@ -61,12 +78,12 @@ public class GUIHelper{
 			{
 				if(objGen.getJustShootList().contains("SniperCastle"))
 				{
-					g2d.setColor(Color.GREEN);
+					g2d.setColor(Color.WHITE);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 				else
 				{
-					g2d.setColor(Color.RED);
+					g2d.setColor(Color.GRAY);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
@@ -74,17 +91,17 @@ public class GUIHelper{
 			{
 				if(objGen.getJustShootList().contains("MissileTower"))
 				{
-					g2d.setColor(Color.WHITE);
+					g2d.setColor(Color.ORANGE);
 					g2d.fillOval(tower.getX()-ROCKET_EXP/2, tower.getY()-ROCKET_EXP/2, ROCKET_EXP, ROCKET_EXP);
 				}
 				else
 				{
-					g2d.setColor(Color.CYAN);
+					g2d.setColor(Color.WHITE);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 		}
-		
+
 		for(ConcreteShot shot : objGen.getGameObjectContainer().getListOfAllShots())
 		{
 			if(shot instanceof GunShot)
@@ -99,6 +116,16 @@ public class GUIHelper{
 			}
 		}
 		objGen.clearJustShoot();
+		if(mayBuild)
+		{
+			g2d.setColor(gray);
+			g2d.fillOval(mouseX-150, mouseY-150, 300, 300);
+		}else
+		{
+			g2d.setColor(red);
+			g2d.fillOval(mouseX-150, mouseY-150, 300, 300);
+		}
+
 	}
 
 

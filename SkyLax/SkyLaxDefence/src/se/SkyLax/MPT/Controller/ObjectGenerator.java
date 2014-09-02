@@ -59,7 +59,7 @@ public class ObjectGenerator{
 	
 
 	int i;
-	public  void fillPlanWithRocketShot()
+	public synchronized void fillPlanWithRocketShot()
 	{
 		i++;
 

@@ -116,9 +116,8 @@ public class SwingTemplateJPanel extends JPanel {
 	public void setObjectContainer(ObjectGenerator obj)
 	{
 		this.objGen = obj;
-		new MouseClass(this, obj);
+		new MouseClass(this, obj, guiHelper);
 	}
-
 
 
 

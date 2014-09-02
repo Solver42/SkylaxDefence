@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
+import se.SkyLax.MPT.Graphics.GUIHelper;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Levels.Levels;
 
@@ -16,11 +17,13 @@ public class MouseClass{
 	ObjectGenerator objGen = null;
 	SwingTemplateJPanel swing = null;
 	private MouseMotionHandler properties = null;
+	GUIHelper gui = null;
 
-	public MouseClass(SwingTemplateJPanel swing, ObjectGenerator obj){
+	public MouseClass(SwingTemplateJPanel swing, ObjectGenerator obj, GUIHelper gui){
+		this.gui = gui;
 		this.swing = swing;
 		this.objGen = obj;
-		properties = new MouseMotionHandler(obj);
+		properties = new MouseMotionHandler(obj, gui);
 		clicked();
 		moved();
 	}
@@ -46,8 +49,11 @@ public class MouseClass{
 	{
 		swing.addMouseMotionListener(new MouseMotionListener() {
 			public void mouseMoved(MouseEvent e) {
-				properties.setMouseX(e.getX());
-				properties.setMouseY(e.getY());
+				gui.setGUI_XY(e.getX(), e.getY());
+				
+				properties.setCoordinates(e.getX(), e.getY());
+				creationOfTowerOK(e);
+//				properties.creationOfTowerOK();
 			}
 
 			@Override
@@ -56,6 +62,14 @@ public class MouseClass{
 
 			}
 		});
+	}
+	
+	private void creationOfTowerOK(MouseEvent e)
+	{
+		if(objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] !=2)
+		gui.setAllowedToBuild(true);
+		else
+		gui.setAllowedToBuild(false);
 	}
 
 

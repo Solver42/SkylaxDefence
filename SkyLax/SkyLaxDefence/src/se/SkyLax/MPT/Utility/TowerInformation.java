@@ -34,12 +34,12 @@ public class TowerInformation {
 		case "SniperCastle":
 			this.rotationSpeed = 1;
 			this.repeat = 3;
-			this.range = 48;
+			this.range = 70;
 			break;
 		case "RocketTower":
 			this.rotationSpeed = 1;
 			this.repeat = 10;
-			this.range = 1000;
+			this.range = 120;
 			break;
 		}
 	}
