@@ -24,6 +24,11 @@ public class GUIHelper{
 	private BufferedImage rocketImg;
 //	private TheFrame screen = null;
 	private ObjectGenerator objGen = null;
+	
+	private int GUN_WIDTH = 10;
+	private int ROCKET_WIDTH = 70;
+	private int ROCKET_EXP = 200;
+	
 
 	public GUIHelper()
 	{
@@ -70,7 +75,7 @@ public class GUIHelper{
 				if(objGen.ifJustShoot(tower))
 				{
 					g2d.setColor(Color.WHITE);
-					g2d.fillOval(tower.getX()-100, tower.getY()-100, 200, 200);
+					g2d.fillOval(tower.getX()-ROCKET_EXP/2, tower.getY()-ROCKET_EXP/2, ROCKET_EXP, ROCKET_EXP);
 				}
 				else
 				{
@@ -79,20 +84,21 @@ public class GUIHelper{
 				}
 			}
 		}
-		objGen.clearFireArray();
+		
 		for(ConcreteShot shot : objGen.getGameObjectContainer().getListOfAllShots())
 		{
 			if(shot instanceof GunShot)
 			{
 				g2d.setColor(Color.GRAY);
-				g2d.fillOval(shot.getX(), shot.getY(), 10, 10);
+				g2d.fillOval(shot.getX()-GUN_WIDTH/2, shot.getY()-GUN_WIDTH/2, GUN_WIDTH, GUN_WIDTH);
 			}
 			else if(shot instanceof Rocket)
 			{
 				g2d.setColor(Color.RED);
-				g2d.drawImage(rocketImg, shot.getX()-128, shot.getY()-128,null);
+				g2d.fillOval(shot.getX()-ROCKET_WIDTH/2, shot.getY()-ROCKET_WIDTH/2, ROCKET_WIDTH, ROCKET_WIDTH);
 			}
 		}
+		objGen.clearFireArray();
 	}
 
 

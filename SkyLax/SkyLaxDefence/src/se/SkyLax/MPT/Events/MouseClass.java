@@ -15,12 +15,12 @@ public class MouseClass{
 
 	ObjectGenerator objGen = null;
 	SwingTemplateJPanel swing = null;
-	private MouseProperties properties = null;
+	private MouseMotionHandler properties = null;
 
 	public MouseClass(SwingTemplateJPanel swing, ObjectGenerator obj){
 		this.swing = swing;
 		this.objGen = obj;
-		properties = new MouseProperties();
+		properties = new MouseMotionHandler(obj);
 		clicked();
 		moved();
 	}
@@ -29,10 +29,7 @@ public class MouseClass{
 	{
 		swing.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				if(objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] != 1)
-				{
-				objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", e.getX(), e.getY(), 1));
-				}
+				properties.mabyCreateTower();
 			}
 		});
 	}
