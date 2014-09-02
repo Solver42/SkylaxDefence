@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
-import se.SkyLax.MTP.Events.MouseClass;
+import se.SkyLax.MPT.Events.MouseClass;
 
 
 public class TheFrame extends JFrame {
