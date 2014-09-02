@@ -15,7 +15,7 @@ public class TheFrame extends JFrame {
 
 	public TheFrame()
 	{
-
+		this.setResizable( false );
 		this.setContentPane(myPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();             // "this" JFrame packs its components

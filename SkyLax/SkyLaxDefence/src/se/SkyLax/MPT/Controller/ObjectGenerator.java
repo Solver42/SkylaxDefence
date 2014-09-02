@@ -29,7 +29,7 @@ public class ObjectGenerator{
 //		gameObjectList.addTower(new SniperCastle("SniperCastle", 150, 510, 0.4));
 //		gameObjectList.addTower(new SniperCastle("SniperCastle", 450, 30, 0.1));
 		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
-		gameObjectList.addTower(new MissileTower("RocetTower", 410, 450, 0.4));
+		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
 
 
 
@@ -56,26 +56,27 @@ public class ObjectGenerator{
 		towersThatJustShoot.clear();
 	}
 
-
+	int i;
 	public synchronized void fillPlanWithRocketShot()
 	{
-
+		i++;
 		//for gunshots:
 		//		int i = gen.nextInt(gameObjectList.getTowerList().size());
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			if(tower instanceof SniperCastle && (gen.nextInt(10)>2))
+			if(tower instanceof SniperCastle && (i%3==0))
 			{
 				gameObjectList.addShotGeneric(tower, "GunShot");
 				//							System.out.println("Shoooooot");
 				this.setJustShoot(tower);
 			}
-			else if(tower instanceof MissileTower && (gen.nextInt(19)>16))
+			else if(tower instanceof MissileTower && (i%tower.getTowerInfo().getRepeat()==0))
 			{
 				gameObjectList.addShotGeneric(tower, "Rocket");
 				this.setJustShoot(tower);
 			}	
 		}
+		if(i>=100) i = 0;
 	}
 	public void hej()
 	{

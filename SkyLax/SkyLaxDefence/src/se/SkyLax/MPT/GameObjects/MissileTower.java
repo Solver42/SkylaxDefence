@@ -12,7 +12,7 @@ package se.SkyLax.MPT.GameObjects;
 public class MissileTower extends Tower{
 
 	public MissileTower(String kind, int X, int Y, double angle) {
-		super("SimpleTower" , X, Y, angle);
+		super(kind , X, Y, angle);
 	}
 
 

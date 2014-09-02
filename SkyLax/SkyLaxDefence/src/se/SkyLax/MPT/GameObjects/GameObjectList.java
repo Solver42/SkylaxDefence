@@ -32,7 +32,7 @@ public class GameObjectList{
 	{
 		towers.add(t);
 		//TODO
-		//level.getMap()[(SwingTemplateJPanel.CANVAS_HEIGHT-t.getY())/Levels.UNIT_HEIGHT][(SwingTemplateJPanel.CANVAS_WIDTH-t.getX())/Levels.UNIT_WIDTH] = 2;
+		level.setMap(t.getX()/(Levels.UNIT_WIDTH), (t.getY()/(Levels.UNIT_HEIGHT)), 2);
 	}
 	public void addShot(int index, String kindOfShot)
 	{

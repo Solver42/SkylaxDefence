@@ -40,7 +40,7 @@ public class Levels {
 	}
 	public void setMap(int x, int y, int value)
 	{
-		this.holder[x][y] = value;
+		this.holder[y][x] = value;
 	}
 
 }

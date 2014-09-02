@@ -27,7 +27,6 @@ public class GUIHelper{
 
 	public GUIHelper()
 	{
-		this.objGen = objGen;
 //		screen = new TheFrame();
 //		screen.setObjectContainerOfJPanel(objGen);
 		try {

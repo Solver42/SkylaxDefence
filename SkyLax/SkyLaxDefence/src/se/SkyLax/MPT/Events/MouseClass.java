@@ -8,6 +8,7 @@ import java.awt.event.MouseMotionListener;
 import se.SkyLax.MPT.Controller.ObjectGenerator;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
+import se.SkyLax.MPT.Levels.Levels;
 
 public class MouseClass{
 
@@ -28,7 +29,10 @@ public class MouseClass{
 	{
 		swing.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
+				if(objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] != 1)
+				{
 				objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", e.getX(), e.getY(), 1));
+				}
 			}
 		});
 	}

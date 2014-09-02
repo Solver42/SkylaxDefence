@@ -48,13 +48,12 @@ public class Updater implements Runnable{
 	}
 	public void run() {
 		int mod = 10;
-		int i;
 		while(true)
 		{
 			//TODO
-//JAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA det är därför som skotten bara kommmer ibland: (fillPlanithRocketShots körs ju bara ibland)
-			i = gen.nextInt(10);
-			if(( mod%5==0 ) && ( i < 5))
+			//JAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA det är därför som skotten bara kommmer ibland: (fillPlanithRocketShots körs ju bara ibland)
+
+			if(( mod%10==0 ))
 			{
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
