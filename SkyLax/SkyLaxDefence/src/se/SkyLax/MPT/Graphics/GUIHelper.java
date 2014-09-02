@@ -59,7 +59,7 @@ public class GUIHelper{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
 			if(tower instanceof SniperCastle)
 			{
-				if(objGen.ifJustShoot(tower))
+				if(objGen.getJustShootList().contains("MissileTower"))
 				{
 					g2d.setColor(Color.GREEN);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
@@ -72,7 +72,7 @@ public class GUIHelper{
 			}
 			else if(tower instanceof MissileTower)
 			{
-				if(objGen.ifJustShoot(tower))
+				if(objGen.getJustShootList().contains("MissileTower"))
 				{
 					g2d.setColor(Color.WHITE);
 					g2d.fillOval(tower.getX()-ROCKET_EXP/2, tower.getY()-ROCKET_EXP/2, ROCKET_EXP, ROCKET_EXP);
@@ -98,7 +98,7 @@ public class GUIHelper{
 				g2d.fillOval(shot.getX()-ROCKET_WIDTH/2, shot.getY()-ROCKET_WIDTH/2, ROCKET_WIDTH, ROCKET_WIDTH);
 			}
 		}
-		objGen.clearFireArray();
+		objGen.clearJustShoot();
 	}
 
 

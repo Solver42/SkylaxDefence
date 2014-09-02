@@ -27,12 +27,13 @@ public class ObjectGenerator{
 	{
 
 		gameObjectList = new GameObjectList();
-//		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
-//		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
+		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
+		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
 
 
 	}
 
+	private ArrayList<String> justShootString = new ArrayList<String>() ;
 
 	public  boolean ifJustShoot(Tower t)
 	{
@@ -43,29 +44,45 @@ public class ObjectGenerator{
 		return false;
 
 	}
-	public  void clearFireArray()
+	public  synchronized void clearFireArray()
 	{
 		towersThatJustShoot.clear();
 	}
+	public synchronized ArrayList<String>getJustShootList()
+	{
+		return this.justShootString;
+	}
+	public synchronized void clearJustShoot()
+	{
+		this.justShootString.clear();
+	}
+	
 
 	int i;
-	public  void fillPlanWithRocketShot()
+	public synchronized void fillPlanWithRocketShot()
 	{
 		i++;
-		//for gunshots:
-		//		int i = gen.nextInt(gameObjectList.getTowerList().size());
+
+//		if(i%3==0)
+//		{
+//			justShootString.add("SiperCastle");
+//		}
+		if((i%10==0))
+		{
+			justShootString.add("MissileTower");
+		}
 		for(Tower tower : gameObjectList.getTowerList())
 		{
 			if(tower instanceof SniperCastle && (i%3==0))
 			{
 				gameObjectList.addShotGeneric(tower, "GunShot");
 				//							System.out.println("Shoooooot");
-				towersThatJustShoot.add(tower);
+				//towersThatJustShoot.add(tower);
 			}
 			else if(tower instanceof MissileTower && (i%tower.getTowerInfo().getRepeat()==0))
 			{
 				gameObjectList.addShotGeneric(tower, "Rocket");
-				towersThatJustShoot.add(tower);
+				//towersThatJustShoot.add(tower);
 			}	
 		}
 		if(i>=100) i = 0;
