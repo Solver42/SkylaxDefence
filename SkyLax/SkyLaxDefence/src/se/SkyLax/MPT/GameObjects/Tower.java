@@ -34,6 +34,10 @@ public class Tower {
 		{
 			return new Rocket(this);
 		}
+		else if(shotType.equals("Laser"))
+		{
+			return new Laser(this);
+		}
 		return new GunShot(this);
 	}
 	

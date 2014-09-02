@@ -1,14 +1,12 @@
 package se.SkyLax.MPT.Controller;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import se.SkyLax.MPT.GameObjects.GameObjectList;
 import se.SkyLax.MPT.GameObjects.MissileTower;
-import se.SkyLax.MPT.GameObjects.Rocket;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
-import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 
 public class ObjectGenerator{
 
@@ -21,7 +19,6 @@ public class ObjectGenerator{
 	 */
 
 	GameObjectList gameObjectList = null;
-	private Random gen = new Random();
 	private ArrayList<Tower> towersThatJustShoot = new ArrayList<Tower>() ;
 	public  ObjectGenerator()
 	{
@@ -29,6 +26,7 @@ public class ObjectGenerator{
 		gameObjectList = new GameObjectList();
 //		gameObjectList.addTower(new MissileTower("RocketTower", 450, 100, 0.9));
 //		gameObjectList.addTower(new MissileTower("RocketTower", 410, 450, 0.4));
+//		gameObjectList.addTower(new TowerOfDoom("RocketTower", 410, 420, 0.4));
 
 
 	}
@@ -63,7 +61,7 @@ public class ObjectGenerator{
 	{
 		i++;
 
-		if(i%3==0)
+		if(i%4==0)
 		{
 			justShootString.add("SniperCastle");
 		}
@@ -71,43 +69,30 @@ public class ObjectGenerator{
 		{
 			justShootString.add("MissileTower");
 		}
+		if((i%2==0))
+		{
+			justShootString.add("LaserTower");
+		}
+		
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			if(tower instanceof SniperCastle && (i%3==0))
+			if(tower instanceof SniperCastle && (i%4==0))
 			{
 				gameObjectList.addShotGeneric(tower, "GunShot");
-				//							System.out.println("Shoooooot");
-				//towersThatJustShoot.add(tower);
 			}
 			else if(tower instanceof MissileTower && (i%tower.getTowerInfo().getRepeat()==0))
 			{
 				gameObjectList.addShotGeneric(tower, "Rocket");
-				//towersThatJustShoot.add(tower);
+			}
+			else if(tower instanceof TowerOfDoom && (i%2==0))
+			{
+				gameObjectList.addShotGeneric(tower, "Laser");
 			}	
 		}
 		
 		if(i>=100) i = 0;
 		
 	}
-//	public void hej()
-//	{
-//
-//		for(Tower tower : gameObjectList.getTowerList())
-//		{
-//			if(gen.nextInt(50)<tower.getTowerInfo().getRepeat())
-//			{
-//				if(tower instanceof SniperCastle)
-//				{
-//					gameObjectList.addShotGeneric(tower, "GunShot");
-//				}else if(tower instanceof MissileTower)
-//				{
-//					gameObjectList.addShotGeneric(tower, "Rocket");
-//
-//				}
-//				this.setJustShoot(tower);
-//			}
-//		}
-//	}
 	public synchronized GameObjectList getGameObjectContainer()
 	{
 		return this.gameObjectList;

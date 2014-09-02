@@ -2,7 +2,6 @@ package se.SkyLax.MPT.GameObjects;
 
 import java.util.ArrayList;
 
-import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Levels.Levels;
 
 
