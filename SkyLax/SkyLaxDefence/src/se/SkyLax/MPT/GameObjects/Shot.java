@@ -38,13 +38,21 @@ public class Shot {
 		this.Y = t.getY();
 		trig = new Trigonometry(angle);
 	}
-//	protected int getX()
-//	{
-//		return this.X;
-//	}
-//	
-//	protected int getY()
-//	{
-//		return this.Y;
-//	}
+
+	
+	
+	public int getX()
+	{
+		return X;
+	}
+	public int getY()
+	{
+		return Y;
+	}
+	
+	public double getAngle()
+	{
+		return trig.getAngle();
+	}
+
 }

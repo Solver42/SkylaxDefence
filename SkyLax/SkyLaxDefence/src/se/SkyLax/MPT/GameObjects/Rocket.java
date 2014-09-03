@@ -22,26 +22,9 @@ public class Rocket extends Shot implements ConcreteShot{
 	
 	public synchronized void travel()
 	{
-		
-		//this.X += 1;
-		//this.Y += 1;
-		
-		
 		this.X += (trig.getSpacedXY("X"))*speed;
 		this.Y += (trig.getSpacedXY("Y"))*speed;
 	}
-	
-	public int getX()
-	{
-		return super.X;
-	}
-	public int getY()
-	{
-		return super.Y;
-	}
-	public double getAngle()
-	{
-		return super.trig.getAngle();
-	}
+
 
 }

@@ -13,7 +13,7 @@ public class MouseMotionHandler {
 	private int mouseY;
 	private ObjectGenerator objGen = null;
 	GUIHelper gui = null;
-	private int kindOfTower = 3;
+	private int kindOfTower = 0;
 
 	public MouseMotionHandler (ObjectGenerator obj, GUIHelper gui)
 	{
@@ -50,17 +50,20 @@ public class MouseMotionHandler {
 		if(clickedOnATowerFactory() == 3)
 		{
 			this.kindOfTower = 3;
+			gui.setKindOfTown(3);
 			gui.setRange(210);
 			//			gui.setKindOfTown(3);
 		} else if(clickedOnATowerFactory() == 4)
 		{
 			this.kindOfTower = 4;
+			gui.setKindOfTown(4);
 			gui.setRange(300);
 			//			gui.setKindOfTown(3);
 		}
 		else if(clickedOnATowerFactory() == 5)
 		{
 			this.kindOfTower = 5;
+			gui.setKindOfTown(5);
 			gui.setRange(500);
 			//			gui.setKindOfTown(3);x
 		}
@@ -68,11 +71,23 @@ public class MouseMotionHandler {
 		else if(creationOfTowerIsApproved())
 		{
 			if(this.kindOfTower == 3)
-				objGen.getGameObjectContainer().addTower(new SniperCastle("SniperCastle", this.mouseX, this.mouseY, 1));
+			{
+				objGen.getGameObjectContainer().addTower(new SniperCastle(this.mouseX, this.mouseY, 1));
+				gui.setKindOfTown(0);
+				kindOfTower = 0;
+			}
 			else if(this.kindOfTower ==4)
-				objGen.getGameObjectContainer().addTower(new MissileTower("MissileTower", this.mouseX, this.mouseY, 1));
+			{
+				objGen.getGameObjectContainer().addTower(new MissileTower(this.mouseX, this.mouseY, 1));
+				gui.setKindOfTown(0);
+				kindOfTower = 0;
+			}
 			else if(this.kindOfTower ==5)
-				objGen.getGameObjectContainer().addTower(new TowerOfDoom("TowerOfDoom", this.mouseX, this.mouseY, 1));
+			{
+				objGen.getGameObjectContainer().addTower(new TowerOfDoom(this.mouseX, this.mouseY, 1));
+				gui.setKindOfTown(0);
+				kindOfTower = 0;
+			}
 		}
 	}
 

@@ -63,7 +63,8 @@ public class Updater implements Runnable{
 			removeNAShot();
 
 			screen.update();
-
+			objGen.waitASec();
+			objGen.clearJustShoot();
 			
 			
 			try {

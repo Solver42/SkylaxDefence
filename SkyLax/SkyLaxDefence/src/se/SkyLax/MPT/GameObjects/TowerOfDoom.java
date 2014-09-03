@@ -2,8 +2,13 @@ package se.SkyLax.MPT.GameObjects;
 
 public class TowerOfDoom extends Tower{
 
-	public TowerOfDoom(String kind, int X, int Y, double angle) {
-		super(kind , X, Y, angle);
+	public TowerOfDoom(int X, int Y, double angle) {
+		super(X, Y, angle, 2);
 	}
 
+	
+	public int getRepeat()
+	{
+		return this.repeat;
+	}
 }

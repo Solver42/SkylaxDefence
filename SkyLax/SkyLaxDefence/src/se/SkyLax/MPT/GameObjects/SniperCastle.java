@@ -11,10 +11,13 @@ package se.SkyLax.MPT.GameObjects;
 
 public class SniperCastle extends Tower{
 
-	public SniperCastle(String kind, int X, int Y, double angle) {
-		super(kind , X, Y, angle);
+	public SniperCastle(int X, int Y, double angle) {
+		super(X, Y, angle, 4);
 	}
-
-
-
+	
+	public int getRepeat()
+	{
+		return this.repeat;
+	}
+	
 }

@@ -34,11 +34,11 @@ public class GUIHelper{
 	private int mouseY;
 	private boolean mayBuild = false;
 
-	private int kindOfTower = 3;
+	private int kindOfTower = 0;
 
 	private Color gray = new Color(204, 204, 204, 128);
 	private Color red = new Color(204, 51, 51, 128);
-	
+
 	private int range;
 
 
@@ -58,20 +58,19 @@ public class GUIHelper{
 	{
 		return mayBuild;
 	}
-	
 
-	//	public void setKindOfTown(int kind)
-	//	{
-	//		this.kindOfTower = kind;
-	//		System.out.println("fdssfd");
-	//	}
+
+	public void setKindOfTown(int kind)
+	{
+		this.kindOfTower = kind;
+	}
 
 	public void setGUI_XY(int x, int y)
 	{
 		this.mouseX = x;
 		this.mouseY = y;
 	}
-	
+
 	public void setRange(int rang)
 	{
 		this.range = rang;
@@ -176,15 +175,18 @@ public class GUIHelper{
 			}
 
 		}
-		objGen.clearJustShoot();
-		if(mayBuild)
+//		objGen.clearJustShoot();
+		if(kindOfTower != 0)
 		{
-			g2d.setColor(gray);
-			g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
-		}else
-		{
-			g2d.setColor(red);
-			g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
+			if(mayBuild)
+			{
+				g2d.setColor(gray);
+				g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
+			}else
+			{
+				g2d.setColor(red);
+				g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
+			}
 		}
 
 	}

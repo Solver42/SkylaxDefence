@@ -15,18 +15,6 @@ public class Laser extends Shot implements ConcreteShot{
 		this.Y += (trig.getSimpleXY("Y"))*speed;
 		
 	}
-	
-	public int getX()
-	{
-		return super.X;
-	}
-	public int getY()
-	{
-		return super.Y;
-	}
-	public double getAngle()
-	{
-		return super.trig.getAngle();
-	}
+
 
 }

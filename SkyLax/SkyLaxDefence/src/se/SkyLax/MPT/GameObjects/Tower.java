@@ -1,7 +1,6 @@
 package se.SkyLax.MPT.GameObjects;
 
 import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.Utility.TowerInformation;
 
 public class Tower {
 	
@@ -12,13 +11,15 @@ public class Tower {
 	
 	protected int X;
 	protected int Y;
-	protected TowerInformation towIn = null;
+	protected int repeat;
+//	protected TowerInformation towIn = null;
 	
-	public Tower (String kind, int X, int Y, double angle)
+	public Tower (int X, int Y, double angle, int repeat)
 	{
 		
 		//TODO get this modulos right!
-		towIn = new TowerInformation(kind);
+//		towIn = new TowerInformation(kind);
+		this.repeat = repeat;
 		this.angle = angle;
 		this.X = (X-(X%Levels.UNIT_WIDTH))+(Levels.UNIT_WIDTH/2);
 		this.Y = (Y-(Y%Levels.UNIT_HEIGHT))+(Levels.UNIT_WIDTH/2);
@@ -57,9 +58,13 @@ public class Tower {
 	{
 		return this.Y;
 	}
-	public TowerInformation getTowerInfo()
+	public int getRepeat()
 	{
-		return this.towIn;
+		return this.repeat;
 	}
+//	public TowerInformation getTowerInfo()
+//	{
+//		return this.towIn;
+//	}
 
 }
