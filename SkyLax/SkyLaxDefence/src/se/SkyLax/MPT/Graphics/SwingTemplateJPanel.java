@@ -25,14 +25,11 @@ public class SwingTemplateJPanel extends JPanel {
 	public static final int CANVAS_HEIGHT = 540;
 	public static final String TITLE = "...Title...";
 
-	public SwingTemplateJPanel() {
+	public SwingTemplateJPanel(ObjectGenerator obj) {
+		this.objGen = obj;
 		guiHelper = new GUIHelper();
+		new MouseClass(this, obj, guiHelper);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
-//		try {
-////			rocketImg = ImageIO.read(new File("img/Rocket.png"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 
@@ -46,11 +43,6 @@ public class SwingTemplateJPanel extends JPanel {
 		guiHelper.drawThis(g2d, objGen);
 	}
 
-	public void setObjectContainer(ObjectGenerator obj)
-	{
-		this.objGen = obj;
-		new MouseClass(this, obj, guiHelper);
-	}
 
 
 

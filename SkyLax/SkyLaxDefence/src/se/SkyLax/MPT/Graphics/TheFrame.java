@@ -9,10 +9,11 @@ import se.SkyLax.MPT.Controller.ObjectGenerator;
 public class TheFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private SwingTemplateJPanel myPanel = new SwingTemplateJPanel();
+	private SwingTemplateJPanel myPanel = null;
 
-	public TheFrame()
+	public TheFrame(ObjectGenerator obj)
 	{
+		myPanel = new SwingTemplateJPanel(obj);
 		this.setResizable( false );
 		this.setContentPane(myPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,9 +33,5 @@ public class TheFrame extends JFrame {
 		repaint();
 		
 	}
-	
-	public void setObjectContainerOfJPanel(ObjectGenerator obj)
-	{
-		myPanel.setObjectContainer(obj);
-	}
+
 }

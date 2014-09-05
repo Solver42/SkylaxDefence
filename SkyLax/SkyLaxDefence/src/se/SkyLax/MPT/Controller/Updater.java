@@ -15,13 +15,13 @@ public class Updater implements Runnable{
 	private ObjectGenerator objGen = null;
 	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = new ArrayList<>();
-	private TheFrame screen = new TheFrame();
+	private TheFrame screen = null;
 	private EnemyList enemyList = new EnemyList();
 	private TowerAimer towAim;
 	public Updater()
 	{
 		objGen = new ObjectGenerator();
-		screen.setObjectContainerOfJPanel(objGen);
+		screen = new TheFrame(objGen);
 		towAim = new TowerAimer();
 	}
 	private void updateShots()
@@ -63,19 +63,18 @@ public class Updater implements Runnable{
 		int mod = 10;
 		while(true)
 		{
-//			objGen.clearJustShoot();
-			//TODO
-			//JAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA det är därför som skotten bara kommmer ibland: (fillPlanithRocketShots körs ju bara ibland)
-
 			if(( mod%10==0 ))
 			{
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
 			}
-			if(mod==100)
-			{
-				makeEnemiesWalk();
-			}
+			
+			
+//			To Get the enemies to walk, uncomment this!
+//			if(mod==100)
+//			{
+//				makeEnemiesWalk();
+//			}
 
 			updateShots();
 

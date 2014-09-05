@@ -12,33 +12,27 @@ public class TowerAimer {
 	}
 
 
-	private int currenPocisionX;
-	private int currentLevelY;
+	private int currenPositionX;
+	private int currenPositionY;
 	private int towX;
 	private int towY;
 	private double currentLengthX;
 	private double currentLengthY;
 	private double lengthTillTarget;
 	private int nrOfItrNeeded;
-	double initialPocisionX;
-	double initialPocisionY;
-	double initialAngle;
-	double currentAngle;
 	public double aimHere(Tower t, ArrayList<Enemy> enList)
 	{
-		currenPocisionX = Levels.levelList[0][enList.get(0).getStep()];
-		currentLevelY = Levels.levelList[1][enList.get(0).getStep()];
+		currenPositionX = Levels.levelList[0][enList.get(0).getStep()];
+		currenPositionY = Levels.levelList[1][enList.get(0).getStep()];
 		
 		towX = t.getX();
 		towY = t.getY();
 		
-		currentLengthX = towX-currenPocisionX;
-		currentLengthY = towY-currentLevelY;
+		currentLengthX = towX-currenPositionX;
+		currentLengthY = towY-currenPositionY;
 		
 			lengthTillTarget = Math.sqrt((Math.pow(currentLengthX, 2) + Math.pow(currentLengthY, 2)));
 			
-			initialPocisionX = towX;
-			initialPocisionY = towY+lengthTillTarget;
 			
 			
 			nrOfItrNeeded = (int) (lengthTillTarget/50);
