@@ -6,7 +6,7 @@ public class Laser extends Shot implements ConcreteShot{
 	
 	public Laser(Tower t) {
 		super(t);
-		speed = 30;
+		speed = 50;
 	}
 
 	@Override

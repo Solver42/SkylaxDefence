@@ -21,7 +21,7 @@ import se.SkyLax.MPT.Levels.Levels;
 
 public class GUIHelper{
 
-	private BufferedImage rocketImg;
+
 	//	private TheFrame screen = null;
 	private ObjectGenerator objGen = null;
 
@@ -44,14 +44,7 @@ public class GUIHelper{
 
 	public GUIHelper()
 	{
-		//		screen = new TheFrame();
-		//		screen.setObjectContainerOfJPanel(objGen);
-		try {
-			rocketImg = ImageIO.read(new File("img/Rocket.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 
 	public boolean mayBuild()

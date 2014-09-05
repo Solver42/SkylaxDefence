@@ -7,16 +7,22 @@ import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
+import se.SkyLax.MTP.UNDER_CONSTR.Enemy;
+import se.SkyLax.MTP.UNDER_CONSTR.EnemyList;
+import se.SkyLax.MTP.UNDER_CONSTR.TowerAimer;
 
 public class Updater implements Runnable{
-	ObjectGenerator objGen = null;
+	private ObjectGenerator objGen = null;
 	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = new ArrayList<>();
-	TheFrame screen = new TheFrame();
+	private TheFrame screen = new TheFrame();
+	private EnemyList enemyList = new EnemyList();
+	private TowerAimer towAim;
 	public Updater()
 	{
 		objGen = new ObjectGenerator();
 		screen.setObjectContainerOfJPanel(objGen);
+		towAim = new TowerAimer();
 	}
 	private void updateShots()
 	{
@@ -41,7 +47,16 @@ public class Updater implements Runnable{
 	{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
 		{
-			tower.setAngle(gen.nextDouble()*(Math.PI*2));
+//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
+			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList()));
+		}
+	}
+	
+	private void makeEnemiesWalk()
+	{
+		for (Enemy enemy : enemyList.getEnemyList())
+		{
+			enemy.walk();
 		}
 	}
 	public void run() {
@@ -56,6 +71,10 @@ public class Updater implements Runnable{
 			{
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
+			}
+			if(mod==100)
+			{
+				makeEnemiesWalk();
 			}
 
 			updateShots();
