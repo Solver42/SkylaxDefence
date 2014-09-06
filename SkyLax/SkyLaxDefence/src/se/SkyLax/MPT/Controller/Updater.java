@@ -16,12 +16,13 @@ public class Updater implements Runnable{
 	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = new ArrayList<>();
 	private TheFrame screen = null;
-	private EnemyList enemyList = new EnemyList();
+	private EnemyList enemyList;
 	private TowerAimer towAim;
 	public Updater()
 	{
 		objGen = new ObjectGenerator();
-		screen = new TheFrame(objGen);
+		enemyList = new EnemyList();
+		screen = new TheFrame(objGen, enemyList);
 		towAim = new TowerAimer();
 	}
 	private void updateShots()
@@ -71,10 +72,10 @@ public class Updater implements Runnable{
 			
 			
 //			To Get the enemies to walk, uncomment this!
-//			if(mod==100)
-//			{
-//				makeEnemiesWalk();
-//			}
+			if(mod==100)
+			{
+				makeEnemiesWalk();
+			}
 
 			updateShots();
 

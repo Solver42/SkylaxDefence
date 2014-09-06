@@ -1,12 +1,15 @@
 package se.SkyLax.MPT.Graphics;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
@@ -18,12 +21,15 @@ import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MPT.UNDER_CONSTR.Enemy;
+import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
 
 public class GUIHelper{
 
 
-	//	private TheFrame screen = null;
+	private Image img = null;
 	private ObjectGenerator objGen = null;
+	private EnemyList enemyList = null;
 
 	private final int GUN_WIDTH = 10;
 	private final int ROCKET_WIDTH = 70;
@@ -42,9 +48,10 @@ public class GUIHelper{
 	private int range;
 
 
-	public GUIHelper()
+	public GUIHelper(EnemyList enemy)
 	{
-
+		enemyList = enemy;
+		img = new ImageIcon("img/texture.jpg").getImage();
 	}
 
 	public boolean mayBuild()
@@ -75,8 +82,11 @@ public class GUIHelper{
 	}
 
 
-	public void drawThis(Graphics2D g2d, ObjectGenerator objGen)
+	public void drawThis(Graphics2D g2d, Graphics g, ObjectGenerator objGen)
 	{
+		g.drawImage(img, 0, 0, null);
+
+		
 		for (int i = 0; i<objGen.getGameObjectContainer().getLevel().getMap().length; i++)
 		{
 			for (int j = 0; j<objGen.getGameObjectContainer().getLevel().getMap()[1].length; j++)
@@ -91,7 +101,7 @@ public class GUIHelper{
 
 				case 3:
 
-					g2d.setColor(Color.GRAY);
+					g2d.setColor(Color.BLACK);
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 				case 4:
@@ -101,12 +111,17 @@ public class GUIHelper{
 					break;
 				case 5:
 
-					g2d.setColor(Color.GREEN);
+					g2d.setColor(Color.BLUE);
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 				}
 			}
 		}
+		
+		
+
+		
+		
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
 			if(tower instanceof SniperCastle)
 			{
@@ -117,7 +132,7 @@ public class GUIHelper{
 				}
 				else
 				{
-					g2d.setColor(Color.GRAY);
+					g2d.setColor(new Color(0,0,0,200));
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
@@ -143,17 +158,18 @@ public class GUIHelper{
 				}
 				else
 				{
-					g2d.setColor(Color.GREEN);
+					g2d.setColor(new Color(34,45,120,100));
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 		}
+		
 
 		for(ConcreteShot shot : objGen.getGameObjectContainer().getListOfAllShots())
 		{
 			if(shot instanceof GunShot)
 			{
-				g2d.setColor(Color.GRAY);
+				g2d.setColor(Color.BLACK);
 				g2d.fillOval(shot.getX(), shot.getY(), GUN_WIDTH, GUN_WIDTH);
 			}
 			else if(shot instanceof Rocket)
@@ -163,7 +179,7 @@ public class GUIHelper{
 			}
 			else if(shot instanceof Laser)
 			{
-				g2d.setColor(Color.YELLOW);
+				g2d.setColor(Color.GREEN);
 				g2d.drawLine(shot.getX(), shot.getY(), (int)(shot.getX() + Math.cos(shot.getAngle())*LASER_L), (int)(shot.getY() + Math.sin(shot.getAngle())*LASER_L));
 			}
 
@@ -181,8 +197,22 @@ public class GUIHelper{
 				g2d.fillOval(mouseX-range/2, mouseY-range/2, range, range);
 			}
 		}
-
+		int enemyX;
+		int enemyY;
+		
+		for(Enemy enemy : enemyList.getEnemyList())
+		{
+			enemyX = ((Levels.mapList[0][enemy.getStep()]+1)*(Levels.UNIT_WIDTH*2))-(Levels.UNIT_WIDTH);
+			enemyY = ((Levels.mapList[1][enemy.getStep()]+1)*(Levels.UNIT_HEIGHT*2))-(Levels.UNIT_HEIGHT);
+			
+			g2d.setColor(red);
+			g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+		}
+		
+		
+		
 	}
+	
 
 
 }

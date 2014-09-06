@@ -14,7 +14,7 @@ public class Enemy {
 	public void walk()
 	{
 		step++;
-		System.out.println("I walked, am now on step " + step);
+		if(step>10) step = 0;
 	}
 	
 	public int getStep()

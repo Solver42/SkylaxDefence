@@ -4,6 +4,7 @@ package se.SkyLax.MPT.Graphics;
 import javax.swing.JFrame;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
 
 
 public class TheFrame extends JFrame {
@@ -11,9 +12,9 @@ public class TheFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private SwingTemplateJPanel myPanel = null;
 
-	public TheFrame(ObjectGenerator obj)
+	public TheFrame(ObjectGenerator obj, EnemyList enemy)
 	{
-		myPanel = new SwingTemplateJPanel(obj);
+		myPanel = new SwingTemplateJPanel(obj, enemy);
 		this.setResizable( false );
 		this.setContentPane(myPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
