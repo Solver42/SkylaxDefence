@@ -7,9 +7,9 @@ import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
-import se.SkyLax.MTP.UNDER_CONSTR.Enemy;
-import se.SkyLax.MTP.UNDER_CONSTR.EnemyList;
-import se.SkyLax.MTP.UNDER_CONSTR.TowerAimer;
+import se.SkyLax.MPT.UNDER_CONSTR.Enemy;
+import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
+import se.SkyLax.MPT.UNDER_CONSTR.TowerAimer;
 
 public class Updater implements Runnable{
 	private ObjectGenerator objGen = null;
@@ -60,7 +60,7 @@ public class Updater implements Runnable{
 		}
 	}
 	public void run() {
-		int mod = 10;
+		int mod = 1;
 		while(true)
 		{
 			if(( mod%10==0 ))
@@ -92,7 +92,7 @@ public class Updater implements Runnable{
 				e.printStackTrace();
 			}
 			mod++;
-			if(mod>100) mod = 0;
+			if(mod>100) mod = 1;
 
 		}
 	}

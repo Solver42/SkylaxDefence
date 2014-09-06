@@ -154,7 +154,7 @@ public class GUIHelper{
 			if(shot instanceof GunShot)
 			{
 				g2d.setColor(Color.GRAY);
-				g2d.fillOval(shot.getX()-GUN_WIDTH/2, shot.getY()-GUN_WIDTH/2, GUN_WIDTH, GUN_WIDTH);
+				g2d.fillOval(shot.getX(), shot.getY(), GUN_WIDTH, GUN_WIDTH);
 			}
 			else if(shot instanceof Rocket)
 			{
