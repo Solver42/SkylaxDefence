@@ -14,16 +14,18 @@ public class Rocket extends Shot implements ConcreteShot{
 	 */
 	
 	private int speed;
+	Tower t = null;
 	
 	public Rocket(Tower t) {
 		super(t);
+		this.t = t;
 		speed = 3;
 	}
 	
 	public synchronized void travel()
 	{
-		this.X += (trig.getSpacedXY("X"))*speed;
-		this.Y += (trig.getSpacedXY("Y"))*speed;
+		this.X += (trig.getSpacedXY("X"))*t.getSpeedOfShot();
+		this.Y += (trig.getSpacedXY("Y"))*t.getSpeedOfShot();
 	}
 
 

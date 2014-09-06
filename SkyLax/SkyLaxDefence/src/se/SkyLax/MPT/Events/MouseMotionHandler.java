@@ -55,13 +55,13 @@ public class MouseMotionHandler {
 		{
 			this.kindOfTower = 3;
 			gui.setKindOfTown(3);
-			gui.setRange(210);
+			gui.setRange(350);
 			//			gui.setKindOfTown(3);
 		} else if(clickedOnATowerFactory() == 4)
 		{
 			this.kindOfTower = 4;
 			gui.setKindOfTown(4);
-			gui.setRange(300);
+			gui.setRange(200);
 			//			gui.setKindOfTown(3);
 		}
 		else if(clickedOnATowerFactory() == 5)
@@ -97,7 +97,8 @@ public class MouseMotionHandler {
 
 	private boolean creationOfTowerIsApproved()
 	{
-		if(objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] !=2 && gui.mayBuild())
+		boolean isOnSolidGround = objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] !=2 && gui.mayBuild();
+		if(isOnSolidGround)
 			return true;
 		return false;
 	}

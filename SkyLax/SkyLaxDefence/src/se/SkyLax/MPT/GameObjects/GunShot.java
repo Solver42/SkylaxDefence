@@ -14,17 +14,20 @@ public class GunShot extends Shot implements ConcreteShot{
 	 */
 	
 	private int speed;
+	Tower t = null;
 	
 	public GunShot(Tower t) {
+		
 		super(t);
+		this.t = t;
 		speed = 23;
 	}
 	
 	public synchronized void travel()
 	{
 
-		this.X += (trig.getSimpleXY("X"))*speed;
-		this.Y += (trig.getSimpleXY("Y"))*speed;
+		this.X += (trig.getSimpleXY("X"))*t.getSpeedOfShot();
+		this.Y += (trig.getSimpleXY("Y"))*t.getSpeedOfShot();
 	}
 
 }

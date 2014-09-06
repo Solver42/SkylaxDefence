@@ -12,13 +12,15 @@ public class Tower {
 	protected int X;
 	protected int Y;
 	protected int repeat;
+	protected int speedOfShot;
 //	protected TowerInformation towIn = null;
 	
-	public Tower (int X, int Y, double angle, int repeat, int range)
+	public Tower (int X, int Y, double angle, int repeat, int range, int speedOfShoot)
 	{
 		
 		//TODO get this modulos right!
 //		towIn = new TowerInformation(kind);
+		this.speedOfShot = speedOfShoot;
 		this.rangeInPix = range;
 		this.repeat = repeat;
 		this.angle = angle;
@@ -67,6 +69,10 @@ public class Tower {
 	public int getRangeInPix()
 	{
 		return rangeInPix;
+	}
+	public int getSpeedOfShot()
+	{
+		return this.speedOfShot;
 	}
 //	public TowerInformation getTowerInfo()
 //	{

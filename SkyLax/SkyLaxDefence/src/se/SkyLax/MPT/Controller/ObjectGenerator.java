@@ -53,25 +53,13 @@ public class ObjectGenerator{
 	{
 		i++;
 
-//		if(i%4==0)
-//		{
-//			justShootString.add("SniperCastle");
-//		}
-//		if((i%10==0))
-//		{
-//			justShootString.add("MissileTower");
-//		}
-//		if((i%2==0))
-//		{
-//			justShootString.add("LaserTower");
-//		}
 		
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			
-			boolean sniperMayShoot = tower instanceof SniperCastle &&(i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
-			boolean missileTowerMayShoot = tower instanceof MissileTower && (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
-			boolean laserTowerMayShoot = tower instanceof TowerOfDoom && (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
+			boolean theRest = (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix()/2;
+			boolean sniperMayShoot = tower instanceof SniperCastle && theRest;
+			boolean missileTowerMayShoot = tower instanceof MissileTower && theRest;
+			boolean laserTowerMayShoot = tower instanceof TowerOfDoom && theRest;
 			
 			if(sniperMayShoot)
 			{

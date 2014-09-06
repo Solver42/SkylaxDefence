@@ -7,6 +7,7 @@ import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
+import se.SkyLax.MPT.Levels.Levels;
 import se.SkyLax.MPT.UNDER_CONSTR.Enemy;
 import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
 import se.SkyLax.MPT.UNDER_CONSTR.TowerAimer;
@@ -66,12 +67,16 @@ public class Updater implements Runnable{
 	}
 	
 	
-	
+	public static int NR_OF_ITR_ENEMY_STAYS = 10;
 	
 	public void run() {
 		int mod = 1;
 		while(true)
 		{
+			if(mod%NR_OF_ITR_ENEMY_STAYS == 0)
+			{
+				makeEnemiesWalk();
+			}
 			if(( mod%10==0 ))
 			{
 				setRandomTowerAngle();
@@ -80,10 +85,7 @@ public class Updater implements Runnable{
 			
 			
 //			To Get the enemies to walk, uncomment this!
-			if(mod==100)
-			{
-				makeEnemiesWalk();
-			}
+
 
 			updateShots();
 
