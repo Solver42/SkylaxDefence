@@ -7,6 +7,8 @@ import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
+import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
+import se.SkyLax.MPT.UNDER_CONSTR.TowerAimer;
 
 public class ObjectGenerator{
 
@@ -20,21 +22,24 @@ public class ObjectGenerator{
 
 	GameObjectList gameObjectList = null;
 	private ArrayList<Tower> towersThatJustShoot = new ArrayList<Tower>() ;
-	public  ObjectGenerator()
+	private EnemyList enemyList = null;
+	private TowerAimer towAim = null;
+	public  ObjectGenerator(EnemyList enemyL, TowerAimer tow)
 	{
-
+		towAim = tow;
+		enemyList = enemyL;
 		gameObjectList = new GameObjectList();
 
 
 	}
 
-	private ArrayList<String> justShootString = new ArrayList<String>() ;
+	private ArrayList<Tower> justShootString = new ArrayList<Tower>() ;
 
 	public  synchronized void clearFireArray()
 	{
 		towersThatJustShoot.clear();
 	}
-	public synchronized ArrayList<String>getJustShootList()
+	public synchronized ArrayList<Tower>getJustShootList()
 	{
 		return this.justShootString;
 	}
@@ -43,38 +48,46 @@ public class ObjectGenerator{
 		this.justShootString.clear();
 	}
 	
-
 	int i;
 	public synchronized void fillPlanWithRocketShot()
 	{
 		i++;
 
-		if(i%4==0)
-		{
-			justShootString.add("SniperCastle");
-		}
-		if((i%10==0))
-		{
-			justShootString.add("MissileTower");
-		}
-		if((i%2==0))
-		{
-			justShootString.add("LaserTower");
-		}
+//		if(i%4==0)
+//		{
+//			justShootString.add("SniperCastle");
+//		}
+//		if((i%10==0))
+//		{
+//			justShootString.add("MissileTower");
+//		}
+//		if((i%2==0))
+//		{
+//			justShootString.add("LaserTower");
+//		}
 		
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			if(tower instanceof SniperCastle && (i%tower.getRepeat()==0))
+			
+			boolean sniperMayShoot = tower instanceof SniperCastle &&(i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
+			boolean missileTowerMayShoot = tower instanceof MissileTower && (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
+			boolean laserTowerMayShoot = tower instanceof TowerOfDoom && (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true)) < tower.getRangeInPix();
+			
+			if(sniperMayShoot)
 			{
+				
 				gameObjectList.addShotGeneric(tower, "GunShot");
+				justShootString.add(tower);
 			}
-			else if(tower instanceof MissileTower && (i%tower.getRepeat()==0))
+			else if(missileTowerMayShoot)
 			{
 				gameObjectList.addShotGeneric(tower, "Rocket");
+				justShootString.add(tower);
 			}
-			else if(tower instanceof TowerOfDoom && (i%tower.getRepeat()==0))
+			else if(laserTowerMayShoot)
 			{
 				gameObjectList.addShotGeneric(tower, "Laser");
+				justShootString.add(tower);
 			}	
 		}
 		
@@ -89,7 +102,7 @@ public class ObjectGenerator{
 	public void waitASec()
 	{
 		try {
-			Thread.sleep(5);
+			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

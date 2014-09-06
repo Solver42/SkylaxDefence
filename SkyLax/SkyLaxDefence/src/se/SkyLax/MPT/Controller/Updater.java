@@ -20,10 +20,12 @@ public class Updater implements Runnable{
 	private TowerAimer towAim;
 	public Updater()
 	{
-		objGen = new ObjectGenerator();
+		
 		enemyList = new EnemyList();
-		screen = new TheFrame(objGen, enemyList);
 		towAim = new TowerAimer();
+		objGen = new ObjectGenerator(enemyList, towAim);
+		screen = new TheFrame(objGen, enemyList);
+		
 	}
 	private void updateShots()
 	{
@@ -36,7 +38,9 @@ public class Updater implements Runnable{
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-			if(rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0)
+			boolean thisShotShallBeRemoved = rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0;
+			
+			if(thisShotShallBeRemoved)
 			{
 				shotsToRemove.add(rocket);
 			}
@@ -49,7 +53,7 @@ public class Updater implements Runnable{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
 		{
 //			tower.setAngle(gen.nextDouble()*(Math.PI*2));
-			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList()));
+			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false));
 		}
 	}
 	
@@ -60,6 +64,10 @@ public class Updater implements Runnable{
 			enemy.walk();
 		}
 	}
+	
+	
+	
+	
 	public void run() {
 		int mod = 1;
 		while(true)

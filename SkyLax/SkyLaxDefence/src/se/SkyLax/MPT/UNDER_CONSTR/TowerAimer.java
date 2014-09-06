@@ -20,7 +20,7 @@ public class TowerAimer {
 	private double currentLengthY;
 	private double lengthTillTarget;
 	private int nrOfItrNeeded;
-	public double aimHere(Tower t, ArrayList<Enemy> enList)
+	public double aimHere(Tower t, ArrayList<Enemy> enList, boolean onlyLength)
 	{
 		currenPositionX = ((Levels.mapList[0][enList.get(0).getStep()]+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
 		currenPositionY = ((Levels.mapList[1][enList.get(0).getStep()]+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
@@ -33,9 +33,12 @@ public class TowerAimer {
 		
 			lengthTillTarget = Math.sqrt((Math.pow(currentLengthX, 2) + Math.pow(currentLengthY, 2)));
 			
+			if(onlyLength)
+			{
+				return lengthTillTarget;
+			}
 			
-			
-			nrOfItrNeeded = (int) (lengthTillTarget/50);
+//			nrOfItrNeeded = (int) (lengthTillTarget/50);
 //			if(nrOfItrNeeded<=100)
 //			{
 				return (Math.atan2(currentLengthY, currentLengthX)+Math.PI);

@@ -29,8 +29,8 @@ public class SwingTemplateJPanel extends JPanel {
 	public static final String TITLE = "...Title...";
 
 	public SwingTemplateJPanel(ObjectGenerator obj, EnemyList enemy) {
-		this.objGen = obj;
-		guiHelper = new GUIHelper(enemy);
+//		this.objGen = obj;
+		guiHelper = new GUIHelper(enemy, obj);
 		new MouseClass(this, obj, guiHelper);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
 	}
@@ -43,7 +43,7 @@ public class SwingTemplateJPanel extends JPanel {
 		super.paintComponent(g);  // paint background
 		setBackground(Color.BLACK);
 		Graphics2D g2d = (Graphics2D) g;
-		guiHelper.drawThis(g2d, g, objGen);
+		guiHelper.drawThis(g2d, g);
 	}
 
 

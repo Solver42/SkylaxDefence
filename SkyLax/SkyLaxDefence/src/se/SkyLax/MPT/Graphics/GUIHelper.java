@@ -48,8 +48,9 @@ public class GUIHelper{
 	private int range;
 
 
-	public GUIHelper(EnemyList enemy)
+	public GUIHelper(EnemyList enemy, ObjectGenerator obj)
 	{
+		objGen = obj;
 		enemyList = enemy;
 		img = new ImageIcon("img/texture.jpg").getImage();
 	}
@@ -82,7 +83,7 @@ public class GUIHelper{
 	}
 
 
-	public void drawThis(Graphics2D g2d, Graphics g, ObjectGenerator objGen)
+	public void drawThis(Graphics2D g2d, Graphics g)
 	{
 		g.drawImage(img, 0, 0, null);
 
@@ -125,7 +126,7 @@ public class GUIHelper{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
 			if(tower instanceof SniperCastle)
 			{
-				if(objGen.getJustShootList().contains("SniperCastle"))
+				if(objGen.getJustShootList().contains(tower))
 				{
 					g2d.setColor(Color.WHITE);
 					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
@@ -138,7 +139,7 @@ public class GUIHelper{
 			}
 			else if(tower instanceof MissileTower)
 			{
-				if(objGen.getJustShootList().contains("MissileTower"))
+				if(objGen.getJustShootList().contains(tower))
 				{
 					g2d.setColor(Color.ORANGE);
 					g2d.fillOval(tower.getX()-ROCKET_EXP/2, tower.getY()-ROCKET_EXP/2, ROCKET_EXP, ROCKET_EXP);
@@ -151,7 +152,7 @@ public class GUIHelper{
 			}
 			else if(tower instanceof TowerOfDoom)
 			{
-				if(objGen.getJustShootList().contains("LaserTower"))
+				if(objGen.getJustShootList().contains(tower))
 				{
 					g2d.setColor(Color.YELLOW);
 					g2d.fillOval(tower.getX()-LASER_EXP/2, tower.getY()-LASER_EXP/2, LASER_EXP, LASER_EXP);

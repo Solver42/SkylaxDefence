@@ -14,11 +14,12 @@ public class Tower {
 	protected int repeat;
 //	protected TowerInformation towIn = null;
 	
-	public Tower (int X, int Y, double angle, int repeat)
+	public Tower (int X, int Y, double angle, int repeat, int range)
 	{
 		
 		//TODO get this modulos right!
 //		towIn = new TowerInformation(kind);
+		this.rangeInPix = range;
 		this.repeat = repeat;
 		this.angle = angle;
 		this.X = (X-(X%Levels.UNIT_WIDTH))+(Levels.UNIT_WIDTH/2);
@@ -61,6 +62,11 @@ public class Tower {
 	public int getRepeat()
 	{
 		return this.repeat;
+	}
+	
+	public int getRangeInPix()
+	{
+		return rangeInPix;
 	}
 //	public TowerInformation getTowerInfo()
 //	{
