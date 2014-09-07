@@ -14,7 +14,7 @@ public class Enemy {
 	public void walk()
 	{
 		step++;
-		if(step>10) step = 0;
+//		if(step>10) step = 0;
 	}
 	
 	public int getStep()

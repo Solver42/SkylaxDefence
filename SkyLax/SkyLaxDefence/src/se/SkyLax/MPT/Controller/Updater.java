@@ -21,17 +21,20 @@ public class Updater implements Runnable{
 	private TowerAimer towAim;
 	public Updater()
 	{
-		
+
 		enemyList = new EnemyList();
 		towAim = new TowerAimer();
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
-		
+
 	}
 	private void updateShots()
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
+			if(!enemyList.getEnemyList().isEmpty())
+			enemyList.checkIfTargetIsHit(rocket);
+			
 			rocket.travel();
 		}
 	}
@@ -40,7 +43,7 @@ public class Updater implements Runnable{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
 			boolean thisShotShallBeRemoved = rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0;
-			
+
 			if(thisShotShallBeRemoved)
 			{
 				shotsToRemove.add(rocket);
@@ -53,11 +56,11 @@ public class Updater implements Runnable{
 	{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
 		{
-//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
+			//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
 			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false));
 		}
 	}
-	
+
 	private void makeEnemiesWalk()
 	{
 		for (Enemy enemy : enemyList.getEnemyList())
@@ -65,37 +68,32 @@ public class Updater implements Runnable{
 			enemy.walk();
 		}
 	}
-	
-	
+
+
 	public static int NR_OF_ITR_ENEMY_STAYS = 10;
-	
+
 	public void run() {
 		int mod = 1;
 		while(true)
 		{
-			if(mod%NR_OF_ITR_ENEMY_STAYS == 0)
+			if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 			{
 				makeEnemiesWalk();
-			}
-			if(( mod%10==0 ))
-			{
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
 			}
+			//Just dummy code:
+			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0) enemyList.getEnemyList().add(new Enemy("Standard"));
 			
 			
-//			To Get the enemies to walk, uncomment this!
+				updateShots();
 
-
-			updateShots();
-
-			removeNAShot();
-
+				removeNAShot();
 			screen.update();
 			objGen.waitASec();
 			objGen.clearJustShoot();
-			
-			
+
+
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
