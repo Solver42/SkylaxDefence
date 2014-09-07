@@ -28,7 +28,13 @@ public class EnemyList {
 		
 		if(lessThanX && moreThanX && lessThanY && moreThanY)
 		{
-			enemyList.remove(0);
+			
+			enemyList.get(0).setHealt(100);
+			if(enemyList.get(0).getHealth()<=0)
+			{
+				enemyList.remove(0);
+			}
+			
 		}
 	}
 }
