@@ -4,7 +4,7 @@ package se.SkyLax.MPT.Graphics;
 import javax.swing.JFrame;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
-import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
+import se.SkyLax.MPT.Enemy.EnemyList;
 
 
 public class TheFrame extends JFrame {

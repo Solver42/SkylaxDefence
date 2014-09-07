@@ -3,42 +3,45 @@ package se.SkyLax.MPT.Controller;
 import java.util.ArrayList;
 import java.util.Random;
 
+import se.SkyLax.MPT.Enemy.Enemy;
+import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
 import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.UNDER_CONSTR.Enemy;
-import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
-import se.SkyLax.MPT.UNDER_CONSTR.TowerAimer;
+import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
+	
+	public final static int NR_OF_ITR_ENEMY_STAYS = 15;
+	private final static int NR_OF_ENEMIES = 5;
+	
 	private ObjectGenerator objGen = null;
 	private Random gen = new Random();
-	private ArrayList<ConcreteShot> shotsToRemove = new ArrayList<>();
+	private ArrayList<ConcreteShot> shotsToRemove = null;;
 	private TheFrame screen = null;
 	private EnemyList enemyList;
 	private TowerAimer towAim;
 	public Updater()
 	{
-
+		shotsToRemove = new ArrayList<>();
 		enemyList = new EnemyList();
 		towAim = new TowerAimer();
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
+		enemyList.addEnemy();
 
 	}
 	private void updateShots()
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-
 			if(!enemyList.getEnemyList().isEmpty())
 				enemyList.checkIfTargetIsHit(rocket);
 
 			rocket.travel();
 		}
-
 	}
 	private void removeNAShot()
 	{
@@ -49,12 +52,9 @@ public class Updater implements Runnable{
 			{
 				shotsToRemove.add(rocket);
 			}
-			
 		}
-
-			objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
-			shotsToRemove.clear();
-
+		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
+		shotsToRemove.clear();
 	}
 	public void setRandomTowerAngle()
 	{
@@ -64,7 +64,6 @@ public class Updater implements Runnable{
 			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false));
 		}
 	}
-
 	private void makeEnemiesWalk()
 	{
 		for (Enemy enemy : enemyList.getEnemyList())
@@ -74,38 +73,43 @@ public class Updater implements Runnable{
 	}
 
 
-	public static int NR_OF_ITR_ENEMY_STAYS = 10;
-
+	private boolean create = true;
 	public void run() {
-		int mod = 1;
+		int mod = 10;
 		while(true)
 		{
 			if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 			{
+
 				makeEnemiesWalk();
 				setRandomTowerAngle();
 				objGen.fillPlanWithRocketShot();
+				
+				if((mod<70) && create)
+				enemyList.addEnemy();
+				else create = false;
 			}
 			//Just dummy code:
-			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0 ) enemyList.getEnemyList().add(new Enemy("Standard"));
+//			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0 ) enemyList.getEnemyList().add(new Enemy("Standard"));
 
 
-				updateShots();
-				removeNAShot();
+			updateShots();
+			removeNAShot();
 
 			screen.update();
-			objGen.waitASec();
-			objGen.clearJustShoot();
-
-
+			//			objGen.waitASec();
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
 
 				e.printStackTrace();
 			}
+			objGen.clearJustShoot();
+
+
+
 			mod++;
-			if(mod>100) mod = 1;
+			if(mod>100) mod = 10;
 
 		}
 	}

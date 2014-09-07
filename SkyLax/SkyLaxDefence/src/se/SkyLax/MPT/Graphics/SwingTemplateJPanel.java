@@ -8,8 +8,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.Events.MouseClass;
-import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
 
 
 @SuppressWarnings("serial")

@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.Enemy.Enemy;
+import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.GunShot;
 import se.SkyLax.MPT.GameObjects.Laser;
@@ -21,8 +23,6 @@ import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.UNDER_CONSTR.Enemy;
-import se.SkyLax.MPT.UNDER_CONSTR.EnemyList;
 
 public class GUIHelper{
 
