@@ -44,16 +44,17 @@ public class Updater implements Runnable{
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
-			boolean thisShotShallBeRemoved = rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0;
-
-			if((thisShotShallBeRemoved) || (enemyList.checkIfTargetIsHit(rocket)))
+			if(enemyList.getEnemyList().isEmpty()) break;
+			if(enemyList.checkIfTargetIsHit(rocket))
 			{
 				shotsToRemove.add(rocket);
 			}
-			if(enemyList.getEnemyList().isEmpty()) break;
+			
 		}
-		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
-		shotsToRemove.clear();
+
+			objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
+			shotsToRemove.clear();
+
 	}
 	public void setRandomTowerAngle()
 	{
@@ -86,12 +87,12 @@ public class Updater implements Runnable{
 				objGen.fillPlanWithRocketShot();
 			}
 			//Just dummy code:
-			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0) enemyList.getEnemyList().add(new Enemy("Standard"));
+			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0 ) enemyList.getEnemyList().add(new Enemy("Standard"));
 
 
-			updateShots();
+				updateShots();
+				removeNAShot();
 
-			removeNAShot();
 			screen.update();
 			objGen.waitASec();
 			objGen.clearJustShoot();
