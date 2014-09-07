@@ -207,7 +207,7 @@ public class GUIHelper{
 			enemyY = ((Levels.mapList[1][enemy.getStep()]+1)*(Levels.UNIT_HEIGHT*2))-(Levels.UNIT_HEIGHT);
 			
 			if(!enemyList.getHit()){
-			g2d.setColor(red);
+			g2d.setColor(new Color(255, 0, 0, (255*enemy.getHealth()/1000)));
 			g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 			}
 			else

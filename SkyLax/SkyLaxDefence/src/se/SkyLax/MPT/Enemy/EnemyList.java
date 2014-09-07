@@ -30,7 +30,7 @@ public class EnemyList {
 		{
 			
 			hit = true;
-			enemyList.get(0).setHealt(50);
+			enemyList.get(0).setHealt(100);
 //			System.out.println(enemyList.get(0).getHealth());
 			if(enemyList.get(0).getHealth()<=0)
 			{
