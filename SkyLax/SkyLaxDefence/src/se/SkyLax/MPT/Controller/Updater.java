@@ -32,11 +32,13 @@ public class Updater implements Runnable{
 	{
 		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
 		{
+
 			if(!enemyList.getEnemyList().isEmpty())
-			enemyList.checkIfTargetIsHit(rocket);
-			
+				enemyList.checkIfTargetIsHit(rocket);
+
 			rocket.travel();
 		}
+
 	}
 	private void removeNAShot()
 	{
@@ -44,10 +46,11 @@ public class Updater implements Runnable{
 		{
 			boolean thisShotShallBeRemoved = rocket.getX() > SwingTemplateJPanel.CANVAS_WIDTH || rocket.getX() < 0 || rocket.getY() > SwingTemplateJPanel.CANVAS_HEIGHT || rocket.getY() < 0;
 
-			if(thisShotShallBeRemoved)
+			if((thisShotShallBeRemoved) || (enemyList.checkIfTargetIsHit(rocket)))
 			{
 				shotsToRemove.add(rocket);
 			}
+			if(enemyList.getEnemyList().isEmpty()) break;
 		}
 		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
 		shotsToRemove.clear();
@@ -84,11 +87,11 @@ public class Updater implements Runnable{
 			}
 			//Just dummy code:
 			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0) enemyList.getEnemyList().add(new Enemy("Standard"));
-			
-			
-				updateShots();
 
-				removeNAShot();
+
+			updateShots();
+
+			removeNAShot();
 			screen.update();
 			objGen.waitASec();
 			objGen.clearJustShoot();

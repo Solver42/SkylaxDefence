@@ -9,13 +9,14 @@ public class Enemy {
 	public Enemy(String sort)
 	{
 		this.sort = sort;
+		this.health = 1000;
 	}
 	
 	public void walk()
 	{
 		step++;
-		if(step>30) step = 0;
-		this.health = 1000;
+		if(step>20) step = 0;
+
 	}
 	
 	public int getStep()

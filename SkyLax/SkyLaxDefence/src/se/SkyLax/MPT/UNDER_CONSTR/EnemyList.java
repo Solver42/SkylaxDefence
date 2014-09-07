@@ -8,6 +8,7 @@ import se.SkyLax.MPT.Levels.Levels;
 public class EnemyList {
 	
 	private ArrayList<Enemy> enemyList= null;
+	private boolean hit = false;
 	
 	public EnemyList() {
 		enemyList = new ArrayList<Enemy>();
@@ -18,7 +19,7 @@ public class EnemyList {
 	{
 		return enemyList;
 	}
-	public void checkIfTargetIsHit(ConcreteShot shot)
+	public boolean checkIfTargetIsHit(ConcreteShot shot)
 	{
 		boolean lessThanX = shot.getX()<((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2));
 		boolean moreThanX = shot.getX()>((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2)-(Levels.UNIT_WIDTH*2));
@@ -29,12 +30,24 @@ public class EnemyList {
 		if(lessThanX && moreThanX && lessThanY && moreThanY)
 		{
 			
+			hit = true;
 			enemyList.get(0).setHealt(100);
+			System.out.println(enemyList.get(0).getHealth());
 			if(enemyList.get(0).getHealth()<=0)
 			{
 				enemyList.remove(0);
 			}
+			return true;
 			
 		}
+		return false;
+	}
+	public boolean getHit()
+	{
+		return this.hit;
+	}
+	public void turOffHit()
+	{
+		this.hit = false;
 	}
 }
