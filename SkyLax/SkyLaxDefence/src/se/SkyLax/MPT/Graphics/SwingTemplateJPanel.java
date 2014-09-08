@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
 import se.SkyLax.MPT.Enemy.EnemyList;
+import se.SkyLax.MPT.Events.ButtonHandler;
 import se.SkyLax.MPT.Events.MouseClass;
 
 
@@ -33,6 +34,7 @@ public class SwingTemplateJPanel extends JPanel {
 		guiHelper = new GUIHelper(enemy, obj);
 		new MouseClass(this, obj, guiHelper);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
+		new ButtonHandler(this);
 	}
 
 

@@ -92,7 +92,7 @@ public class Updater implements Runnable{
 		objGen.clearJustShoot();
 
 	}
-	
+
 	private void update()
 	{
 		screen.update();
@@ -105,19 +105,26 @@ public class Updater implements Runnable{
 		}
 	}
 	private boolean create = true;
-	private boolean go = false;
+	private static boolean go = false;
 
+	public static void setGO(boolean bool)
+	{
+		go = bool;
+	}
 	public void run() {
 		int mod = 10;
-		while(true)
+		while(!go) update();
+		while(go)
 		{
-			if(!go) round(mod);
 
-			else update();
+			round(mod);
+
 			mod++;
 			if(mod>100) mod = 10;
 
 		}
+
+
 	}
 
 }
