@@ -113,17 +113,19 @@ public class Updater implements Runnable{
 	}
 	public void run() {
 		int mod = 10;
-		while(!go) update();
-		while(go)
+		while (true)
 		{
+			while(!go) update();
+			while(go)
+			{
 
-			round(mod);
+				round(mod);
 
-			mod++;
-			if(mod>100) mod = 10;
+				mod++;
+				if(mod>100) mod = 10;
 
+			}
 		}
-
 
 	}
 
