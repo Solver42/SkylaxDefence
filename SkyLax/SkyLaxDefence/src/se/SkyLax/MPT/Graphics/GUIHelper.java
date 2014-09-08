@@ -115,7 +115,7 @@ public class GUIHelper{
 				{
 				case 1:
 
-					g2d.setColor(new Color(0,0,0, 100));
+					g2d.setColor(new Color(0,0,0, 198));
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 

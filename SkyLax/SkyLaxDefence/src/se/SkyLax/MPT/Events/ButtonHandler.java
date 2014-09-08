@@ -26,9 +26,9 @@ public class ButtonHandler {
 		money = new JLabel("DOUGH:");
 		startRound.setBounds(840, 410, 120, 30);
 		money.setBounds(840, 20, 120, 30);
-		money.setForeground(Color.GREEN);
+		money.setForeground(Color.WHITE);
 		money.setOpaque(true);
-		money.setBackground(new Color(0, 255, 0, 100));
+		money.setBackground(new Color(0, 0, 0, 100));
 		
 		startRound.addItemListener(new ItemListener() {
 		   public void itemStateChanged(ItemEvent ev) {
