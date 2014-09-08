@@ -12,7 +12,7 @@ public class Rocket extends Shot implements ConcreteShot{
 	 * 'X' and 'Y', according to
 	 * how we use the trig-object.
 	 */
-	
+	private int damage = 500;
 	private int speed;
 	Tower t = null;
 	
@@ -24,8 +24,14 @@ public class Rocket extends Shot implements ConcreteShot{
 	
 	public synchronized void travel()
 	{
-		this.X += (trig.getSpacedXY("X"))*t.getSpeedOfShot();
-		this.Y += (trig.getSpacedXY("Y"))*t.getSpeedOfShot();
+		this.X += (trig.getSimpleXY("X"))*t.getSpeedOfShot();
+		this.Y += (trig.getSimpleXY("Y"))*t.getSpeedOfShot();
+	}
+
+	@Override
+	public int getDamage() {
+		// TODO Auto-generated method stub
+		return damage;
 	}
 
 

@@ -42,7 +42,7 @@ public class GUIHelper{
 
 	private int kindOfTower = 0;
 
-	private Color gray = new Color(204, 204, 204, 128);
+	private Color gray = new Color(0, 255, 0, 128);
 	private Color red = new Color(204, 51, 51, 128);
 
 	private int range;
@@ -94,9 +94,9 @@ public class GUIHelper{
 			{
 				switch (objGen.getGameObjectContainer().getLevel().getMap()[i][j])
 				{
-				case 0:
+				case 1:
 
-					g2d.setColor(Color.DARK_GRAY);
+					g2d.setColor(new Color(0,0,0, 100));
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 
@@ -170,7 +170,7 @@ public class GUIHelper{
 		{
 			if(shot instanceof GunShot)
 			{
-				g2d.setColor(Color.BLACK);
+				g2d.setColor(Color.WHITE);
 				g2d.fillOval(shot.getX(), shot.getY(), GUN_WIDTH, GUN_WIDTH);
 			}
 			else if(shot instanceof Rocket)

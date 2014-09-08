@@ -21,17 +21,16 @@ public class TowerAimer {
 	private double currentLengthX;
 	private double currentLengthY;
 	private double lengthTillTarget;
-	private int nrOfItrNeeded;
 	private int start;
-	public double aimHere(Tower t, ArrayList<Enemy> enList, boolean onlyLength)
+	public double aimHere(Tower t, ArrayList<Enemy> enList, boolean onlyLength/*, int diff*/)
 	{
 		int i = 0;
 		start = Updater.NR_OF_ITR_ENEMY_STAYS;
 		while(!enList.isEmpty() && i<(Levels.mapList[0].length-enList.get(0).getStep())-1)
 		{
 
-			currenPositionX = ((Levels.mapList[0][(enList.get(0).getStep())+i]+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
-			currenPositionY = ((Levels.mapList[1][(enList.get(0).getStep())+i]+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
+			currenPositionX = (((Levels.mapList[0][(enList.get(0).getStep())+i])+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
+			currenPositionY = (((Levels.mapList[1][(enList.get(0).getStep())+i])+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
 
 			towX = t.getX();
 			towY = t.getY();
@@ -43,7 +42,7 @@ public class TowerAimer {
 
 //			if(lengthTillTarget/t.getSpeedOfShot()>Updater.NR_OF_ITR_ENEMY_STAYS) System.out.println("Will  NOT Make it");
 //			else System.out.println("Will Make it");
-
+			
 			if(onlyLength)
 			{
 				return lengthTillTarget;

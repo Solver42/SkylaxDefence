@@ -13,10 +13,10 @@ import se.SkyLax.MPT.Levels.Levels;
 import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
-	
+
 	public final static int NR_OF_ITR_ENEMY_STAYS = 15;
 	private final static int NR_OF_ENEMIES = 5;
-	
+
 	private ObjectGenerator objGen = null;
 	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = null;;
@@ -56,12 +56,12 @@ public class Updater implements Runnable{
 		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
 		shotsToRemove.clear();
 	}
-	public void setRandomTowerAngle()
+	public void setRandomTowerAngle(/*int diff*/)
 	{
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
 		{
 			//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
-			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false));
+			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false/*, diff*/));
 		}
 	}
 	private void makeEnemiesWalk()
@@ -73,41 +73,47 @@ public class Updater implements Runnable{
 	}
 
 
+	private void round(int mod)
+	{
+		if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
+		{
+			makeEnemiesWalk();
+			setRandomTowerAngle(/*mod/10*/);
+			objGen.fillPlanWithRocketShot();
+
+			if((mod<70) && create)
+				enemyList.addEnemy();
+			else create = false;
+		}
+		updateShots();
+		removeNAShot();
+
+		update();
+		objGen.clearJustShoot();
+
+	}
+	
+	private void update()
+	{
+		screen.update();
+		//			objGen.waitASec();
+		try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+	}
 	private boolean create = true;
+	private boolean go = false;
+
 	public void run() {
 		int mod = 10;
 		while(true)
 		{
-			if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
-			{
+			if(!go) round(mod);
 
-				makeEnemiesWalk();
-				setRandomTowerAngle();
-				objGen.fillPlanWithRocketShot();
-				
-				if((mod<70) && create)
-				enemyList.addEnemy();
-				else create = false;
-			}
-			//Just dummy code:
-//			else if(mod%NR_OF_ITR_ENEMY_STAYS == 0 ) enemyList.getEnemyList().add(new Enemy("Standard"));
-
-
-			updateShots();
-			removeNAShot();
-
-			screen.update();
-			//			objGen.waitASec();
-			try {
-				Thread.sleep(30);
-			} catch (InterruptedException e) {
-
-				e.printStackTrace();
-			}
-			objGen.clearJustShoot();
-
-
-
+			else update();
 			mod++;
 			if(mod>100) mod = 10;
 

@@ -11,4 +11,5 @@ public interface ConcreteShot {
 	public int getX();
 	public int getY();
 	public double getAngle();
+	public int getDamage();
 }

@@ -14,6 +14,7 @@ public class GunShot extends Shot implements ConcreteShot{
 	 */
 	
 	private int speed;
+	private int damage = 500;
 	Tower t = null;
 	
 	public GunShot(Tower t) {
@@ -28,6 +29,12 @@ public class GunShot extends Shot implements ConcreteShot{
 
 		this.X += (trig.getSimpleXY("X"))*t.getSpeedOfShot();
 		this.Y += (trig.getSimpleXY("Y"))*t.getSpeedOfShot();
+	}
+
+	@Override
+	public int getDamage() {
+		// TODO Auto-generated method stub
+		return damage;
 	}
 
 }

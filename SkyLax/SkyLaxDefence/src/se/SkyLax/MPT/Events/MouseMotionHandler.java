@@ -61,7 +61,7 @@ public class MouseMotionHandler {
 		{
 			this.kindOfTower = 4;
 			gui.setKindOfTown(4);
-			gui.setRange(200);
+			gui.setRange(440);
 			//			gui.setKindOfTown(3);
 		}
 		else if(clickedOnATowerFactory() == 5)
