@@ -24,6 +24,7 @@ public class SwingTemplateJPanel extends JPanel {
 	
 	
 	private ObjectGenerator objGen = null;
+	private ButtonHandler buttonHandler = null;
 
 	public static final int CANVAS_WIDTH = 960;
 	public static final int CANVAS_HEIGHT = 540;
@@ -34,7 +35,7 @@ public class SwingTemplateJPanel extends JPanel {
 		guiHelper = new GUIHelper(enemy, obj);
 		new MouseClass(this, obj, guiHelper);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
-		new ButtonHandler(this);
+		buttonHandler = new ButtonHandler(this);
 	}
 
 
@@ -49,8 +50,9 @@ public class SwingTemplateJPanel extends JPanel {
 	}
 
 
-
-
-
+	public ButtonHandler getHandler()
+	{
+		return buttonHandler;
+	}
 
 }

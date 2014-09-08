@@ -2,8 +2,10 @@ package se.SkyLax.MPT.Enemy;
 
 import java.util.ArrayList;
 
+import se.SkyLax.MPT.Controller.Updater;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MPT.Utility.Money;
 
 public class EnemyList {
 	

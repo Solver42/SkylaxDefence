@@ -8,6 +8,7 @@ import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
+import se.SkyLax.MPT.Utility.Money;
 import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class ObjectGenerator{
@@ -26,6 +27,7 @@ public class ObjectGenerator{
 	private EnemyList enemyList = null;
 	private TowerAimer towAim = null;
 	private ArrayList<Tower> justShootString = null;
+	private Money money = null;
 	public  ObjectGenerator(EnemyList enemyL, TowerAimer tow)
 	{
 		towersThatJustShoot = new ArrayList<Tower>();
@@ -33,6 +35,7 @@ public class ObjectGenerator{
 		enemyList = enemyL;
 		gameObjectList = new GameObjectList();
 		justShootString = new ArrayList<Tower>() ;
+		money = new Money();
 
 	}
 
@@ -92,6 +95,10 @@ public class ObjectGenerator{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public Money getMoneyClass()
+	{
+		return money;
 	}
 
 

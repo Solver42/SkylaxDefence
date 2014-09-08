@@ -77,22 +77,23 @@ public class MouseMotionHandler {
 			if(this.kindOfTower == 3)
 			{
 				objGen.getGameObjectContainer().addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
-				gui.setKindOfTown(0);
-				kindOfTower = 0;
+				objGen.getMoneyClass().boughtTowerOfCost(100);
 			}
 			else if(this.kindOfTower ==4)
 			{
 				objGen.getGameObjectContainer().addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
-				gui.setKindOfTown(0);
-				kindOfTower = 0;
+				objGen.getMoneyClass().boughtTowerOfCost(1000);
 			}
 			else if(this.kindOfTower ==5)
 			{
 				objGen.getGameObjectContainer().addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
-				gui.setKindOfTown(0);
-				kindOfTower = 0;
+				objGen.getMoneyClass().boughtTowerOfCost(750);
 			}
+			
+			gui.setKindOfTown(0);
+			kindOfTower = 0;
 		}
+		objGen.getMoneyClass().updatePanText();
 	}
 
 	private boolean creationOfTowerIsApproved()

@@ -10,6 +10,7 @@ import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
 import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MPT.Utility.Money;
 import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
@@ -31,7 +32,8 @@ public class Updater implements Runnable{
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
 		enemyList.addEnemy();
-
+		
+		objGen.getMoneyClass().updatePanText();
 	}
 	private void updateShots()
 	{
