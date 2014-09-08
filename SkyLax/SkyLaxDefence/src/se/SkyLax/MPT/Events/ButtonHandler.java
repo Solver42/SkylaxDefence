@@ -24,7 +24,9 @@ public class ButtonHandler {
 		   public void itemStateChanged(ItemEvent ev) {
 		      if(ev.getStateChange()==ItemEvent.SELECTED){
 		        Updater.setGO(true);
+		        startRound.setText("Pause");
 		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+		    	  startRound.setText("Start Round");
 		        Updater.setGO(false);
 		      }
 		   }

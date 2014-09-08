@@ -31,6 +31,9 @@ public class GUIHelper{
 	private Image img = null;
 	private BufferedImage sniperOrig = null;
 	private BufferedImage sniperShot = null;
+	private BufferedImage rocketShot = null;
+	private BufferedImage missileOrig = null;
+	private BufferedImage laserOrig = null;
 	private ObjectGenerator objGen = null;
 	private EnemyList enemyList = null;
 
@@ -59,6 +62,9 @@ public class GUIHelper{
 		try {
 			sniperOrig = ImageIO.read(new File("img/towers/sniper_orig.png"));
 			sniperShot = ImageIO.read(new File("img/towers/sniper_shot.png"));
+			rocketShot = ImageIO.read(new File("img/Rocket.png"));
+			missileOrig = ImageIO.read(new File("img/towers/rocket_orig.png"));
+			laserOrig = ImageIO.read(new File("img/towers/laser_orig.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,8 +181,9 @@ public class GUIHelper{
 				}
 				else
 				{
-					g2d.setColor(Color.WHITE);
-					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(missileOrig, at, null);
+//					g2d.setColor(Color.WHITE);
+//					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 			else if(tower instanceof TowerOfDoom)
@@ -188,8 +195,9 @@ public class GUIHelper{
 				}
 				else
 				{
-					g2d.setColor(new Color(34,45,120,100));
-					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(laserOrig, at, null);
+//					g2d.setColor(new Color(34,45,120,100));
+//					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 		}
@@ -197,6 +205,9 @@ public class GUIHelper{
 
 		for(ConcreteShot shot : objGen.getGameObjectContainer().getListOfAllShots())
 		{
+			
+			
+			
 			if(shot instanceof GunShot)
 			{
 				g2d.setColor(Color.WHITE);
@@ -204,8 +215,15 @@ public class GUIHelper{
 			}
 			else if(shot instanceof Rocket)
 			{
-				g2d.setColor(Color.CYAN);
-				g2d.fillOval(shot.getX()-ROCKET_WIDTH/2, shot.getY()-ROCKET_WIDTH/2, ROCKET_WIDTH, ROCKET_WIDTH);
+				at.translate(Levels.UNIT_WIDTH / 2, Levels.UNIT_HEIGHT / 2);
+				at.setToTranslation(shot.getX(), shot.getY());
+	              // 3. do the actual rotation
+	              at.rotate(shot.getAngle()+Math.PI/2);
+	              at.translate(rocketShot.getWidth()/2-rocketShot.getWidth(), rocketShot.getHeight()/2-rocketShot.getHeight());
+	              
+				g2d.drawImage(rocketShot, at, null);
+//				g2d.setColor(Color.CYAN);
+//				g2d.fillOval(shot.getX()-ROCKET_WIDTH/2, shot.getY()-ROCKET_WIDTH/2, ROCKET_WIDTH, ROCKET_WIDTH);
 			}
 			else if(shot instanceof Laser)
 			{

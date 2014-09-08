@@ -97,12 +97,7 @@ public class Updater implements Runnable{
 	{
 		screen.update();
 		//			objGen.waitASec();
-		try {
-			Thread.sleep(30);
-		} catch (InterruptedException e) {
-
-			e.printStackTrace();
-		}
+		objGen.waitASec();
 	}
 	private boolean create = true;
 	private static boolean go = false;
