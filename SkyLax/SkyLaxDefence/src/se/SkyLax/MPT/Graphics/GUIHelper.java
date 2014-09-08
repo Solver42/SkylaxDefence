@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class GUIHelper{
 
 
 	private Image img = null;
+	private BufferedImage sniperOrig = null;
+	private BufferedImage sniperShot = null;
 	private ObjectGenerator objGen = null;
 	private EnemyList enemyList = null;
 
@@ -53,6 +56,14 @@ public class GUIHelper{
 		objGen = obj;
 		enemyList = enemy;
 		img = new ImageIcon("img/texture.jpg").getImage();
+		try {
+			sniperOrig = ImageIO.read(new File("img/towers/sniper_orig.gif"));
+			sniperShot = ImageIO.read(new File("img/towers/sniper_shot.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public boolean mayBuild()
@@ -87,6 +98,8 @@ public class GUIHelper{
 	{
 		g.drawImage(img, 0, 0, null);
 
+		
+		AffineTransform at = new AffineTransform();
 		
 		for (int i = 0; i<objGen.getGameObjectContainer().getLevel().getMap().length; i++)
 		{
@@ -124,17 +137,33 @@ public class GUIHelper{
 		
 		
 		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
+			at.translate(Levels.UNIT_WIDTH / 2, Levels.UNIT_HEIGHT / 2);
+			at.setToTranslation(tower.getX(), tower.getY());
+              // 3. do the actual rotation
+              at.rotate(tower.getAngle()+Math.PI/2);
+              at.translate(Levels.UNIT_WIDTH/2-Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT/2-Levels.UNIT_HEIGHT);
 			if(tower instanceof SniperCastle)
 			{
 				if(objGen.getJustShootList().contains(tower))
 				{
 					g2d.setColor(Color.WHITE);
-					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+//					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(sniperShot, at, null);
 				}
 				else
 				{
-					g2d.setColor(new Color(0,0,0,200));
-					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					
+					
+
+//		              // 2. just a scale because this image is big
+//		              at.scale(0.5, 0.5);
+		              // 1. translate the object so that you rotate it around the 
+		              //    center (easier :))
+		              
+					
+					g2d.drawImage(sniperOrig, at, null);
+//					g2d.setColor(new Color(0,0,0,200));
+//					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 				}
 			}
 			else if(tower instanceof MissileTower)
@@ -221,6 +250,7 @@ public class GUIHelper{
 		
 		
 	}
+	
 	
 
 

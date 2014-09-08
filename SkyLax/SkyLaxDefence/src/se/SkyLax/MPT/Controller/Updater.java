@@ -81,7 +81,7 @@ public class Updater implements Runnable{
 			setRandomTowerAngle(/*mod/10*/);
 			objGen.fillPlanWithRocketShot();
 
-			if((mod<70) && create)
+			if((mod<90)&& create)
 				enemyList.addEnemy();
 			else create = false;
 		}
