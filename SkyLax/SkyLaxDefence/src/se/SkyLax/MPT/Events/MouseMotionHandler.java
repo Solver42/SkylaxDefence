@@ -76,19 +76,19 @@ public class MouseMotionHandler {
 		{
 			if(this.kindOfTower == 3)
 			{
-				objGen.getGameObjectContainer().addTower(new SniperCastle(this.mouseX, this.mouseY, 1));
+				objGen.getGameObjectContainer().addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
 				gui.setKindOfTown(0);
 				kindOfTower = 0;
 			}
 			else if(this.kindOfTower ==4)
 			{
-				objGen.getGameObjectContainer().addTower(new MissileTower(this.mouseX, this.mouseY, 1));
+				objGen.getGameObjectContainer().addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
 				gui.setKindOfTown(0);
 				kindOfTower = 0;
 			}
 			else if(this.kindOfTower ==5)
 			{
-				objGen.getGameObjectContainer().addTower(new TowerOfDoom(this.mouseX, this.mouseY, 1));
+				objGen.getGameObjectContainer().addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
 				gui.setKindOfTown(0);
 				kindOfTower = 0;
 			}

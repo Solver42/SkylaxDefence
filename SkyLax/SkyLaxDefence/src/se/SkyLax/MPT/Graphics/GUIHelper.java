@@ -57,8 +57,8 @@ public class GUIHelper{
 		enemyList = enemy;
 		img = new ImageIcon("img/texture.jpg").getImage();
 		try {
-			sniperOrig = ImageIO.read(new File("img/towers/sniper_orig.gif"));
-			sniperShot = ImageIO.read(new File("img/towers/sniper_shot.gif"));
+			sniperOrig = ImageIO.read(new File("img/towers/sniper_orig.png"));
+			sniperShot = ImageIO.read(new File("img/towers/sniper_shot.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
