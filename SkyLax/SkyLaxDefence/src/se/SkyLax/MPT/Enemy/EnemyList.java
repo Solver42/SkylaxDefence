@@ -11,6 +11,10 @@ public class EnemyList {
 	
 	private ArrayList<Enemy> enemyList= null;
 	private boolean hit = false;
+	private boolean lessThanX;
+	private boolean moreThanX;
+	private boolean lessThanY;
+	private boolean moreThanY;
 	
 	public EnemyList() {
 		enemyList = new ArrayList<Enemy>();
@@ -22,11 +26,11 @@ public class EnemyList {
 	}
 	public boolean checkIfTargetIsHit(ConcreteShot shot)
 	{
-		boolean lessThanX = shot.getX()<((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2));
-		boolean moreThanX = shot.getX()>((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2)-(Levels.UNIT_WIDTH*2));
+		lessThanX = shot.getX()<((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2));
+		moreThanX = shot.getX()>((Levels.mapList[0][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_WIDTH*2)-(Levels.UNIT_WIDTH*2));
 		
-		boolean lessThanY = shot.getY()<((Levels.mapList[1][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_HEIGHT*2));
-		boolean moreThanY = shot.getY()>((Levels.mapList[1][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_HEIGHT*2)-(Levels.UNIT_HEIGHT*2));
+		lessThanY = shot.getY()<((Levels.mapList[1][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_HEIGHT*2));
+		moreThanY = shot.getY()>((Levels.mapList[1][(enemyList.get(0).getStep())]+1)*(Levels.UNIT_HEIGHT*2)-(Levels.UNIT_HEIGHT*2));
 		
 		if(lessThanX && moreThanX && lessThanY && moreThanY)
 		{

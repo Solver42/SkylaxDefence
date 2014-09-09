@@ -24,6 +24,8 @@ public class Updater implements Runnable{
 	private TheFrame screen = null;
 	private EnemyList enemyList;
 	private TowerAimer towAim;
+	private ArrayList<ConcreteShot> shotList = null;
+	private ArrayList<Tower> towers;
 	public Updater()
 	{
 		shotsToRemove = new ArrayList<>();
@@ -37,7 +39,8 @@ public class Updater implements Runnable{
 	}
 	private void updateShots()
 	{
-		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
+		shotList = objGen.getGameObjectContainer().getListOfAllShots();
+		for(ConcreteShot rocket: shotList)
 		{
 			if(!enemyList.getEnemyList().isEmpty())
 				enemyList.checkIfTargetIsHit(rocket);
@@ -47,7 +50,8 @@ public class Updater implements Runnable{
 	}
 	private void removeNAShot()
 	{
-		for(ConcreteShot rocket: objGen.getGameObjectContainer().getListOfAllShots())
+		shotList = objGen.getGameObjectContainer().getListOfAllShots();
+		for(ConcreteShot rocket: shotList)
 		{
 			if(enemyList.getEnemyList().isEmpty()) break;
 			if(enemyList.checkIfTargetIsHit(rocket))
@@ -55,12 +59,14 @@ public class Updater implements Runnable{
 				shotsToRemove.add(rocket);
 			}
 		}
-		objGen.getGameObjectContainer().getListOfAllShots().removeAll(shotsToRemove);
+		
+		shotList.removeAll(shotsToRemove);
 		shotsToRemove.clear();
 	}
 	public void setRandomTowerAngle(/*int diff*/)
 	{
-		for(Tower tower : objGen.getGameObjectContainer().getTowerList())
+		towers = objGen.getGameObjectContainer().getTowerList();
+		for(Tower tower : towers)
 		{
 			//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
 			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false/*, diff*/));
@@ -75,25 +81,6 @@ public class Updater implements Runnable{
 	}
 
 
-	private void round(int mod)
-	{
-		if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
-		{
-			makeEnemiesWalk();
-			setRandomTowerAngle(/*mod/10*/);
-			objGen.fillPlanWithRocketShot();
-
-			if((mod<90)&& create)
-				enemyList.addEnemy();
-			else create = false;
-		}
-		updateShots();
-		removeNAShot();
-
-		update();
-		objGen.clearJustShoot();
-
-	}
 
 	private void update()
 	{
@@ -116,7 +103,21 @@ public class Updater implements Runnable{
 			while(go)
 			{
 
-				round(mod);
+				if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
+				{
+					makeEnemiesWalk();
+					setRandomTowerAngle(/*mod/10*/);
+					objGen.fillPlanWithRocketShot();
+
+					if((mod<90)&& create)
+						enemyList.addEnemy();
+					else create = false;
+				}
+				updateShots();
+				removeNAShot();
+
+				update();
+				objGen.clearJustShoot();
 
 				mod++;
 				if(mod>100) mod = 10;

@@ -8,6 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -45,6 +46,13 @@ public class GUIHelper{
 	private int mouseX;
 	private int mouseY;
 	private boolean mayBuild = false;
+	private ArrayList<Tower> towers = null;
+	
+	private double laserStopX;
+	private double laserStopY;
+	
+	private int towerXdiff;
+	private int towerYdiff;
 
 	private int kindOfTower = 0;
 
@@ -52,6 +60,7 @@ public class GUIHelper{
 	private Color red = new Color(204, 51, 51, 128);
 
 	private int range;
+	private int[][] map;
 
 
 	public GUIHelper(EnemyList enemy, ObjectGenerator obj)
@@ -107,11 +116,13 @@ public class GUIHelper{
 		
 		AffineTransform at = new AffineTransform();
 		
-		for (int i = 0; i<objGen.getGameObjectContainer().getLevel().getMap().length; i++)
+		map = objGen.getGameObjectContainer().getLevel().getMap();
+		
+		for (int i = 0; i<map.length; i++)
 		{
-			for (int j = 0; j<objGen.getGameObjectContainer().getLevel().getMap()[1].length; j++)
+			for (int j = 0; j<map[1].length; j++)
 			{
-				switch (objGen.getGameObjectContainer().getLevel().getMap()[i][j])
+				switch (map[i][j])
 				{
 				case 1:
 
@@ -140,14 +151,16 @@ public class GUIHelper{
 		
 		
 
+		towerXdiff = Levels.UNIT_WIDTH/2-Levels.UNIT_WIDTH;
+		towerYdiff = Levels.UNIT_HEIGHT/2-Levels.UNIT_HEIGHT;
+		towers = objGen.getGameObjectContainer().getTowerList();
 		
-		
-		for(Tower tower : objGen.getGameObjectContainer().getTowerList()){
+		for(Tower tower : towers){
 			at.translate(Levels.UNIT_WIDTH / 2, Levels.UNIT_HEIGHT / 2);
 			at.setToTranslation(tower.getX(), tower.getY());
               // 3. do the actual rotation
               at.rotate(tower.getAngle()+Math.PI/2);
-              at.translate(Levels.UNIT_WIDTH/2-Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT/2-Levels.UNIT_HEIGHT);
+              at.translate(towerXdiff, towerYdiff);
 			if(tower instanceof SniperCastle)
 			{
 				if(objGen.getJustShootList().contains(tower))
@@ -227,8 +240,11 @@ public class GUIHelper{
 			}
 			else if(shot instanceof Laser)
 			{
+				laserStopX = (shot.getX() + Math.cos(shot.getAngle())*LASER_L);
+				laserStopY = (shot.getY() + Math.sin(shot.getAngle())*LASER_L);
+				
 				g2d.setColor(Color.GREEN);
-				g2d.drawLine(shot.getX(), shot.getY(), (int)(shot.getX() + Math.cos(shot.getAngle())*LASER_L), (int)(shot.getY() + Math.sin(shot.getAngle())*LASER_L));
+				g2d.drawLine(shot.getX(), shot.getY(), (int)(laserStopX), (int)laserStopY);
 			}
 
 		}

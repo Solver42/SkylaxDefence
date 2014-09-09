@@ -28,6 +28,10 @@ public class ObjectGenerator{
 	private TowerAimer towAim = null;
 	private ArrayList<Tower> justShootString = null;
 	private Money money = null;
+	private boolean theRest;
+	private boolean sniperMayShoot;
+	private boolean missileTowerMayShoot;
+	private boolean laserTowerMayShoot;
 	public  ObjectGenerator(EnemyList enemyL, TowerAimer tow)
 	{
 		towersThatJustShoot = new ArrayList<Tower>();
@@ -60,10 +64,10 @@ public class ObjectGenerator{
 		i++;
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			boolean theRest = (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true/*, 0*/)) < tower.getRangeInPix()/2;
-			boolean sniperMayShoot = tower instanceof SniperCastle && theRest;
-			boolean missileTowerMayShoot = tower instanceof MissileTower && theRest;
-			boolean laserTowerMayShoot = tower instanceof TowerOfDoom && theRest;
+			theRest = (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true/*, 0*/)) < tower.getRangeInPix()/2;
+			sniperMayShoot = tower instanceof SniperCastle && theRest;
+			missileTowerMayShoot = tower instanceof MissileTower && theRest;
+			laserTowerMayShoot = tower instanceof TowerOfDoom && theRest;
 			if(sniperMayShoot)
 			{
 				gameObjectList.addShotGeneric(tower, "GunShot");

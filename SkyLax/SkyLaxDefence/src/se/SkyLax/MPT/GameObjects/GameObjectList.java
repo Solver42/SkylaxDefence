@@ -11,6 +11,8 @@ public class GameObjectList{
 	ArrayList<ConcreteShot> rockets;
 	ArrayList<Tower> towers;
 	Levels level = null;
+	private int atMapX;
+	private int atMapY;
 	
 	/*
 	 * this class contains the list
@@ -31,7 +33,9 @@ public class GameObjectList{
 	{
 		towers.add(t);
 		//TODO
-		level.setMap(t.getX()/(Levels.UNIT_WIDTH), (t.getY()/(Levels.UNIT_HEIGHT)), 2);
+		atMapX = t.getX()/(Levels.UNIT_WIDTH);
+		atMapY = t.getY()/(Levels.UNIT_HEIGHT);
+		level.setMap(atMapX, (atMapY), 2);
 	}
 	public void addShot(int index, String kindOfShot)
 	{

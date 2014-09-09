@@ -16,6 +16,9 @@ public class MouseClass{
 	SwingTemplateJPanel swing = null;
 	private MouseMotionHandler properties = null;
 	GUIHelper gui = null;
+	private int map[][];
+	private int mapX;
+	private int mapY;
 
 	public MouseClass(SwingTemplateJPanel swing, ObjectGenerator obj, GUIHelper gui){
 		this.gui = gui;
@@ -65,7 +68,10 @@ public class MouseClass{
 	
 	private void creationOfTowerOK(MouseEvent e)
 	{
-		if(objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[e.getY()/(Levels.UNIT_HEIGHT)][e.getX()/(Levels.UNIT_WIDTH)] !=2 &&(e.getX()<SwingTemplateJPanel.CANVAS_WIDTH-(Levels.UNIT_WIDTH*3)))
+		map = objGen.getGameObjectContainer().getLevel().getMap();
+		mapY = e.getY()/(Levels.UNIT_HEIGHT);
+		mapX = e.getX()/(Levels.UNIT_WIDTH);
+		if(map[mapY][mapX] != 1 && map[mapY][mapX] !=2 &&(e.getX()<SwingTemplateJPanel.CANVAS_WIDTH-(Levels.UNIT_WIDTH*3)))
 		gui.setAllowedToBuild(true);
 		else
 		gui.setAllowedToBuild(false);

@@ -1,11 +1,13 @@
 package se.SkyLax.MPT.Events;
 
 import se.SkyLax.MPT.Controller.ObjectGenerator;
+import se.SkyLax.MPT.GameObjects.GameObjectList;
 import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 import se.SkyLax.MPT.Graphics.GUIHelper;
 import se.SkyLax.MPT.Levels.Levels;
+import se.SkyLax.MPT.Utility.Money;
 
 public class MouseMotionHandler {
 
@@ -14,9 +16,19 @@ public class MouseMotionHandler {
 	private ObjectGenerator objGen = null;
 	GUIHelper gui = null;
 	private int kindOfTower = 0;
+	private int[][] map = null;
+	private Money money = null;
+	private GameObjectList list = null;
+	private int mapY;
+	private int mapX;
+	private boolean clickedOnSniperCastle;
+	private boolean clickedOnRocketTower;
+	private boolean clickedOnLaserTower;
+	private boolean isOnSolidGround;
 
 	public MouseMotionHandler (ObjectGenerator obj, GUIHelper gui)
 	{
+		
 		this.objGen = obj;
 		this.gui = gui;
 	}
@@ -36,9 +48,12 @@ public class MouseMotionHandler {
 
 	private int clickedOnATowerFactory()
 	{
-		boolean clickedOnSniperCastle = objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] == 3; 
-		boolean clickedOnRocketTower = objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] == 4; 
-		boolean clickedOnLaserTower = objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] == 5; 
+		map = objGen.getGameObjectContainer().getLevel().getMap();
+		mapY = this.mouseY/(Levels.UNIT_HEIGHT);
+		mapX = this.mouseX/(Levels.UNIT_WIDTH);
+		clickedOnSniperCastle = map[mapY][mapX] != 1 && map[mapY][mapX] == 3; 
+		clickedOnRocketTower = map[mapY][mapX] != 1 && map[mapY][mapX] == 4; 
+		clickedOnLaserTower = map[mapY][mapX] != 1 && map[mapY][mapX] == 5; 
 		
 		if(clickedOnSniperCastle)
 			return 3;
@@ -74,20 +89,23 @@ public class MouseMotionHandler {
 
 		else if(creationOfTowerIsApproved())
 		{
+			list = objGen.getGameObjectContainer();
+			money = objGen.getMoneyClass();
+			
 			if(this.kindOfTower == 3)
 			{
-				objGen.getGameObjectContainer().addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
-				objGen.getMoneyClass().boughtTowerOfCost(100);
+				list.addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
+				money.boughtTowerOfCost(100);
 			}
 			else if(this.kindOfTower ==4)
 			{
-				objGen.getGameObjectContainer().addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
-				objGen.getMoneyClass().boughtTowerOfCost(1000);
+				list.addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
+				money.boughtTowerOfCost(1000);
 			}
 			else if(this.kindOfTower ==5)
 			{
-				objGen.getGameObjectContainer().addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
-				objGen.getMoneyClass().boughtTowerOfCost(750);
+				list.addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
+				money.boughtTowerOfCost(750);
 			}
 			
 			gui.setKindOfTown(0);
@@ -98,7 +116,10 @@ public class MouseMotionHandler {
 
 	private boolean creationOfTowerIsApproved()
 	{
-		boolean isOnSolidGround = objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] != 1 && objGen.getGameObjectContainer().getLevel().getMap()[this.mouseY/(Levels.UNIT_HEIGHT)][this.mouseX/(Levels.UNIT_WIDTH)] !=2 && gui.mayBuild();
+		map = objGen.getGameObjectContainer().getLevel().getMap();
+		mapY = this.mouseY/(Levels.UNIT_HEIGHT);
+		mapX = this.mouseX/(Levels.UNIT_WIDTH);
+		isOnSolidGround = map[mapY][mapX] != 1 && map[mapY][mapX] !=2 && gui.mayBuild();
 		if(isOnSolidGround)
 			return true;
 		return false;
