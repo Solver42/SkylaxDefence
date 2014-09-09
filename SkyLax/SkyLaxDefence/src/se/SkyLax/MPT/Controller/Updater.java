@@ -1,16 +1,12 @@
 package se.SkyLax.MPT.Controller;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import se.SkyLax.MPT.Enemy.Enemy;
 import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
-import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Graphics.TheFrame;
-import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.Utility.Money;
 import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
@@ -19,7 +15,7 @@ public class Updater implements Runnable{
 	private final static int NR_OF_ENEMIES = 5;
 
 	private ObjectGenerator objGen = null;
-	private Random gen = new Random();
+//	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = null;;
 	private TheFrame screen = null;
 	private EnemyList enemyList;

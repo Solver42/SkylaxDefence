@@ -23,7 +23,6 @@ public class SwingTemplateJPanel extends JPanel {
 
 	
 	
-	private ObjectGenerator objGen = null;
 	private ButtonHandler buttonHandler = null;
 
 	public static final int CANVAS_WIDTH = 960;

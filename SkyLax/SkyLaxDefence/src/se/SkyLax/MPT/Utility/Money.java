@@ -1,6 +1,5 @@
 package se.SkyLax.MPT.Utility;
 
-import se.SkyLax.MPT.Events.ButtonHandler;
 
 public class Money {
 	private int amount = 3400;

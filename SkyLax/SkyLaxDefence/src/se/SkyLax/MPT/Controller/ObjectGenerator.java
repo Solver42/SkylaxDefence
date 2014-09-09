@@ -94,7 +94,7 @@ public class ObjectGenerator{
 	public void waitASec()
 	{
 		try {
-			Thread.sleep(30);
+			Thread.sleep(40);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
