@@ -15,15 +15,19 @@ public class Money {
 	{
 		return Integer.toString(amount);
 	}
+	public int getAmountInt()
+	{
+		return amount;
+	}
 	
 	public void boughtTowerOfCost(int cost)
 	{
 		amount -=cost;
 	}
 
-	
-	public void updatePanText()
-	{
-		ButtonHandler.setCasch(this.amount);
-	}
+//	
+//	public void updatePanText()
+//	{
+//		ButtonHandler.setCasch(this.amount);
+//	}
 }

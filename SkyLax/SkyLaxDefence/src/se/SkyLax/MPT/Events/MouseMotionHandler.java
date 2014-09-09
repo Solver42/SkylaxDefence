@@ -6,6 +6,7 @@ import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.SniperCastle;
 import se.SkyLax.MPT.GameObjects.TowerOfDoom;
 import se.SkyLax.MPT.Graphics.GUIHelper;
+import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Levels.Levels;
 import se.SkyLax.MPT.Utility.Money;
 
@@ -25,10 +26,11 @@ public class MouseMotionHandler {
 	private boolean clickedOnRocketTower;
 	private boolean clickedOnLaserTower;
 	private boolean isOnSolidGround;
+	private SwingTemplateJPanel swing = null;
 
-	public MouseMotionHandler (ObjectGenerator obj, GUIHelper gui)
+	public MouseMotionHandler (ObjectGenerator obj, GUIHelper gui, SwingTemplateJPanel swing)
 	{
-		
+		this.swing = swing;
 		this.objGen = obj;
 		this.gui = gui;
 	}
@@ -54,7 +56,7 @@ public class MouseMotionHandler {
 		clickedOnSniperCastle = map[mapY][mapX] != 1 && map[mapY][mapX] == 3; 
 		clickedOnRocketTower = map[mapY][mapX] != 1 && map[mapY][mapX] == 4; 
 		clickedOnLaserTower = map[mapY][mapX] != 1 && map[mapY][mapX] == 5; 
-		
+
 		if(clickedOnSniperCastle)
 			return 3;
 		else if(clickedOnRocketTower)
@@ -66,52 +68,68 @@ public class MouseMotionHandler {
 
 	public void IClicked()
 	{
+		money = objGen.getMoneyClass();
 		if(clickedOnATowerFactory() == 3)
 		{
-			this.kindOfTower = 3;
-			gui.setKindOfTown(3);
-			gui.setRange(350);
+//			if(money.getAmountInt() >= 100)
+			if(swing.getHandler().getCasch()>=100)
+			{
+				this.kindOfTower = 3;
+				gui.setKindOfTown(3);
+				gui.setRange(350);
+			}
 			//			gui.setKindOfTown(3);
 		} else if(clickedOnATowerFactory() == 4)
 		{
-			this.kindOfTower = 4;
-			gui.setKindOfTown(4);
-			gui.setRange(440);
+//			if(money.getAmountInt() >= 1000)
+			if(swing.getHandler().getCasch()>=1000)
+			{
+				this.kindOfTower = 4;
+				gui.setKindOfTown(4);
+				gui.setRange(440);
+			}
 			//			gui.setKindOfTown(3);
 		}
 		else if(clickedOnATowerFactory() == 5)
 		{
-			this.kindOfTower = 5;
-			gui.setKindOfTown(5);
-			gui.setRange(500);
-			//			gui.setKindOfTown(3);x
+//			if(money.getAmountInt() >= 750)
+			if(swing.getHandler().getCasch()>=750)
+			{
+				this.kindOfTower = 5;
+				gui.setKindOfTown(5);
+				gui.setRange(500);
+				//			gui.setKindOfTown(3);x
+			}
 		}
 
 		else if(creationOfTowerIsApproved())
 		{
 			list = objGen.getGameObjectContainer();
 			money = objGen.getMoneyClass();
-			
+
 			if(this.kindOfTower == 3)
 			{
 				list.addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
-				money.boughtTowerOfCost(100);
+				swing.getHandler().subCasch(100);
+//				money.boughtTowerOfCost(100);
 			}
 			else if(this.kindOfTower ==4)
 			{
 				list.addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
-				money.boughtTowerOfCost(1000);
+				swing.getHandler().subCasch(1000);
+//				money.boughtTowerOfCost(1000);
 			}
 			else if(this.kindOfTower ==5)
 			{
 				list.addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
-				money.boughtTowerOfCost(750);
+				swing.getHandler().subCasch(750);
+//				money.boughtTowerOfCost(750);
 			}
-			
+
 			gui.setKindOfTown(0);
 			kindOfTower = 0;
 		}
-		objGen.getMoneyClass().updatePanText();
+//		objGen.getMoneyClass().updatePanText();
 	}
 
 	private boolean creationOfTowerIsApproved()

@@ -24,7 +24,7 @@ public class MouseClass{
 		this.gui = gui;
 		this.swing = swing;
 		this.objGen = obj;
-		properties = new MouseMotionHandler(obj, gui);
+		properties = new MouseMotionHandler(obj, gui, swing);
 		clicked();
 		moved();
 	}

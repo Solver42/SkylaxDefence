@@ -35,7 +35,8 @@ public class Updater implements Runnable{
 		screen = new TheFrame(objGen, enemyList);
 		enemyList.addEnemy();
 		
-		objGen.getMoneyClass().updatePanText();
+//		screen.getPanel().getHandler().setCasch(3400);
+//		objGen.getMoneyClass().updatePanText();
 	}
 	private void updateShots()
 	{

@@ -34,5 +34,9 @@ public class TheFrame extends JFrame {
 		repaint();
 		
 	}
+	public SwingTemplateJPanel getPanel()
+	{
+		return this.myPanel;
+	}
 
 }
