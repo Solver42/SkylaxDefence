@@ -10,11 +10,15 @@ import java.awt.event.ItemListener;
 
 
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 
 import se.SkyLax.MPT.Controller.Updater;
+import se.SkyLax.MPT.Enemy.Enemy;
+import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 import se.SkyLax.MPT.Utility.Money;
 
@@ -28,8 +32,10 @@ public class ButtonHandler {
 	private JLabel tower3 = null;
 	private JButton startRound = null;
 	private int startCasch = 3400;
-	public ButtonHandler(SwingTemplateJPanel swing) {
+	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
+	public ButtonHandler(SwingTemplateJPanel swing, EnemyList enemy) {
 		swing.setLayout(null);
+		enemyList = enemy.getEnemyList();
 		startRound = new JButton("Next Round");
 		money = new JLabel("DOUGH:");
 		tower1 = new JLabel("100");
@@ -43,27 +49,28 @@ public class ButtonHandler {
 		money.setForeground(Color.WHITE);
 		money.setOpaque(true);
 		money.setBackground(new Color(0, 0, 0, 100));
-		
+
 		tower1.setForeground(Color.WHITE);
 		tower1.setOpaque(true);
 		tower1.setBackground(new Color(0, 255, 0, 100));
-		
+
 		tower2.setForeground(Color.WHITE);
 		tower2.setOpaque(true);
 		tower2.setBackground(new Color(0, 255, 0, 100));
-		
+
 		tower3.setForeground(Color.WHITE);
 		tower3.setOpaque(true);
 		tower3.setBackground(new Color(0, 255, 0, 100));
-		
+
 		startRound.addActionListener(new ActionListener()
 		{
-		  public void actionPerformed(ActionEvent e)
-		  {
-			 Updater.resetIterator();
-		    Updater.setGO(true);
-		    
-		  }
+			public void actionPerformed(ActionEvent e)
+			{
+				if(enemyList.isEmpty())
+				{
+					Updater.resetIterator();
+				}
+			}
 		});
 		swing.add(money);
 		swing.add(startRound);
@@ -71,12 +78,12 @@ public class ButtonHandler {
 		swing.add(tower2);
 		swing.add(tower3);
 		updateCash(startCasch);
-		
+
 	}
 	private void updateCash(int dough)
 	{
 		money.setText("DOUGH " + Integer.toString(dough));
-		
+
 	}
 	public void modifyCasch(int amount)
 	{
@@ -95,6 +102,6 @@ public class ButtonHandler {
 	}
 	public void setToggleButton(boolean on)
 	{
-			startRound.setSelected(false);
+		startRound.setSelected(false);
 	}
 }

@@ -14,6 +14,8 @@ public class Updater implements Runnable{
 	public final static int NR_OF_ITR_ENEMY_STAYS = 15;
 	private final static int NR_OF_ENEMIES = 5;
 
+	private static int nrOfEnemies = 1;
+
 	private ObjectGenerator objGen = null;
 	//	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = null;;
@@ -86,60 +88,50 @@ public class Updater implements Runnable{
 		//			objGen.waitASec();
 		objGen.waitASec();
 	}
-	private static boolean go = false;
-	public static boolean newRound = true;
-
-	public static void setGO(boolean bool)
-	{
-		go = bool;
-	}
 	static int i = 1;
 	public static void resetIterator()
 	{
 		i = 0;
+		nrOfEnemies++;
+
 	}
-	private int nrOfEnemies = 1;
+
 
 	public void run() {
 		int mod = 10;
 		while (true)
 		{
 
-			while(true)
+			if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 			{
-				if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
-				{
 
-					makeEnemiesWalk();
-					setRandomTowerAngle(/*mod/10*/);
-					objGen.fillPlanWithRocketShot();
-					System.out.println(i);
-					if(i<nrOfEnemies)
+				makeEnemiesWalk();
+				setRandomTowerAngle(/*mod/10*/);
+				objGen.fillPlanWithRocketShot();
+				if(i<nrOfEnemies)
 					i++;
-				}
-				if (mod%NR_OF_ITR_ENEMY_STAYS == 0)
-				{
-					if(i<nrOfEnemies)
-					{
-
-						enemyList.getEnemyList().add(new Enemy("Standard"));
-						
-					}
-				}
-
-
-				updateShots();
-				removeNAShot();
-
-				update();
-				objGen.clearJustShoot();
-
-				mod++;
-				if(mod>100) mod = 10;
-
-
-
 			}
+			if (mod%NR_OF_ITR_ENEMY_STAYS == 0)
+			{
+				if(i<nrOfEnemies)
+				{
+
+					enemyList.getEnemyList().add(new Enemy("Standard"));
+
+				}
+			}
+
+
+			updateShots();
+			removeNAShot();
+
+			update();
+			objGen.clearJustShoot();
+
+			mod++;
+			if(mod>100) mod = 10;
+
+
 
 		}
 

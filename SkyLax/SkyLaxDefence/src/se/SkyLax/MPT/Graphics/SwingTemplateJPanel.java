@@ -34,7 +34,7 @@ public class SwingTemplateJPanel extends JPanel {
 		guiHelper = new GUIHelper(enemy, obj);
 		new MouseClass(this, obj, guiHelper);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
-		buttonHandler = new ButtonHandler(this);
+		buttonHandler = new ButtonHandler(this, enemy);
 	}
 
 
