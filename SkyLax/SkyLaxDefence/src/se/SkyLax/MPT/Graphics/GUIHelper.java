@@ -142,7 +142,7 @@ public class GUIHelper{
 					break;
 				case 5:
 
-					g2d.setColor(Color.BLUE);
+					g2d.setColor(Color.GREEN);
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 				}
@@ -269,16 +269,16 @@ public class GUIHelper{
 			enemyX = ((Levels.mapList[0][enemy.getStep()]+1)*(Levels.UNIT_WIDTH*2))-(Levels.UNIT_WIDTH);
 			enemyY = ((Levels.mapList[1][enemy.getStep()]+1)*(Levels.UNIT_HEIGHT*2))-(Levels.UNIT_HEIGHT);
 			
-			if(!enemyList.getHit()){
-			g2d.setColor(new Color(255, 0, 0, (255*enemy.getHealth()/1000)));
+//			if(!enemyList.getHit()){
+			g2d.setColor(new Color(0, 0, 255, (255*enemy.getHealth()/1000)));
 			g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
-			}
-			else
-			{
-				g2d.setColor(Color.RED);
+//			}
+//			else
+//			{
+//				g2d.setColor(Color.RED);
 				g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
-				enemyList.turOffHit();
-			}
+//				enemyList.turOffHit();
+//			}
 		}
 		
 		

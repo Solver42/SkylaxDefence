@@ -11,7 +11,7 @@ import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
 
-	public final static int NR_OF_ITR_ENEMY_STAYS = 15;
+	public final static int NR_OF_ITR_ENEMY_STAYS = 5;
 	private final static int NR_OF_ENEMIES = 5;
 
 	private int nrOfEnemies = 1;

@@ -66,7 +66,7 @@ public class ButtonHandler implements ActionListener{
 		tower3.setOpaque(true);
 		tower3.setBackground(new Color(0, 255, 0, 100));
 		
-		level.setForeground(new Color(55, 255, 55));
+		level.setForeground(new Color(200, 200, 255));
 		level.setOpaque(true);
 		level.setBackground(new Color(0, 0, 0, 100));
 
