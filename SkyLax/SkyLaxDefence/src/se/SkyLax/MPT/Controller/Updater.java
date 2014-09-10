@@ -14,7 +14,7 @@ public class Updater implements Runnable{
 	public final static int NR_OF_ITR_ENEMY_STAYS = 15;
 	private final static int NR_OF_ENEMIES = 5;
 
-	private static int nrOfEnemies = 1;
+	private int nrOfEnemies = 1;
 
 	private ObjectGenerator objGen = null;
 	//	private Random gen = new Random();
@@ -88,12 +88,12 @@ public class Updater implements Runnable{
 		//			objGen.waitASec();
 		objGen.waitASec();
 	}
-	static int i = 1;
-	public static void resetIterator()
+	int i = 1;
+	public void resetIterator()
 	{
 		i = 0;
 		nrOfEnemies++;
-		
+		screen.getPanel().getHandler().setLevel(Integer.toString(nrOfEnemies));
 	}
 	
 	

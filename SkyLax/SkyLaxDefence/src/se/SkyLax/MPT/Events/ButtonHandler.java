@@ -24,7 +24,7 @@ import se.SkyLax.MPT.Utility.Money;
 
 
 
-public class ButtonHandler {
+public class ButtonHandler implements ActionListener{
 	Money casch = null;
 	private JLabel money = null;
 	private JLabel tower1 = null;
@@ -33,10 +33,11 @@ public class ButtonHandler {
 	private JLabel level = null;
 	private JButton startRound = null;
 	private int startCasch = 3400;
-	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
-	public ButtonHandler(SwingTemplateJPanel swing, EnemyList enemy) {
+	EnemyList enemyList = null;
+//	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
+	public ButtonHandler(SwingTemplateJPanel swing, EnemyList enemy){
 		swing.setLayout(null);
-		enemyList = enemy.getEnemyList();
+		enemyList = enemy;
 		startRound = new JButton("Next Round");
 		money = new JLabel("DOUGH:");
 		tower1 = new JLabel("100");
@@ -69,16 +70,8 @@ public class ButtonHandler {
 		level.setOpaque(true);
 		level.setBackground(new Color(0, 0, 0, 100));
 
-		startRound.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				if(enemyList.isEmpty())
-				{
-					Updater.resetIterator();
-				}
-			}
-		});
+		startRound.setActionCommand("startButton");
+		startRound.addActionListener(this);
 		swing.add(money);
 		swing.add(startRound);
 		swing.add(tower1);
@@ -87,6 +80,14 @@ public class ButtonHandler {
 		swing.add(level);
 		updateCash(startCasch);
 
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if(enemyList.getEnemyList().isEmpty())
+		{
+			enemyList.getUpdater().resetIterator();
+		}
 	}
 	private void updateCash(int dough)
 	{
