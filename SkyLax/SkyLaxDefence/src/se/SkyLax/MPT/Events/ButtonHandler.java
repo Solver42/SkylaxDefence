@@ -1,10 +1,16 @@
 package se.SkyLax.MPT.Events;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 
+
+
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 
@@ -20,11 +26,11 @@ public class ButtonHandler {
 	private JLabel tower1 = null;
 	private JLabel tower2 = null;
 	private JLabel tower3 = null;
-	private JToggleButton startRound = null;
+	private JButton startRound = null;
 	private int startCasch = 3400;
 	public ButtonHandler(SwingTemplateJPanel swing) {
 		swing.setLayout(null);
-		startRound = new JToggleButton("Start Round");
+		startRound = new JButton("Next Round");
 		money = new JLabel("DOUGH:");
 		tower1 = new JLabel("100");
 		tower2 = new JLabel("1000");
@@ -50,17 +56,15 @@ public class ButtonHandler {
 		tower3.setOpaque(true);
 		tower3.setBackground(new Color(0, 255, 0, 100));
 		
-		startRound.addItemListener(new ItemListener() {
-		   public void itemStateChanged(ItemEvent ev) {
-		      if(ev.getStateChange()==ItemEvent.SELECTED){
-		        Updater.setGO(true);
-		        startRound.setText("Pause");
-		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
-		    	  startRound.setText("Start Round");
-		        Updater.setGO(false);
-		      }
-		   }
-		}); 
+		startRound.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			 Updater.resetIterator();
+		    Updater.setGO(true);
+		    
+		  }
+		});
 		swing.add(money);
 		swing.add(startRound);
 		swing.add(tower1);
@@ -88,5 +92,9 @@ public class ButtonHandler {
 	public int getCasch()
 	{
 		return this.startCasch;
+	}
+	public void setToggleButton(boolean on)
+	{
+			startRound.setSelected(false);
 	}
 }

@@ -15,7 +15,7 @@ public class Updater implements Runnable{
 	private final static int NR_OF_ENEMIES = 5;
 
 	private ObjectGenerator objGen = null;
-//	private Random gen = new Random();
+	//	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = null;;
 	private TheFrame screen = null;
 	private EnemyList enemyList;
@@ -31,9 +31,9 @@ public class Updater implements Runnable{
 		screen = new TheFrame(objGen, enemyList);
 		enemyList.addEnemy();
 		enemyList.setHandler(screen.getPanel().getHandler());
-		
-//		screen.getPanel().getHandler().setCasch(3400);
-//		objGen.getMoneyClass().updatePanText();
+
+		//		screen.getPanel().getHandler().setCasch(3400);
+		//		objGen.getMoneyClass().updatePanText();
 	}
 	private void updateShots()
 	{
@@ -57,7 +57,7 @@ public class Updater implements Runnable{
 				shotsToRemove.add(rocket);
 			}
 		}
-		
+
 		shotList.removeAll(shotsToRemove);
 		shotsToRemove.clear();
 	}
@@ -86,31 +86,48 @@ public class Updater implements Runnable{
 		//			objGen.waitASec();
 		objGen.waitASec();
 	}
-	private boolean create = true;
 	private static boolean go = false;
+	public static boolean newRound = true;
 
 	public static void setGO(boolean bool)
 	{
 		go = bool;
 	}
+	static int i = 1;
+	public static void resetIterator()
+	{
+		i = 0;
+	}
+	private int nrOfEnemies = 1;
+
 	public void run() {
 		int mod = 10;
 		while (true)
 		{
-			while(!go) update();
-			while(go)
-			{
 
+			while(true)
+			{
 				if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 				{
+
 					makeEnemiesWalk();
 					setRandomTowerAngle(/*mod/10*/);
 					objGen.fillPlanWithRocketShot();
-
-					if((mod<190)&& create)
-						enemyList.addEnemy();
-					else create = false;
+					System.out.println(i);
+					if(i<nrOfEnemies)
+					i++;
 				}
+				if (mod%NR_OF_ITR_ENEMY_STAYS == 0)
+				{
+					if(i<nrOfEnemies)
+					{
+
+						enemyList.getEnemyList().add(new Enemy("Standard"));
+						
+					}
+				}
+
+
 				updateShots();
 				removeNAShot();
 
@@ -118,9 +135,12 @@ public class Updater implements Runnable{
 				objGen.clearJustShoot();
 
 				mod++;
-				if(mod>1000) mod = 10;
+				if(mod>100) mod = 10;
+
+
 
 			}
+
 		}
 
 	}
