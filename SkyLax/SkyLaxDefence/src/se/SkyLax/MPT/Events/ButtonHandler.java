@@ -30,6 +30,7 @@ public class ButtonHandler {
 	private JLabel tower1 = null;
 	private JLabel tower2 = null;
 	private JLabel tower3 = null;
+	private JLabel level = null;
 	private JButton startRound = null;
 	private int startCasch = 3400;
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
@@ -41,11 +42,13 @@ public class ButtonHandler {
 		tower1 = new JLabel("100");
 		tower2 = new JLabel("1000");
 		tower3 = new JLabel("750");
+		level = new JLabel("Level: 1");
 		startRound.setBounds(840, 410, 120, 30);
 		money.setBounds(840, 20, 120, 30);
 		tower1.setBounds(900,90, 30, 30);
 		tower2.setBounds(900,150, 30, 30);
 		tower3.setBounds(900, 210, 30, 30);
+		level.setBounds(840, 380, 120, 30);
 		money.setForeground(Color.WHITE);
 		money.setOpaque(true);
 		money.setBackground(new Color(0, 0, 0, 100));
@@ -61,6 +64,10 @@ public class ButtonHandler {
 		tower3.setForeground(Color.WHITE);
 		tower3.setOpaque(true);
 		tower3.setBackground(new Color(0, 255, 0, 100));
+		
+		level.setForeground(new Color(55, 255, 55));
+		level.setOpaque(true);
+		level.setBackground(new Color(0, 0, 0, 100));
 
 		startRound.addActionListener(new ActionListener()
 		{
@@ -77,6 +84,7 @@ public class ButtonHandler {
 		swing.add(tower1);
 		swing.add(tower2);
 		swing.add(tower3);
+		swing.add(level);
 		updateCash(startCasch);
 
 	}
@@ -103,5 +111,9 @@ public class ButtonHandler {
 	public void setToggleButton(boolean on)
 	{
 		startRound.setSelected(false);
+	}
+	public void setLevel (String which)
+	{
+		level.setText("Level: " + which);
 	}
 }

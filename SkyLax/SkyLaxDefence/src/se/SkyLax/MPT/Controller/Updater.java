@@ -27,7 +27,7 @@ public class Updater implements Runnable{
 	public Updater()
 	{
 		shotsToRemove = new ArrayList<>();
-		enemyList = new EnemyList();
+		enemyList = new EnemyList(this);
 		towAim = new TowerAimer();
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
@@ -93,10 +93,10 @@ public class Updater implements Runnable{
 	{
 		i = 0;
 		nrOfEnemies++;
-
+		
 	}
-
-
+	
+	
 	public void run() {
 		int mod = 10;
 		while (true)
@@ -120,6 +120,7 @@ public class Updater implements Runnable{
 
 				}
 			}
+			
 
 
 			updateShots();

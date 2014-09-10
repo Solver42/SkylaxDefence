@@ -2,11 +2,14 @@ package se.SkyLax.MPT.Enemy;
 
 import java.util.ArrayList;
 
+import se.SkyLax.MPT.Controller.Updater;
 import se.SkyLax.MPT.Events.ButtonHandler;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.Levels.Levels;
 
 public class EnemyList {
+	
+	private Updater updater = null;
 	
 	private ArrayList<Enemy> enemyList= null;
 	private boolean hit = false;
@@ -16,7 +19,8 @@ public class EnemyList {
 	private boolean moreThanY;
 	private ButtonHandler handler = null;
 	
-	public EnemyList() {
+	public EnemyList(Updater upd) {
+		updater = upd;
 		enemyList = new ArrayList<Enemy>();
 	}
 	
@@ -62,5 +66,10 @@ public class EnemyList {
 	public void setHandler(ButtonHandler bh)
 	{
 		this.handler = bh;
+	}
+	
+	public Updater getUpdater()
+	{
+		return updater;
 	}
 }
