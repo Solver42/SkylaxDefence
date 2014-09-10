@@ -87,7 +87,9 @@ public class ButtonHandler implements ActionListener{
 		if(enemyList.getEnemyList().isEmpty())
 		{
 			enemyList.getUpdater().resetIterator();
+			
 		}
+		enemyList.getUpdater().setGo(true);
 	}
 	private void updateCash(int dough)
 	{

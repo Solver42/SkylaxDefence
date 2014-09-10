@@ -89,40 +89,47 @@ public class Updater implements Runnable{
 		objGen.waitASec();
 	}
 	int i = 1;
+	private boolean go = false;
 	public void resetIterator()
 	{
 		i = 0;
 		nrOfEnemies++;
 		screen.getPanel().getHandler().setLevel(Integer.toString(nrOfEnemies));
+		
 	}
-	
-	
+	public void setGo(boolean goRound)
+	{
+		go = goRound;
+	}
+
+
 	public void run() {
 		int mod = 10;
 		while (true)
 		{
-
-			if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
+			if(go)
 			{
-
-				makeEnemiesWalk();
-				setRandomTowerAngle(/*mod/10*/);
-				objGen.fillPlanWithRocketShot();
-				if(i<nrOfEnemies)
-					i++;
-			}
-			if (mod%NR_OF_ITR_ENEMY_STAYS == 0)
-			{
-				if(i<nrOfEnemies)
+				if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 				{
 
-					enemyList.getEnemyList().add(new Enemy("Standard"));
-
+					makeEnemiesWalk();
+					setRandomTowerAngle(/*mod/10*/);
+					objGen.fillPlanWithRocketShot();
+					if(i<nrOfEnemies)
+						i++;
 				}
+				if (mod%NR_OF_ITR_ENEMY_STAYS == 0)
+				{
+					if(i<nrOfEnemies)
+					{
+
+						enemyList.getEnemyList().add(new Enemy("Standard"));
+
+					}
+				}
+
+
 			}
-			
-
-
 			updateShots();
 			removeNAShot();
 
@@ -131,7 +138,6 @@ public class Updater implements Runnable{
 
 			mod++;
 			if(mod>100) mod = 10;
-
 
 
 		}
