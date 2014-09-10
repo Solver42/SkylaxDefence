@@ -30,6 +30,7 @@ public class Updater implements Runnable{
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
 		enemyList.addEnemy();
+		enemyList.setHandler(screen.getPanel().getHandler());
 		
 //		screen.getPanel().getHandler().setCasch(3400);
 //		objGen.getMoneyClass().updatePanText();
@@ -106,7 +107,7 @@ public class Updater implements Runnable{
 					setRandomTowerAngle(/*mod/10*/);
 					objGen.fillPlanWithRocketShot();
 
-					if((mod<90)&& create)
+					if((mod<190)&& create)
 						enemyList.addEnemy();
 					else create = false;
 				}
@@ -117,7 +118,7 @@ public class Updater implements Runnable{
 				objGen.clearJustShoot();
 
 				mod++;
-				if(mod>100) mod = 10;
+				if(mod>1000) mod = 10;
 
 			}
 		}

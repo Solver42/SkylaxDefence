@@ -110,19 +110,19 @@ public class MouseMotionHandler {
 			if(this.kindOfTower == 3)
 			{
 				list.addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().subCasch(100);
+				swing.getHandler().modifyCasch(-100);
 //				money.boughtTowerOfCost(100);
 			}
 			else if(this.kindOfTower ==4)
 			{
 				list.addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().subCasch(1000);
+				swing.getHandler().modifyCasch(-1000);
 //				money.boughtTowerOfCost(1000);
 			}
 			else if(this.kindOfTower ==5)
 			{
 				list.addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().subCasch(750);
+				swing.getHandler().modifyCasch(-750);
 //				money.boughtTowerOfCost(750);
 			}
 

@@ -2,10 +2,9 @@ package se.SkyLax.MPT.Enemy;
 
 import java.util.ArrayList;
 
-import se.SkyLax.MPT.Controller.Updater;
+import se.SkyLax.MPT.Events.ButtonHandler;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.Levels.Levels;
-import se.SkyLax.MPT.Utility.Money;
 
 public class EnemyList {
 	
@@ -15,6 +14,7 @@ public class EnemyList {
 	private boolean moreThanX;
 	private boolean lessThanY;
 	private boolean moreThanY;
+	private ButtonHandler handler = null;
 	
 	public EnemyList() {
 		enemyList = new ArrayList<Enemy>();
@@ -41,9 +41,9 @@ public class EnemyList {
 			if(enemyList.get(0).getHealth()<=0)
 			{
 				enemyList.remove(0);
+				handler.modifyCasch(500);
 			}
 			return true;
-			
 		}
 		return false;
 	}
@@ -58,5 +58,9 @@ public class EnemyList {
 	public void addEnemy()
 	{
 		enemyList.add(new Enemy("Standard"));
+	}
+	public void setHandler(ButtonHandler bh)
+	{
+		this.handler = bh;
 	}
 }

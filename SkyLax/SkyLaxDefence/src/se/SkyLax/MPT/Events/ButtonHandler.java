@@ -74,13 +74,16 @@ public class ButtonHandler {
 		money.setText("DOUGH " + Integer.toString(dough));
 		
 	}
-	public void subCasch(int amount)
+	public void modifyCasch(int amount)
 	{
-		startCasch-=amount;
+		startCasch+=amount;
 		updateCash(startCasch);
 		if(startCasch<100) tower1.setBackground(new Color(255, 0, 0, 100));
-		if (startCasch<750) tower2.setBackground(new Color(255, 0, 0, 100));
-		if (startCasch<1000) tower3.setBackground(new Color(255, 0, 0, 100));
+		else if(startCasch>=100) tower1.setBackground(new Color(0, 255, 0, 100));
+		if (startCasch<750) tower3.setBackground(new Color(255, 0, 0, 100));
+		else if(startCasch>=750) tower3.setBackground(new Color(0, 255, 0, 100));
+		if (startCasch<1000) tower2.setBackground(new Color(255, 0, 0, 100));
+		else if(startCasch>=1000) tower2.setBackground(new Color(0, 255, 0, 100));
 	}
 	public int getCasch()
 	{
