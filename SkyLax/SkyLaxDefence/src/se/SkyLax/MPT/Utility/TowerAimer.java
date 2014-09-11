@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import se.SkyLax.MPT.Controller.Updater;
 import se.SkyLax.MPT.Enemy.Enemy;
+import se.SkyLax.MPT.GameObjects.MissileTower;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Levels.Levels;
 
@@ -22,15 +23,18 @@ public class TowerAimer {
 	private double currentLengthY;
 	private double lengthTillTarget;
 	private int start;
+	private int x = 0;
 	public double aimHere(Tower t, ArrayList<Enemy> enList, boolean onlyLength/*, int diff*/)
 	{
 		int i = 0;
 		start = Updater.NR_OF_ITR_ENEMY_STAYS;
+		if((t instanceof MissileTower) && (enList.size()>1) && enList.get(0).getStep()>2 && enList.get(0).getStep()< Levels.mapList[0].length-1) x = 1;
+		else x = 0;
 		while(!enList.isEmpty() && i<(Levels.mapList[0].length-enList.get(0).getStep())-1)
 		{
 
-			currenPositionX = (((Levels.mapList[0][(enList.get(0).getStep())+i])+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
-			currenPositionY = (((Levels.mapList[1][(enList.get(0).getStep())+i])+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
+			currenPositionX = (((Levels.mapList[0][(enList.get(0).getStep())+i-x])+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
+			currenPositionY = (((Levels.mapList[1][(enList.get(0).getStep())+i-x])+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
 
 			towX = t.getX();
 			towY = t.getY();

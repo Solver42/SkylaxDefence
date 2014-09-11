@@ -12,7 +12,7 @@ package se.SkyLax.MPT.GameObjects;
 public class SniperCastle extends Tower{
 
 	public SniperCastle(int X, int Y, double angle) {
-		super(X, Y, angle, 3, 350, 16);
+		super(X, Y, angle, 3, 350, 40);
 	}
 	
 	public int getRepeat()

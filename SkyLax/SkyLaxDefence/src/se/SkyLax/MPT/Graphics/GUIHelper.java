@@ -39,6 +39,7 @@ public class GUIHelper{
 	private BufferedImage laserOrig = null;
 	private BufferedImage street = null;
 	private BufferedImage enemyImage = null;
+	private BufferedImage bullet = null;
 	private ObjectGenerator objGen = null;
 	private EnemyList enemyList = null;
 
@@ -73,13 +74,14 @@ public class GUIHelper{
 		enemyList = enemy;
 		img = new ImageIcon("img/texture.jpg").getImage();
 		try {
-			sniperOrig = ImageIO.read(new File("img/towers/sniper_orig.png"));
+			sniperOrig = ImageIO.read(new File("img/towers/p90.png"));
 			sniperShot = ImageIO.read(new File("img/towers/sniper_shot.png"));
 			rocketShot = ImageIO.read(new File("img/Rocket.png"));
 			missileOrig = ImageIO.read(new File("img/towers/rocket_orig.png"));
 			laserOrig = ImageIO.read(new File("img/towers/laser_orig.png"));
 			street = ImageIO.read(new File("img/towers/street.gif"));
 			enemyImage = ImageIO.read(new File("img/alienblaster.png"));
+			bullet = ImageIO.read(new File("img/bullet.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -189,7 +191,6 @@ public class GUIHelper{
 		              // 1. translate the object so that you rotate it around the 
 		              //    center (easier :))
 		              
-					
 					g2d.drawImage(sniperOrig, at, null);
 //					g2d.setColor(new Color(0,0,0,200));
 //					g2d.fillRect(tower.getX()-(Levels.UNIT_WIDTH/2), tower.getY()-(Levels.UNIT_HEIGHT/2), Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
@@ -229,18 +230,22 @@ public class GUIHelper{
 		for(ConcreteShot shot : objGen.getGameObjectContainer().getListOfAllShots())
 		{
 			
-			
+			at.setToTranslation(shot.getX(), shot.getY());
+            // 3. do the actual rotation
+            at.rotate(shot.getAngle()+Math.PI/2);
 			
 			if(shot instanceof GunShot)
 			{
-				g2d.setColor(Color.WHITE);
-				g2d.fillOval(shot.getX(), shot.getY(), GUN_WIDTH, GUN_WIDTH);
+//				g2d.setColor(Color.WHITE);
+//				g2d.fillOval(shot.getX(), shot.getY(), GUN_WIDTH, GUN_WIDTH);
+				
+				at.translate(bullet.getWidth()/2-bullet.getWidth(), bullet.getHeight()/2-bullet.getHeight());
+	              
+				g2d.drawImage(bullet, at, null);
 			}
 			else if(shot instanceof Rocket)
 			{
-				at.setToTranslation(shot.getX(), shot.getY());
-	              // 3. do the actual rotation
-	              at.rotate(shot.getAngle()+Math.PI/2);
+				
 	              at.translate(rocketShot.getWidth()/2-rocketShot.getWidth(), rocketShot.getHeight()/2-rocketShot.getHeight());
 	              
 				g2d.drawImage(rocketShot, at, null);
