@@ -3,7 +3,7 @@ package se.SkyLax.MPT.GameObjects;
 public class Laser extends Shot implements ConcreteShot{
 
 	private int speed;
-	private int damage = 100;
+	private int damage = 70;
 	Tower t = null;
 	
 	public Laser(Tower t) {

@@ -1,9 +1,11 @@
 package se.SkyLax.MPT.Graphics;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -35,6 +37,7 @@ public class GUIHelper{
 	private BufferedImage rocketShot = null;
 	private BufferedImage missileOrig = null;
 	private BufferedImage laserOrig = null;
+	private BufferedImage street = null;
 	private ObjectGenerator objGen = null;
 	private EnemyList enemyList = null;
 
@@ -74,6 +77,7 @@ public class GUIHelper{
 			rocketShot = ImageIO.read(new File("img/Rocket.png"));
 			missileOrig = ImageIO.read(new File("img/towers/rocket_orig.png"));
 			laserOrig = ImageIO.read(new File("img/towers/laser_orig.png"));
+			street = ImageIO.read(new File("img/towers/street.gif"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,13 +130,14 @@ public class GUIHelper{
 				{
 				case 1:
 
-					g2d.setColor(new Color(0,0,0, 198));
-					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+//					g2d.setColor(new Color(0,0,0, 198));
+//					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(street, j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT, null);
 					break;
 
 				case 3:
 
-					g2d.setColor(Color.BLACK);
+					g2d.setColor(new Color(0, 0, 0, 200));
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 				case 4:
@@ -142,7 +147,7 @@ public class GUIHelper{
 					break;
 				case 5:
 
-					g2d.setColor(Color.GREEN);
+					g2d.setColor(new Color(51, 204, 255, 200));
 					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
 					break;
 				}

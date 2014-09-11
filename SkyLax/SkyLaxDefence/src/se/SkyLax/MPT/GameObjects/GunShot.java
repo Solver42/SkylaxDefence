@@ -14,7 +14,7 @@ public class GunShot extends Shot implements ConcreteShot{
 	 */
 	
 	private int speed;
-	private int damage = 160;
+	private int damage = 80;
 	Tower t = null;
 	
 	public GunShot(Tower t) {

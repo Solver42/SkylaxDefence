@@ -62,10 +62,6 @@ public class EnemyList {
 	{
 		this.hit = false;
 	}
-	public void addEnemy()
-	{
-		enemyList.add(new Enemy("Standard"));
-	}
 	public void setHandler(ButtonHandler bh)
 	{
 		this.handler = bh;

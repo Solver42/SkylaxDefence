@@ -14,7 +14,7 @@ public class Updater implements Runnable{
 	public final static int NR_OF_ITR_ENEMY_STAYS = 5;
 	private final static int NR_OF_ENEMIES = 5;
 
-	private int nrOfEnemies = 1;
+	private int nrOfEnemies = 0;
 
 	private ObjectGenerator objGen = null;
 	//	private Random gen = new Random();
@@ -31,7 +31,6 @@ public class Updater implements Runnable{
 		towAim = new TowerAimer();
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
-		enemyList.addEnemy();
 		enemyList.setHandler(screen.getPanel().getHandler());
 
 		//		screen.getPanel().getHandler().setCasch(3400);

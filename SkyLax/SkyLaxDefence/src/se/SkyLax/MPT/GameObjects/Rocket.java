@@ -12,7 +12,7 @@ public class Rocket extends Shot implements ConcreteShot{
 	 * 'X' and 'Y', according to
 	 * how we use the trig-object.
 	 */
-	private int damage = 500;
+	private int damage = 250;
 	private int speed;
 	Tower t = null;
 	
