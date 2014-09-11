@@ -286,7 +286,7 @@ public class GUIHelper{
               at.translate(enemyImage.getWidth()/2-enemyImage.getWidth(), enemyImage.getHeight()/2-enemyImage.getHeight());
               
               g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
-            		  (float) enemy.getHealth()/1000));
+            		  (float) enemy.getHealth()/enemy.getStartHelth()));
 			
 //			if(!enemyList.getHit()){
 			g2d.drawImage(enemyImage, at, null);

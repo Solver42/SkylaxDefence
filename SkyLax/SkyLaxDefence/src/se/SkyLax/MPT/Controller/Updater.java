@@ -7,6 +7,7 @@ import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.ConcreteShot;
 import se.SkyLax.MPT.GameObjects.Tower;
 import se.SkyLax.MPT.Graphics.TheFrame;
+import se.SkyLax.MPT.Levels.Levels;
 import se.SkyLax.MPT.Utility.TowerAimer;
 
 public class Updater implements Runnable{
@@ -113,6 +114,7 @@ public class Updater implements Runnable{
 
 					makeEnemiesWalk();
 					setRandomTowerAngle(/*mod/10*/);
+					if(enemyList.getEnemyList().get(0).getStep()<Levels.mapList[0].length-1)
 					objGen.fillPlanWithRocketShot();
 					if(i<nrOfEnemies)
 						i++;

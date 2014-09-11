@@ -12,7 +12,7 @@ package se.SkyLax.MPT.GameObjects;
 public class MissileTower extends Tower{
 
 	public MissileTower(int X, int Y, double angle) {
-		super(X, Y, angle, 5, 440, 22);
+		super(X, Y, angle, 5, 440, 40);
 	}
 	
 	public int getRepeat()

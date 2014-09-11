@@ -72,7 +72,7 @@ public class MouseMotionHandler {
 		if(clickedOnATowerFactory() == 3)
 		{
 //			if(money.getAmountInt() >= 100)
-			if(swing.getHandler().getCasch()>=100)
+			if(swing.getHandler().getCasch()>=600)
 			{
 				this.kindOfTower = 3;
 				gui.setKindOfTown(3);
@@ -82,7 +82,7 @@ public class MouseMotionHandler {
 		} else if(clickedOnATowerFactory() == 4)
 		{
 //			if(money.getAmountInt() >= 1000)
-			if(swing.getHandler().getCasch()>=1000)
+			if(swing.getHandler().getCasch()>=10000)
 			{
 				this.kindOfTower = 4;
 				gui.setKindOfTown(4);
@@ -93,7 +93,7 @@ public class MouseMotionHandler {
 		else if(clickedOnATowerFactory() == 5)
 		{
 //			if(money.getAmountInt() >= 750)
-			if(swing.getHandler().getCasch()>=750)
+			if(swing.getHandler().getCasch()>=4000)
 			{
 				this.kindOfTower = 5;
 				gui.setKindOfTown(5);
@@ -110,19 +110,19 @@ public class MouseMotionHandler {
 			if(this.kindOfTower == 3)
 			{
 				list.addTower(new SniperCastle(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().modifyCasch(-100);
+				swing.getHandler().modifyCasch(-700);
 //				money.boughtTowerOfCost(100);
 			}
 			else if(this.kindOfTower ==4)
 			{
 				list.addTower(new MissileTower(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().modifyCasch(-1000);
+				swing.getHandler().modifyCasch(-10000);
 //				money.boughtTowerOfCost(1000);
 			}
 			else if(this.kindOfTower ==5)
 			{
 				list.addTower(new TowerOfDoom(this.mouseX, this.mouseY, Math.PI*1.5));
-				swing.getHandler().modifyCasch(-750);
+				swing.getHandler().modifyCasch(-4000);
 //				money.boughtTowerOfCost(750);
 			}
 

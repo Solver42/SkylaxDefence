@@ -40,15 +40,15 @@ public class ButtonHandler implements ActionListener{
 		enemyList = enemy;
 		startRound = new JButton("Next Round");
 		money = new JLabel("DOUGH:");
-		tower1 = new JLabel("100");
-		tower2 = new JLabel("1000");
-		tower3 = new JLabel("750");
+		tower1 = new JLabel("700");
+		tower2 = new JLabel("10000");
+		tower3 = new JLabel("4000");
 		level = new JLabel("Level: 1");
 		startRound.setBounds(840, 410, 120, 30);
 		money.setBounds(840, 20, 120, 30);
-		tower1.setBounds(900,90, 30, 30);
-		tower2.setBounds(900,150, 30, 30);
-		tower3.setBounds(900, 210, 30, 30);
+		tower1.setBounds(900,90, 40, 30);
+		tower2.setBounds(900,150, 40, 30);
+		tower3.setBounds(900, 210, 40, 30);
 		level.setBounds(840, 380, 120, 30);
 		money.setForeground(Color.WHITE);
 		money.setOpaque(true);
@@ -79,6 +79,7 @@ public class ButtonHandler implements ActionListener{
 		swing.add(tower3);
 		swing.add(level);
 		updateCash(startCasch);
+		modifyCasch(0);
 
 	}
 	
@@ -100,11 +101,11 @@ public class ButtonHandler implements ActionListener{
 	{
 		startCasch+=amount;
 		updateCash(startCasch);
-		if(startCasch<100) tower1.setBackground(new Color(255, 0, 0, 100));
+		if(startCasch<700) tower1.setBackground(new Color(255, 0, 0, 100));
 		else if(startCasch>=100) tower1.setBackground(new Color(0, 255, 0, 100));
-		if (startCasch<750) tower3.setBackground(new Color(255, 0, 0, 100));
+		if (startCasch<4000) tower3.setBackground(new Color(255, 0, 0, 100));
 		else if(startCasch>=750) tower3.setBackground(new Color(0, 255, 0, 100));
-		if (startCasch<1000) tower2.setBackground(new Color(255, 0, 0, 100));
+		if (startCasch<10000) tower2.setBackground(new Color(255, 0, 0, 100));
 		else if(startCasch>=1000) tower2.setBackground(new Color(0, 255, 0, 100));
 	}
 	public int getCasch()

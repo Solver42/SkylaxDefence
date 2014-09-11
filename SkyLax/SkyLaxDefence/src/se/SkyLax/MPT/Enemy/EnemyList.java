@@ -47,7 +47,7 @@ public class EnemyList {
 				if(enemy.getHealth()<=0)
 				{
 					enemyList.remove(enemy);
-					handler.modifyCasch(500);
+					handler.modifyCasch(650);
 				}
 				return true;
 			}
