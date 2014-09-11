@@ -139,18 +139,21 @@ public class GUIHelper{
 
 				case 3:
 
-					g2d.setColor(new Color(0, 0, 0, 200));
-					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+//					g2d.setColor(new Color(0, 0, 0, 200));
+//					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(sniperOrig, j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, null);
 					break;
 				case 4:
 
-					g2d.setColor(Color.WHITE);
-					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+//					g2d.setColor(Color.WHITE);
+//					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(missileOrig, j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, null);
 					break;
 				case 5:
 
-					g2d.setColor(new Color(51, 204, 255, 200));
-					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+//					g2d.setColor(new Color(51, 204, 255, 200));
+//					g2d.fillRect(j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+					g2d.drawImage(laserOrig, j*Levels.UNIT_WIDTH, i*Levels.UNIT_HEIGHT, null);
 					break;
 				}
 			}
