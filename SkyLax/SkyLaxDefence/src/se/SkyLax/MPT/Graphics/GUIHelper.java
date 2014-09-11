@@ -38,6 +38,7 @@ public class GUIHelper{
 	private BufferedImage missileOrig = null;
 	private BufferedImage laserOrig = null;
 	private BufferedImage street = null;
+	private BufferedImage enemyImage = null;
 	private ObjectGenerator objGen = null;
 	private EnemyList enemyList = null;
 
@@ -78,6 +79,7 @@ public class GUIHelper{
 			missileOrig = ImageIO.read(new File("img/towers/rocket_orig.png"));
 			laserOrig = ImageIO.read(new File("img/towers/laser_orig.png"));
 			street = ImageIO.read(new File("img/towers/street.gif"));
+			enemyImage = ImageIO.read(new File("img/alienblaster.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -233,7 +235,6 @@ public class GUIHelper{
 			}
 			else if(shot instanceof Rocket)
 			{
-				at.translate(Levels.UNIT_WIDTH / 2, Levels.UNIT_HEIGHT / 2);
 				at.setToTranslation(shot.getX(), shot.getY());
 	              // 3. do the actual rotation
 	              at.rotate(shot.getAngle()+Math.PI/2);
@@ -271,17 +272,27 @@ public class GUIHelper{
 		
 		for(Enemy enemy : enemyList.getEnemyList())
 		{
+			
 			enemyX = ((Levels.mapList[0][enemy.getStep()]+1)*(Levels.UNIT_WIDTH*2))-(Levels.UNIT_WIDTH);
 			enemyY = ((Levels.mapList[1][enemy.getStep()]+1)*(Levels.UNIT_HEIGHT*2))-(Levels.UNIT_HEIGHT);
 			
+			
+			at.setToTranslation(enemyX, enemyY);
+              // 3. do the actual rotation
+              at.rotate((Levels.mapList[2][enemy.getStep()+1])*(Math.PI/2));
+              at.translate(enemyImage.getWidth()/2-enemyImage.getWidth(), enemyImage.getHeight()/2-enemyImage.getHeight());
+              
+              g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+            		  (float) enemy.getHealth()/1000));
+			
 //			if(!enemyList.getHit()){
-			g2d.setColor(new Color(0, 0, 255, (255*enemy.getHealth()/1000)));
-			g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
-//			}
+			g2d.drawImage(enemyImage, at, null);
+			
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)1.0));
+
 //			else
 //			{
-//				g2d.setColor(Color.RED);
-				g2d.fillRect(enemyX-Levels.UNIT_WIDTH/2, enemyY-Levels.UNIT_HEIGHT/2, Levels.UNIT_WIDTH, Levels.UNIT_HEIGHT);
+
 //				enemyList.turOffHit();
 //			}
 		}
