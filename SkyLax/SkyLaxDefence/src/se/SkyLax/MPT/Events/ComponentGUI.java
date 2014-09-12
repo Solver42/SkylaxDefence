@@ -17,7 +17,7 @@ public class ComponentGUI implements ActionListener{
 	private JLabel tower3 = null;
 	private JLabel level = null;
 	private JButton startRound = null;
-	private int startCasch = 3400;
+	private int startCasch = 15000;
 	private EnemyList enemyList = null;
 	public ComponentGUI(SwingTemplateJPanel swing, EnemyList enemy){
 		swing.setLayout(null);
