@@ -12,10 +12,10 @@ import se.SkyLax.MPT.Levels.Levels;
 public class MouseClass{
 
 
-	ObjectGenerator objGen = null;
-	SwingTemplateJPanel swing = null;
-	private MouseMotionHandler properties = null;
-	GUIHelper gui = null;
+	private ObjectGenerator objGen = null;
+	private SwingTemplateJPanel swing = null;
+	private MouseGUIConnection properties = null;
+	private GUIHelper gui = null;
 	private int map[][];
 	private int mapX;
 	private int mapY;
@@ -24,11 +24,10 @@ public class MouseClass{
 		this.gui = gui;
 		this.swing = swing;
 		this.objGen = obj;
-		properties = new MouseMotionHandler(obj, gui, swing);
+		properties = new MouseGUIConnection(obj, gui, swing);
 		clicked();
 		moved();
 	}
-
 	private void clicked()
 	{
 		swing.addMouseListener(new MouseAdapter() {
@@ -36,26 +35,18 @@ public class MouseClass{
 				if(e.getButton() == MouseEvent.BUTTON1)
 				{
 					properties.IClicked();
-//				properties.mabyCreateTower("SniperCastle");
 				}
-//				else if (e.getButton() == MouseEvent.BUTTON3)
-//				{
-//				properties.mabyCreateTower("MissileTower");
-//				}
 			}
 		});
 	}
-
-
 	private void moved()
 	{
 		swing.addMouseMotionListener(new MouseMotionListener() {
 			public void mouseMoved(MouseEvent e) {
 				gui.setGUI_XY(e.getX(), e.getY());
-				
+
 				properties.setCoordinates(e.getX(), e.getY());
 				creationOfTowerOK(e);
-//				properties.creationOfTowerOK();
 			}
 
 			@Override
@@ -65,17 +56,14 @@ public class MouseClass{
 			}
 		});
 	}
-	
 	private void creationOfTowerOK(MouseEvent e)
 	{
 		map = objGen.getGameObjectContainer().getLevel().getMap();
 		mapY = e.getY()/(Levels.UNIT_HEIGHT);
 		mapX = e.getX()/(Levels.UNIT_WIDTH);
 		if(map[mapY][mapX] != 1 && map[mapY][mapX] !=2 &&(e.getX()<SwingTemplateJPanel.CANVAS_WIDTH-(Levels.UNIT_WIDTH*3)))
-		gui.setAllowedToBuild(true);
+			gui.setAllowedToBuild(true);
 		else
-		gui.setAllowedToBuild(false);
+			gui.setAllowedToBuild(false);
 	}
-
-
 }

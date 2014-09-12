@@ -1,11 +1,8 @@
 package se.SkyLax.MPT.Events;
 
 public class MouseProperties {
-	
 	private int mouseX;
 	private int mouseY;
-	
-	
 	public int getMouseY() {
 		return mouseY;
 	}
@@ -18,9 +15,4 @@ public class MouseProperties {
 	public void setMouseX(int mouseX) {
 		this.mouseX = mouseX;
 	}
-	
-
-	
-	
-
 }

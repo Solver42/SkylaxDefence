@@ -4,19 +4,14 @@ package se.SkyLax.MPT.Levels;
 import se.SkyLax.MPT.Graphics.SwingTemplateJPanel;
 
 public class Levels {
-
 	public static final int NR_OF_UNITS_HORIZ = 32;
 	public static final int NR_OF_UNITS_VERIC = 18;
 	public static final int UNIT_WIDTH = SwingTemplateJPanel.CANVAS_WIDTH/NR_OF_UNITS_HORIZ;
 	public static final int UNIT_HEIGHT = SwingTemplateJPanel.CANVAS_HEIGHT/NR_OF_UNITS_VERIC;
-	
-	
 	public static int[][] mapList = new int[][] {
 			{ 1, 1, 1, 2, 3, 4, 4, 4, 5, 6, 7, 8, 8, 8, 9, 9, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 11, 11, 11, 11, 12, 13, 13, 13, 13, 13, 13, 13, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1},
 			{ 0, 1, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 1, 2, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
 			{ 1, 1, 1, 0, 0, 0, 3, 3, 0, 0, 0, 0, 1, 1, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}};
-			
-	
 	int[][] holder = new int[][]{
 			{ 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{ 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -36,9 +31,7 @@ public class Levels {
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0},
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
-			
 		};
-
 	public int[][] getMap()
 	{
 		return holder;
@@ -47,5 +40,4 @@ public class Levels {
 	{
 		this.holder[y][x] = value;
 	}
-
 }

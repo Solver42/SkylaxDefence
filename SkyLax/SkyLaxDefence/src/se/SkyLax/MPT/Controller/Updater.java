@@ -13,12 +13,8 @@ import se.SkyLax.MPT.Utility.TowerAimer;
 public class Updater implements Runnable{
 
 	public final static int NR_OF_ITR_ENEMY_STAYS = 5;
-	private final static int NR_OF_ENEMIES = 5;
-
 	private int nrOfEnemies = 0;
-
 	private ObjectGenerator objGen = null;
-	//	private Random gen = new Random();
 	private ArrayList<ConcreteShot> shotsToRemove = null;;
 	private TheFrame screen = null;
 	private EnemyList enemyList;
@@ -33,9 +29,6 @@ public class Updater implements Runnable{
 		objGen = new ObjectGenerator(enemyList, towAim);
 		screen = new TheFrame(objGen, enemyList);
 		enemyList.setHandler(screen.getPanel().getHandler());
-
-		//		screen.getPanel().getHandler().setCasch(3400);
-		//		objGen.getMoneyClass().updatePanText();
 	}
 	private void updateShots()
 	{
@@ -59,7 +52,6 @@ public class Updater implements Runnable{
 				shotsToRemove.add(rocket);
 			}
 		}
-
 		shotList.removeAll(shotsToRemove);
 		shotsToRemove.clear();
 	}
@@ -68,7 +60,6 @@ public class Updater implements Runnable{
 		towers = objGen.getGameObjectContainer().getTowerList();
 		for(Tower tower : towers)
 		{
-			//			tower.setAngle(gen.nextDouble()*(Math.PI*2));
 			tower.setAngle(towAim.aimHere(tower, enemyList.getEnemyList(), false/*, diff*/));
 		}
 	}
@@ -79,13 +70,9 @@ public class Updater implements Runnable{
 			enemy.walk();
 		}
 	}
-
-
-
 	private void update()
 	{
 		screen.update();
-		//			objGen.waitASec();
 		objGen.waitASec();
 	}
 	int i = 1;
@@ -95,14 +82,12 @@ public class Updater implements Runnable{
 		i = 0;
 		nrOfEnemies++;
 		screen.getPanel().getHandler().setLevel(Integer.toString(nrOfEnemies));
-		
+
 	}
 	public void setGo(boolean goRound)
 	{
 		go = goRound;
 	}
-
-
 	public void run() {
 		int mod = 10;
 		while (true)
@@ -111,11 +96,10 @@ public class Updater implements Runnable{
 			{
 				if(mod%NR_OF_ITR_ENEMY_STAYS == 0 && !(enemyList.getEnemyList().isEmpty()))
 				{
-
 					makeEnemiesWalk();
 					setRandomTowerAngle(/*mod/10*/);
 					if(enemyList.getEnemyList().get(0).getStep()<Levels.mapList[0].length-1)
-					objGen.fillPlanWithRocketShot();
+						objGen.fillPlanWithRocketShot();
 					if(i<nrOfEnemies)
 						i++;
 				}
@@ -128,19 +112,13 @@ public class Updater implements Runnable{
 
 					}
 				}
-
-
 			}
 			updateShots();
 			removeNAShot();
-
 			update();
 			objGen.clearJustShoot();
-
 			mod++;
 			if(mod>100) mod = 10;
-
-
 		}
 
 	}

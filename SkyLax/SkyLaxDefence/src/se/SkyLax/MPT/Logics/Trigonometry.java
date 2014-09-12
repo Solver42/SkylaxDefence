@@ -1,22 +1,17 @@
 package se.SkyLax.MPT.Logics;
 
 public class Trigonometry {
-
 	private double angle;
-
 	public Trigonometry(double angle)
 	{
 		this.angle = angle;
-
 	}
-
 	/*
 	 * this public method will return
 	 * something between 0 and 1
 	 * depending on the class variable
 	 * angle.
 	 */
-
 	public double getSimpleXY(String XorY){
 		if(XorY.equals("X"))
 		{
@@ -27,9 +22,7 @@ public class Trigonometry {
 		}
 		return -1;
 	}
-
 	boolean bool = true;
-
 	int i = 10;
 	private void modifyAngle()
 	{
@@ -46,11 +39,7 @@ public class Trigonometry {
 			angle-=0.04;
 			i--;
 		}
-
 	}
-
-
-
 	public double getSpacedXY(String XorY){
 		modifyAngle();
 		if(XorY.equals("X"))

@@ -1,6 +1,4 @@
 package se.SkyLax.MPT.GameObjects;
-
-
 /*
  * creates a simple tower,
  * though passing a string
@@ -8,16 +6,12 @@ package se.SkyLax.MPT.GameObjects;
  * information can be retrieved
  * from a tower information object
  */
-
 public class SniperCastle extends Tower{
-
 	public SniperCastle(int X, int Y, double angle) {
 		super(X, Y, angle, 3, 350, 40);
 	}
-	
 	public int getRepeat()
 	{
 		return this.repeat;
 	}
-	
 }

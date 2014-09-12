@@ -2,7 +2,6 @@ package se.SkyLax.MPT.Controller;
 
 import java.util.ArrayList;
 
-import se.SkyLax.MPT.Enemy.Enemy;
 import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.GameObjectList;
 import se.SkyLax.MPT.GameObjects.MissileTower;
@@ -22,8 +21,7 @@ public class ObjectGenerator{
 	 * must have access to GameObjectList.
 	 */
 	private int i;
-
-	GameObjectList gameObjectList = null;
+	private GameObjectList gameObjectList = null;
 	private ArrayList<Tower> towersThatJustShoot = null;;
 	private EnemyList enemyList = null;
 	private TowerAimer towAim = null;
@@ -41,11 +39,7 @@ public class ObjectGenerator{
 		gameObjectList = new GameObjectList();
 		justShootString = new ArrayList<Tower>() ;
 		money = new Money();
-
 	}
-
-	
-
 	public  synchronized void clearFireArray()
 	{
 		towersThatJustShoot.clear();
@@ -58,9 +52,6 @@ public class ObjectGenerator{
 	{
 		this.justShootString.clear();
 	}
-	
-	
-	
 	public synchronized void fillPlanWithRocketShot()
 	{
 		i++;
@@ -106,6 +97,4 @@ public class ObjectGenerator{
 	{
 		return money;
 	}
-
-
 }

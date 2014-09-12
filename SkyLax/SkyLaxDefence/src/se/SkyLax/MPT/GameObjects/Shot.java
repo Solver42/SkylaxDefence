@@ -2,22 +2,16 @@ package se.SkyLax.MPT.GameObjects;
 import se.SkyLax.MPT.Logics.*;
 
 public class Shot {
-	
 	/*
 	 * this class will produce
 	 * a shot, which will
 	 * get the following properties.
 	 */
-	
 	protected int speed;
 	protected double angle;
-	
 	protected int X;
 	protected int Y;
-	
 	protected Trigonometry trig = null;
-	
-
 	/*
 	 * trough passing a certain tower
 	 * in this constructor we will
@@ -28,9 +22,6 @@ public class Shot {
 	 * more variables might be reached
 	 * from the tower.
 	 */
-	
-	
-	
 	public Shot(Tower t)
 	{
 		this.angle = t.getAngle();
@@ -38,9 +29,6 @@ public class Shot {
 		this.Y = t.getY();
 		trig = new Trigonometry(angle);
 	}
-
-	
-	
 	public int getX()
 	{
 		return X;
@@ -49,10 +37,8 @@ public class Shot {
 	{
 		return Y;
 	}
-	
 	public double getAngle()
 	{
 		return trig.getAngle();
 	}
-
 }

@@ -4,13 +4,10 @@ import java.util.ArrayList;
 
 import se.SkyLax.MPT.Levels.Levels;
 
-
 public class GameObjectList{
-
-
-	ArrayList<ConcreteShot> rockets;
-	ArrayList<Tower> towers;
-	Levels level = null;
+	private ArrayList<ConcreteShot> rockets;
+	private ArrayList<Tower> towers;
+	private Levels level = null;
 	private int atMapX;
 	private int atMapY;
 	
@@ -41,18 +38,14 @@ public class GameObjectList{
 	{
 		rockets.add(towers.get(index).getNewShot(kindOfShot));
 	}
-	
 	public void addShotGeneric(Tower tower, String kindOfShot)
 	{
 		rockets.add(tower.getNewShot(kindOfShot));
 	}
-	
-
 	public ArrayList<ConcreteShot> getListOfAllShots()
 	{
 		return this.rockets;
 	}
-	
 	public ArrayList<Tower> getTowerList()
 	{
 		return this.towers;

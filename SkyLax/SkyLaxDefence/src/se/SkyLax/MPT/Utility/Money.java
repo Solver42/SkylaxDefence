@@ -1,15 +1,11 @@
 package se.SkyLax.MPT.Utility;
-
-
 public class Money {
 	private int amount = 3400;
 	
 	public void killedABeast()
 	{
 		amount += 400;
-		
 	}
-	
 	public String getAmount()
 	{
 		return Integer.toString(amount);
@@ -23,7 +19,6 @@ public class Money {
 	{
 		amount -=cost;
 	}
-
 //	
 //	public void updatePanText()
 //	{

@@ -8,7 +8,6 @@ public class Tower {
 	protected int rangeInPix;
 	protected Shot shot;
 	protected int rotationSpeed;
-	
 	protected int X;
 	protected int Y;
 	protected int repeat;
@@ -17,8 +16,6 @@ public class Tower {
 	
 	public Tower (int X, int Y, double angle, int repeat, int range, int speedOfShoot)
 	{
-		
-		//TODO get this modulos right!
 //		towIn = new TowerInformation(kind);
 		this.speedOfShot = speedOfShoot;
 		this.rangeInPix = range;
@@ -27,7 +24,6 @@ public class Tower {
 		this.X = (X-(X%Levels.UNIT_WIDTH))+(Levels.UNIT_WIDTH/2);
 		this.Y = (Y-(Y%Levels.UNIT_HEIGHT))+(Levels.UNIT_WIDTH/2);
 	}
-	
 	public ConcreteShot getNewShot(String shotType)
 	{
 		if(shotType.equals("GunShot"))
@@ -44,7 +40,6 @@ public class Tower {
 		}
 		return new GunShot(this);
 	}
-	
 	public double getAngle()
 	{
 		return this.angle;
@@ -65,7 +60,6 @@ public class Tower {
 	{
 		return this.repeat;
 	}
-	
 	public int getRangeInPix()
 	{
 		return rangeInPix;

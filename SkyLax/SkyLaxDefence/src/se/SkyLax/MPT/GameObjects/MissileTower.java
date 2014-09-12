@@ -1,6 +1,5 @@
 package se.SkyLax.MPT.GameObjects;
 
-
 /*
  * creates a simple tower,
  * though passing a string
@@ -8,18 +7,13 @@ package se.SkyLax.MPT.GameObjects;
  * information can be retrieved
  * from a tower information object
  */
-
 public class MissileTower extends Tower{
 
 	public MissileTower(int X, int Y, double angle) {
 		super(X, Y, angle, 5, 440, 40);
 	}
-	
 	public int getRepeat()
 	{
 		return repeat;
 	}
-
-
-
 }

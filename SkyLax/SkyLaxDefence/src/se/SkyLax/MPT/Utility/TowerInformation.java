@@ -4,9 +4,7 @@ public class TowerInformation {
 	private int rotationSpeed;
 	private int repeat;
 	private String kind = "";
-	private int range;
-
-	
+	private int range;	
 	/*
 	 * this class will contain
 	 * information about the tower
@@ -14,16 +12,13 @@ public class TowerInformation {
 	 * It will contain all the properties
 	 * that certain tower has.
 	 */
-	
 	public TowerInformation(String kindOfTower) {
 	
 		setInformation(kindOfTower);
 		kind = kindOfTower;
-		
 	}
 	private void setInformation(String kind)
 	{
-		
 		/*
 		 * depending on which sort of tower it
 		 * is, the instance variables
@@ -64,6 +59,4 @@ public class TowerInformation {
 	{
 		return this.repeat;
 	}
-	
-
 }
