@@ -2,6 +2,7 @@ package se.SkyLax.MPT.Controller;
 
 import java.util.ArrayList;
 
+import se.SkyLax.MPT.Enemy.Enemy;
 import se.SkyLax.MPT.Enemy.EnemyList;
 import se.SkyLax.MPT.GameObjects.GameObjectList;
 import se.SkyLax.MPT.GameObjects.MissileTower;
@@ -59,12 +60,25 @@ public class ObjectGenerator{
 	}
 	
 	
+//	private boolean shallShood(Tower tower)
+//	{
+//		
+//		for(Enemy enemy : enemyList.getEnemyList())
+//		{
+//			if((towAim.aimHere(tower, enemyList.getEnemyList().get(enemy), true/*, 0*/)) < tower.getRangeInPix())
+//			{
+//				
+//			}
+//		
+//		}
+//	}
+	
 	public synchronized void fillPlanWithRocketShot()
 	{
 		i++;
 		for(Tower tower : gameObjectList.getTowerList())
 		{
-			theRest = (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true/*, 0*/)) < tower.getRangeInPix();
+			theRest = (i%tower.getRepeat()==0) && (towAim.aimHere(tower, enemyList.getEnemyList(), true/*, 0*/)) < tower.getRangeInPix()/2;
 			sniperMayShoot = tower instanceof SniperCastle && theRest;
 			missileTowerMayShoot = tower instanceof MissileTower && theRest;
 			laserTowerMayShoot = tower instanceof TowerOfDoom && theRest;
