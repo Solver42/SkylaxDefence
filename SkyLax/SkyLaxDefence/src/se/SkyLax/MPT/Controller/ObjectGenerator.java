@@ -60,18 +60,6 @@ public class ObjectGenerator{
 	}
 	
 	
-//	private boolean shallShood(Tower tower)
-//	{
-//		
-//		for(Enemy enemy : enemyList.getEnemyList())
-//		{
-//			if((towAim.aimHere(tower, enemyList.getEnemyList().get(enemy), true/*, 0*/)) < tower.getRangeInPix())
-//			{
-//				
-//			}
-//		
-//		}
-//	}
 	
 	public synchronized void fillPlanWithRocketShot()
 	{

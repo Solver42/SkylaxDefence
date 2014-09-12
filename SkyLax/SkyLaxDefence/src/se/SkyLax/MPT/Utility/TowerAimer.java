@@ -31,28 +31,28 @@ public class TowerAimer {
 		int i = 0;
 		x = 0;
 		start = Updater.NR_OF_ITR_ENEMY_STAYS;
-		//		if((t instanceof MissileTower) && (enList.size()>1) && enList.get(0).getStep()>2 && (enList.get(0).getStep()< Levels.mapList[0].length-1))
-		//		{
-		//			for(int j = 0; i<enList.size(); i++)
-		//			{
-		//				if(j==enList.size()-1)
-		//				{
-		//					x = 1;
-		//					break;
-		//				}
-		//				if (enList.get(j).getHealth()<enList.get(j).getStartHelth())
-		//				x++;
-		//				else break;
-		//			}
-		//		}
+		if((t instanceof MissileTower) && (enList.size()>1) && enList.get(0).getStep()>2 && (enList.get(0).getStep()< Levels.mapList[0].length-1))
+		{
+			for(int j = 0; j<enList.size(); j++)
+			{
+				if(j<enList.size()-1)
+				{
+					x = 1;
+					break;
+				}
+				if (enList.get(j).getHealth()<enList.get(j).getStartHelth())
+					x++;
+				else break;
+			}
+		}
 		while(enItr<enList.size())
 		{
 			while(!enList.isEmpty() && i<(Levels.mapList[0].length-enList.get(enItr).getStep())-1)
 			{
 
 
-				currenPositionX = (((Levels.mapList[0][(enList.get(enItr).getStep())+i/*-x*/])+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
-				currenPositionY = (((Levels.mapList[1][(enList.get(enItr).getStep())+i/*-x*/])+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
+				currenPositionX = (((Levels.mapList[0][((enList.get(enItr).getStep())+i)-x])+1)*(Levels.UNIT_WIDTH*2))-Levels.UNIT_WIDTH;
+				currenPositionY = (((Levels.mapList[1][((enList.get(enItr).getStep())+i)-x])+1)*(Levels.UNIT_HEIGHT*2))-Levels.UNIT_HEIGHT;
 
 				towX = t.getX();
 				towY = t.getY();
